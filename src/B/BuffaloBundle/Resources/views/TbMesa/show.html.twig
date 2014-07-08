@@ -1,0 +1,59 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+<div class="container" >
+    <section class="register">
+    <h1>Mesa <strong>{{ entity.inroMesa }}</strong></h1>
+
+    <table class="record_properties">
+        <tbody>
+ 
+         
+            <tr>
+                <td>Estatus: </td>
+                <td>{{ entity.destatus }}</td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ens_mesas') }}">
+            Volver a Listado de Mesas
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('ens_mesas_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    
+</ul>
+    </section>
+    </div>
+{% endblock %}

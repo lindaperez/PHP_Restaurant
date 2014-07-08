@@ -1,0 +1,27 @@
+B\BuffaloBundle\Entity\TbMesa:
+    type: entity
+    table: tb_Mesa
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        inroMesa:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: iNRO_MESA
+        destatus:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: dESTATUS
+    lifecycleCallbacks: {  }

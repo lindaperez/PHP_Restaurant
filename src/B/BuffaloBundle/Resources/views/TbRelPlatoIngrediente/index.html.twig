@@ -1,0 +1,82 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+<div class="container" >
+    <section class="register">
+    <h1>Lista de Ingredientes Asociados</h1>
+<br>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <td width="80"><h1><strong>Nro</strong></h1></td>
+                <td width="10"></td>
+               <td width="80"><h1><strong>Plato</strong></h1></td>
+                <td width="10"></td>
+                 <td width="80"><h1><strong>Ingrediente</strong></h1></td>
+                <td width="10"></td>
+                <td width="80"><h1><strong>Cantidad</strong></h1></td>
+                <td width="10"></td>
+                <td width="80"><h1><strong>Acciones</strong></h1></td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td width="80"><a href="{{ path('ens_inventario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td width="10"></td>
+                <td width="200">{{ entity.fkIidPlato }}</td>
+                <td width="10"></td>
+                <td width="80">{{ entity.fkIidIngrediente }}</td>
+                <td width="10"></td>
+                <td width="80">{{ entity.dcantidad }} {{ entity.fkIidMedida }} </td>
+                <td width="10"></td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('ens_inventario_edit', { 'id': entity.id }) }}">Ver/Editar</a>
+                    </li>
+                </ul>
+                </td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <br>
+        <br>
+        <ul>
+        <li>
+            <a href="{{ path('ens_inventario_new') }}">
+                Asociar nuevo ingrediente
+            </a>
+        </li>
+    </ul>
+    </section>
+</div>
+    {% endblock %}

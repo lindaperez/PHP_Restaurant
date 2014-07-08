@@ -1,0 +1,75 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+<div class="container" >
+    <section class="register">
+    <h1>Listado de Mesas</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                
+                <td width="80"><h1><strong>Nro de Mesa</strong></h1></td>
+                <td width="10"></td>
+                <td width="80"><h1><strong>Estatus</strong></h1></td>
+                <td width="10"></td>
+                <td width="80"><h1><strong>Acciones</strong></h1></td>
+                <td width="10"></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td width="80"><a href="{{ path('ens_mesas_show', { 'id': entity.id }) }}">{{ entity.inroMesa }}</a></td>
+                <td width="10"></td>
+                <td width="80">{{ entity.destatus }}</td>
+                <td width="10"></td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('ens_mesas_edit', { 'id': entity.id }) }}">Ver/Editar</a>
+                    </li>
+                </ul>
+                </td>
+                <td width="10"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('ens_mesas_new') }}">
+                Crear Nueva Mesa
+            </a>
+        </li>
+    </ul>
+    
+    </section>
+    </div>
+{% endblock %}

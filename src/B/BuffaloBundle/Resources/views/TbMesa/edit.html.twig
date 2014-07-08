@@ -1,0 +1,76 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+<div class="container" >
+    <section class="register">
+    <h1>Editar Mesa</h1>
+
+      
+  <form action="{{ path('ens_mesas_update',{ 'id': entity.id }) }}" method="post" class="login">
+ {{ form_start(edit_form) }}
+{{ form_errors(edit_form) }}
+    <table>
+        <td width='10'></td>
+       <td>
+        <div style="display: none;">
+        {{ form_row(edit_form.submit, { 'label': 'Crear' }) }}
+    </div>
+                   <div class="error">
+            {{ form_errors(edit_form.inroMesa) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(edit_form.inroMesa, 'Nro de Mesa:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.inroMesa) }}</td>
+        </table>
+      
+<div class="error">
+            {{ form_errors(edit_form.destatus) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(edit_form.destatus, 'Estatus:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.destatus) }}</td>
+        </table>
+           
+</table>                          
+<p class="submit">   
+                <input type="submit" name="commit" value="Editar">
+            </p>    
+   {{ form_end(edit_form) }}     
+
+</form>
+
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ens_mesas') }}">
+            Volver al Listado de Mesas
+        </a>
+    </li>
+    
+</ul>
+    </section>
+</div>
+{% endblock %}

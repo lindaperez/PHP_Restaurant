@@ -1,0 +1,39 @@
+B\BuffaloBundle\Entity\TbRelCompraPlato:
+    type: entity
+    table: tb_Rel_Compra_Plato
+    indexes:
+        iID_CPLATO:
+            columns:
+                - fk_iID_CPLATO
+        iID_COMPRA:
+            columns:
+                - fk_iID_COMPRA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    manyToOne:
+        fkIidCplato:
+            targetEntity: TbPlato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_CPLATO:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidCompra:
+            targetEntity: TbCompra
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_COMPRA:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

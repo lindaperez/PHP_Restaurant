@@ -1,0 +1,21 @@
+B\BuffaloBundle\Entity\TbTipoPersona:
+    type: entity
+    table: tb_Tipo_Persona
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        vtitulo:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: vTITULO
+    lifecycleCallbacks: {  }

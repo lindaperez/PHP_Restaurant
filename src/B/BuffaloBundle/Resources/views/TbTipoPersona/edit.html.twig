@@ -1,0 +1,68 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+
+     <h1>Edición de Roles</h1>
+    <div class="container" >
+
+    <section class="register"> 
+<form action="{{ path('ens_roles_update',{ 'id': entity.id }) }}" method="post" class="login">
+    
+              {{ form_start(edit_form) }}
+        {{ form_errors(edit_form) }}  
+       
+                         <div style="display: none;">     
+                      
+                {{ form_row(edit_form.submit, { 'label': 'Editar' }) }}        
+                </div>  
+  <div class="error" id="det">
+                {{ form_errors(edit_form.vtitulo) }}</div>       
+                    <table>  <td width="95">
+                {{ form_label(edit_form.vtitulo, 'Titulo:') }}</td>
+                    <td>{{ form_widget(edit_form.vtitulo,{'required': true}) }}</td>
+                    </table>
+            <p class="submit">   
+                <input type="submit" name="commit" value="Editar">
+                </p>
+
+                {{ form_end(edit_form) }}     
+       </form>  <br>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ens_roles') }}">
+           Volver al Listado de Roles
+        </a>
+    </li>
+
+</ul>
+        </section>
+        </div>
+                
+
+                
+                
+{% endblock %}

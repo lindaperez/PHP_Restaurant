@@ -1,0 +1,30 @@
+ens_mesas:
+    path:     /
+    defaults: { _controller: "BBuffaloBundle:TbMesa:index" }
+
+ens_mesas_show:
+    path:     /{id}/show
+    defaults: { _controller: "BBuffaloBundle:TbMesa:show" }
+
+ens_mesas_new:
+    path:     /new
+    defaults: { _controller: "BBuffaloBundle:TbMesa:new" }
+
+ens_mesas_create:
+    path:     /create
+    defaults: { _controller: "BBuffaloBundle:TbMesa:create" }
+    requirements: { _method: post }
+
+ens_mesas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BBuffaloBundle:TbMesa:edit" }
+
+ens_mesas_update:
+    path:     /{id}/update
+    defaults: { _controller: "BBuffaloBundle:TbMesa:update" }
+    requirements: { _method: post|put }
+
+ens_mesas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BBuffaloBundle:TbMesa:delete" }
+    requirements: { _method: post|delete }

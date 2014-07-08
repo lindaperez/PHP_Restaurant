@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ asset('bundles/techt/css/demo.css') }}" />
+    
+{% endblock %}
+
+{% block title 'Portal Buffalo' %}
+
+{% block body %}
+
+<br><br>
+    {% block content_header %}
+        <ul id="menu">
+            
+            {% block content_header_more %}
+            
+            
+    {{ parent() }}
+                
+        
+            {% endblock %}
+                
+        </ul>
+
+        <div style="clear: both"></div>
+    {% endblock %}
+
+    <div class="block">
+        {% block content %}
+        
+{% endblock %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+ens_solicitud:
+    path:     /
+    defaults: { _controller: "BBuffaloBundle:TbCompra:index" }
+
+ens_solicitud_show:
+    path:     /{id}/show
+    defaults: { _controller: "BBuffaloBundle:TbCompra:show" }
+
+ens_solicitud_new:
+    path:     /new
+    defaults: { _controller: "BBuffaloBundle:TbCompra:new" }
+
+ens_solicitud_create:
+    path:     /create
+    defaults: { _controller: "BBuffaloBundle:TbCompra:create" }
+    requirements: { _method: post }
+
+ens_solicitud_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BBuffaloBundle:TbCompra:edit" }
+
+ens_solicitud_update:
+    path:     /{id}/update
+    defaults: { _controller: "BBuffaloBundle:TbCompra:update" }
+    requirements: { _method: post|put }
+
+ens_solicitud_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BBuffaloBundle:TbCompra:delete" }
+    requirements: { _method: post|delete }

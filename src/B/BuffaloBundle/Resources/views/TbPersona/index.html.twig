@@ -1,0 +1,97 @@
+ {% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+<div class="container" >
+    <section class="register">
+        <h1>Personal Encargado</h1>
+       <br>
+    <table class="records_list">
+        <thead>
+            <tr>
+                 <td width="80"><h1><strong>Nro</strong></h1></td>
+                  <td width="5"></td>
+                 <td width="80"><h1><strong>Cedula</strong></h1></td>
+                 <td width="5"></td>
+                 <td width="80"><h1><strong>Nombre</strong></h1></td>
+                 <td width="5"></td>
+                 <td width="80"><h1><strong>Apellido</strong></h1></td>
+                 <td width="5"></td>
+                 <td width="80"><h1><strong>Correo</strong></h1></td>
+                 <td width="5"></td>
+                 <td width="80"><h1><strong>Telefono</strong></h1></td>
+                 <td width="5"></td>
+                 <td width="80"><h1><strong>Direccion</strong></h1></td>
+                 <td width="5"></td>
+                 <td width="80"><h1><strong>Clave</strong></h1></td>
+                 <td width="5"></td>
+                 <td width="80"><h1><strong>Acciones</strong></h1></td>
+                 <td width="5"></td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td width="80"><a href="{{ path('ens_personas_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td width="5"></td>
+                <td width="80">{{ entity.icedula }}</td>
+                <td width="5"></td>
+                <td width="80">{{ entity.vnombre }}</td>
+                <td width="5"></td>
+                <td width="80">{{ entity.vapellido }}</td>
+                <td width="5"></td>
+                <td width="80">{{ entity.vcorreo }}</td>
+                <td width="5"></td>
+                <td width="80" >{{ entity.itelefono }}</td>
+                <td width="5"></td> 
+                <td width="80">{{ entity.vdireccion }}</td>
+                <td width="5"></td>
+                <td width="80">{{ entity.iclave }}</td>
+                <td width="5"></td>
+                <td width="80">
+                <ul>
+                    <li>
+                        <a href="{{ path('ens_personas_edit', { 'id': entity.id }) }}">Ver/Editar</a>
+                    </li>
+                </ul>
+                </td>
+                <td width="5"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('ens_personas_new') }}">
+                Crear nueva Persona
+            </a>
+        </li>
+    </ul>
+        </section>
+    </div>
+    {% endblock %}

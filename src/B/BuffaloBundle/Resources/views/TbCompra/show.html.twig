@@ -1,0 +1,61 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+<div class="container" >
+    <section class="register">
+        
+    <h1>Venta a <strong> {{ entity.fkIidPersona }}-{{ entity.fkIidPersona.icedula }} </strong></h1>
+
+    <table class="record_properties">
+        <tbody>
+      <br>
+            <tr>
+                <td>Fecha Venta: </td>
+                <td>{{ entity.dtfechaCompra|date('d-m-Y') }}</td>
+            </tr>
+            <tr>
+                <th>Cantidad</th>
+                <td>{{ entity.icantidad }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ens_solicitud') }}">
+            Volver a la Lista
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('ens_solicitud_edit', { 'id': entity.id }) }}">
+            Editar Lista
+        </a>
+    </li>
+    
+</ul>
+{% endblock %}

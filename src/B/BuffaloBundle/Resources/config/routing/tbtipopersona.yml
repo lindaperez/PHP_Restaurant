@@ -1,0 +1,30 @@
+ens_roles:
+    path:     /
+    defaults: { _controller: "BBuffaloBundle:TbTipoPersona:index" }
+
+ens_roles_show:
+    path:     /{id}/show
+    defaults: { _controller: "BBuffaloBundle:TbTipoPersona:show" }
+
+ens_roles_new:
+    path:     /new
+    defaults: { _controller: "BBuffaloBundle:TbTipoPersona:new" }
+
+ens_roles_create:
+    path:     /create
+    defaults: { _controller: "BBuffaloBundle:TbTipoPersona:create" }
+    requirements: { _method: post }
+
+ens_roles_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BBuffaloBundle:TbTipoPersona:edit" }
+
+ens_roles_update:
+    path:     /{id}/update
+    defaults: { _controller: "BBuffaloBundle:TbTipoPersona:update" }
+    requirements: { _method: post|put }
+
+ens_roles_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BBuffaloBundle:TbTipoPersona:delete" }
+    requirements: { _method: post|delete }

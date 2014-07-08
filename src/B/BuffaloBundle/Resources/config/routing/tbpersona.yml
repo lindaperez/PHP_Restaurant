@@ -1,0 +1,30 @@
+ens_personas:
+    path:     /
+    defaults: { _controller: "BBuffaloBundle:TbPersona:index" }
+
+ens_personas_show:
+    path:     /{id}/show
+    defaults: { _controller: "BBuffaloBundle:TbPersona:show" }
+
+ens_personas_new:
+    path:     /new
+    defaults: { _controller: "BBuffaloBundle:TbPersona:new" }
+
+ens_personas_create:
+    path:     /create
+    defaults: { _controller: "BBuffaloBundle:TbPersona:create" }
+    requirements: { _method: post }
+
+ens_personas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BBuffaloBundle:TbPersona:edit" }
+
+ens_personas_update:
+    path:     /{id}/update
+    defaults: { _controller: "BBuffaloBundle:TbPersona:update" }
+    requirements: { _method: post|put }
+
+ens_personas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BBuffaloBundle:TbPersona:delete" }
+    requirements: { _method: post|delete }

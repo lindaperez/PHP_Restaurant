@@ -1,0 +1,63 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+     <h1>Registro de Roles</h1>
+  <div class="container" >
+
+    <section class="register">    
+<form action="{{ path('ens_roles_create') }}" method="post" id="login">
+ {{ form_start(form) }}
+{{ form_errors(form) }}
+       
+  <div class="error">
+            {{ form_errors(form.vtitulo) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.vtitulo, 'Título:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.vtitulo) }}</td>
+        </table>
+
+        <p class="submit">   
+            <input type="submit" name="commit" value="Crear">
+        </p>    
+            <div style="display: none;">
+        {{ form_row(form.submit, { 'label': 'Crear' }) }}
+            </div>
+   {{ form_end(form) }}     
+
+</form>
+
+</section>
+</div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ens_roles') }}">
+            <br><br>
+            Lista de Empresas
+        </a>
+    </li>
+</ul>
+{% endblock %}

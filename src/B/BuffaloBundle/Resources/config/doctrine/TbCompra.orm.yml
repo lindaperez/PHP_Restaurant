@@ -1,0 +1,51 @@
+B\BuffaloBundle\Entity\TbCompra:
+    type: entity
+    table: tb_Compra
+    indexes:
+        fk_tb_Compra_Persona:
+            columns:
+                - fk_iID_PERSONA
+        fk_tb_Mesa:
+            columns:
+                - fk_iID_MESA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dtfechaCompra:
+            type: datetime
+            nullable: false
+            comment: ''
+            column: dtFECHA_COMPRA
+        icantidad:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: iCANTIDAD
+    manyToOne:
+        fkIidPersona:
+            targetEntity: TbPersona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_PERSONA:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidMesa:
+            targetEntity: TbMesa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_MESA:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

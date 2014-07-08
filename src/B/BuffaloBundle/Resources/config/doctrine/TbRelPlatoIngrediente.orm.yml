@@ -1,0 +1,59 @@
+B\BuffaloBundle\Entity\TbRelPlatoIngrediente:
+    type: entity
+    table: tb_Rel_Plato_Ingrediente
+    indexes:
+        iID_INGREDIENTES:
+            columns:
+                - fk_iID_INGREDIENTE
+        iID_PLATO:
+            columns:
+                - fk_iID_PLATO
+        iID_MEDIDA:
+            columns:
+                - fk_iID_MEDIDA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dcantidad:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: dCANTIDAD
+    manyToOne:
+        fkIidIngrediente:
+            targetEntity: TbIngrediente
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_INGREDIENTE:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidPlato:
+            targetEntity: TbPlato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_PLATO:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidMedida:
+            targetEntity: TbMedida
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_MEDIDA:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

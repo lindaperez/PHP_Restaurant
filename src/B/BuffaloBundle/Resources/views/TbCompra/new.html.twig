@@ -1,0 +1,91 @@
+ {% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+<div class="container" >
+    <section class="register">
+
+
+        <h1>Registro de Venta</h1>
+
+      <form action="{{ path('ens_solicitud_create') }}" method="post" id="login">
+ {{ form_start(form) }}
+{{ form_errors(form) }}
+       <div style="display: none;">
+        {{ form_row(form.submit, { 'label': 'Crear' }) }}
+    </div>
+          <table>
+              <td>
+          <div class="error">
+            {{ form_errors(form.fkIidPersona) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.fkIidPersona, 'Persona:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.fkIidPersona) }}</td>
+        </table>
+        <div class="error">
+            {{ form_errors(form.fkIidMesa) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.fkIidMesa, 'Mesa:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.fkIidMesa) }}</td>
+        </table>
+                  </td>
+                  <td width="50"></td>
+                  <td>
+          <div class="error">
+            {{ form_errors(form.icantidad) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.icantidad, 'Cantidad:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.icantidad) }}</td>
+        </table>
+          <div class="error">
+            {{ form_errors(form.dtfechaCompra) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.dtfechaCompra, 'Fecha:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.dtfechaCompra,{'type':'date'}) }}</td>
+        </table>
+              </table>
+    <br>
+        <ul class="record_actions">
+
+    
+</ul>
+    <p class="submit">   
+                <input type="submit" name="commit" value="Crear">
+            </p>    
+   {{ form_end(form) }}     
+</form>
+    <br>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ens_solicitud') }}">
+            Lista de Solicitudes
+        </a>
+    </li>
+</ul>
+    </section>
+</div>
+{% endblock %}

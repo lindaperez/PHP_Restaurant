@@ -1,0 +1,75 @@
+B\BuffaloBundle\Entity\TbPersona:
+    type: entity
+    table: tb_Persona
+    indexes:
+        fk_tb_Persona:
+            columns:
+                - fk_iID_Tipo_Persona
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        icedula:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: iCEDULA
+        vnombre:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: vNOMBRE
+        vapellido:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: vAPELLIDO
+        vcorreo:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: vCORREO
+        itelefono:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: iTELEFONO
+        vdireccion:
+            type: string
+            nullable: false
+            length: 45
+            fixed: false
+            comment: ''
+            column: vDIRECCION
+        iclave:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: iCLAVE
+    manyToOne:
+        fkIidTipoPersona:
+            targetEntity: TbTipoPersona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_Tipo_Persona:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

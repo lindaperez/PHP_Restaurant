@@ -1,0 +1,124 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+  <h1>Creación de Personas</h1>
+
+  <div class="container" >
+
+    <section class="register">    
+<form action="{{ path('ens_personas_create') }}" method="post" id="login">
+ {{ form_start(form) }}
+{{ form_errors(form) }}
+    <table>
+        <td width='10'></td>
+       <td>
+        <div style="display: none;">
+        {{ form_row(form.submit, { 'label': 'Crear' }) }}
+    </div>
+      <div class="error">
+            {{ form_errors(form.icedula) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.icedula, 'Cédula:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.icedula) }}</td>
+        </table>
+        <div class="error">
+            {{ form_errors(form.itelefono) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.itelefono, 'Teléfono:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.itelefono) }}</td>
+        </table>
+           
+       <div class="error">
+            {{ form_errors(form.fkIidTipoPersona) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.fkIidTipoPersona, 'Rol:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.fkIidTipoPersona) }}</td>
+        </table>
+
+           </td>
+           <td width='50'></td>
+           <td>
+                   
+    <div class="error">
+            {{ form_errors(form.vnombre) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.vnombre, 'Nombre:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.vnombre) }}</td>
+        </table>
+    <div class="error">
+            {{ form_errors(form.vcorreo) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.vcorreo, 'Correo:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.vcorreo) }}</td>
+        </table>
+      <div class="error">
+            {{ form_errors(form.iclave) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.iclave, 'Clave de Acceso:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.iclave) }}</td>
+        </table>
+   
+               </td>
+               <td width='50'></td>
+               <td>
+           
+       <div class="error">
+            {{ form_errors(form.vapellido) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.vapellido, 'Apellido:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.vapellido) }}</td>
+        </table>
+                       <div class="error">
+            {{ form_errors(form.vdireccion) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.vdireccion, 'Dirección:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.vdireccion) }}</td>
+        </table>
+           
+               </td>
+               
+               </table>
+<p class="submit">   
+                <input type="submit" name="commit" value="Crear">
+            </p>    
+   {{ form_end(form) }}     
+
+</form>
+
+</section>
+</div>
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('ens_personas') }}">
+            <br><br>
+            Lista de Empresas
+        </a>
+    </li>
+</ul>
+{% endblock %}
+

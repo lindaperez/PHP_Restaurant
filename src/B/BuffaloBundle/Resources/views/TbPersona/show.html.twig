@@ -1,0 +1,81 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+    </div>
+<br><br>
+{% endfor %}
+ 
+    <h1>Registro de Persona</h1>
+
+    <table class="record_properties">
+        <tbody>
+            
+            <tr>
+                <th>Cédula:</th>
+                <td>{{ entity.icedula }}</td>
+                <br>
+            </tr>
+            
+            <tr>
+                <th>Nombre:</th>
+                <td>{{ entity.vnombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido:</th>
+                <td>{{ entity.vapellido }}</td>
+            </tr>
+            <tr>
+                <th>Correo:</th>
+                <td>{{ entity.vcorreo }}</td>
+            </tr>
+            <tr>
+                <th>Teléfono:</th>
+                <td>{{ entity.itelefono }}</td>
+            </tr>
+            <tr>
+                <th>Dirección:</th>
+                <td>{{ entity.vdireccion }}</td>
+            </tr>
+            <tr>
+                <th>Clave:</th>
+                <td>{{ entity.iclave }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+            <br>
+    <li>
+        <a href="{{ path('ens_personas') }}">
+            Volver al Listado de Personas
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('ens_personas_edit', { 'id': entity.id }) }}">
+            Editar Persona
+        </a>
+    </li>
+
+</ul>
+{% endblock %}

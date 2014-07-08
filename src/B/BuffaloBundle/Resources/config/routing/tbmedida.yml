@@ -1,0 +1,30 @@
+ens_medidas:
+    path:     /
+    defaults: { _controller: "BBuffaloBundle:TbMedida:index" }
+
+ens_medidas_show:
+    path:     /{id}/show
+    defaults: { _controller: "BBuffaloBundle:TbMedida:show" }
+
+ens_medidas_new:
+    path:     /new
+    defaults: { _controller: "BBuffaloBundle:TbMedida:new" }
+
+ens_medidas_create:
+    path:     /create
+    defaults: { _controller: "BBuffaloBundle:TbMedida:create" }
+    requirements: { _method: post }
+
+ens_medidas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BBuffaloBundle:TbMedida:edit" }
+
+ens_medidas_update:
+    path:     /{id}/update
+    defaults: { _controller: "BBuffaloBundle:TbMedida:update" }
+    requirements: { _method: post|put }
+
+ens_medidas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BBuffaloBundle:TbMedida:delete" }
+    requirements: { _method: post|delete }
