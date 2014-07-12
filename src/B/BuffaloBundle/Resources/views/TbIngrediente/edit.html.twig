@@ -57,17 +57,12 @@
         {{ form_label(edit_form.dcosto, 'Costo:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(edit_form.dcosto) }}</td>
         </table>
+    
            <div class="error">
-            {{ form_errors(edit_form.dprecio) }}</div>       
+            {{ form_errors(edit_form.fkIidEstadoIng) }}</div>       
         <table>  <td width="100">
-        {{ form_label(edit_form.dprecio, 'Precio:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.dprecio) }}</td>
-        </table>
-           <div class="error">
-            {{ form_errors(edit_form.vestado) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(edit_form.vestado, 'Estado:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.vestado) }}</td>
+        {{ form_label(edit_form.fkIidEstadoIng, 'Estado:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.fkIidEstadoIng) }}</td>
         </table>
            
 </table>

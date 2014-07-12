@@ -1,6 +1,13 @@
 B\BuffaloBundle\Entity\TbIngrediente:
     type: entity
     table: tb_Ingrediente
+    indexes:
+        fk_iID_ESTADO_ING:
+            columns:
+                - fk_iID_ESTADO_ING
+        fk_iID_MEDIDA_ING:
+            columns:
+                - fk_iID_MEDIDA_ING
     id:
         id:
             type: integer
@@ -31,18 +38,23 @@ B\BuffaloBundle\Entity\TbIngrediente:
             scale: 0
             comment: ''
             column: dCOSTO
-        dprecio:
-            type: float
-            nullable: false
-            precision: 10
-            scale: 0
-            comment: ''
-            column: dPRECIO
-        vestado:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
-            comment: ''
-            column: vESTADO
+    manyToOne:
+        fkIidEstadoIng:
+            targetEntity: TbEstadoIng
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_ESTADO_ING:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidMedidaIng:
+            targetEntity: TbMedida
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_MEDIDA_ING:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

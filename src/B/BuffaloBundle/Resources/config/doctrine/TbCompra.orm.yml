@@ -8,6 +8,9 @@ B\BuffaloBundle\Entity\TbCompra:
         fk_tb_Mesa:
             columns:
                 - fk_iID_MESA
+        fk_tb_Compra_1:
+            columns:
+                - fk_iID_ESTADO_COMPRA
     id:
         id:
             type: integer
@@ -23,12 +26,13 @@ B\BuffaloBundle\Entity\TbCompra:
             nullable: false
             comment: ''
             column: dtFECHA_COMPRA
-        icantidad:
-            type: integer
+        dcosto:
+            type: float
             nullable: false
-            unsigned: false
+            precision: 10
+            scale: 0
             comment: ''
-            column: iCANTIDAD
+            column: dCOSTO
     manyToOne:
         fkIidPersona:
             targetEntity: TbPersona
@@ -46,6 +50,15 @@ B\BuffaloBundle\Entity\TbCompra:
             inversedBy: null
             joinColumns:
                 fk_iID_MESA:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidEstadoCompra:
+            targetEntity: TbEstadoCompra
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_ESTADO_COMPRA:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

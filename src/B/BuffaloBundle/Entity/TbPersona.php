@@ -3,14 +3,14 @@
 namespace B\BuffaloBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * TbPersona
  *
- * @ORM\Table(name="tb_Persona", indexes={@ORM\Index(name="fk_tb_Persona", columns={"fk_iID_Tipo_Persona"})})
+ * @ORM\Table(name="tb_Persona", indexes={@ORM\Index(name="fk_tb_Persona", columns={"fk_iID_Tipo_Persona"}), @ORM\Index(name="fk_tb_Persona_1", columns={"fk_iID_ESTADO_PERSONA"})})
  * @ORM\Entity
  */
-class TbPersona
+class TbPersona implements UserInterface
 {
     /**
      * @var integer
@@ -79,6 +79,16 @@ class TbPersona
      * })
      */
     private $fkIidTipoPersona;
+
+    /**
+     * @var \B\BuffaloBundle\Entity\TbEstadoPersona
+     *
+     * @ORM\ManyToOne(targetEntity="B\BuffaloBundle\Entity\TbEstadoPersona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fk_iID_ESTADO_PERSONA", referencedColumnName="id")
+     * })
+     */
+    private $fkIidEstadoPersona;
 
 
 
@@ -275,10 +285,82 @@ class TbPersona
     {
         return $this->fkIidTipoPersona;
     }
-        public function __toString()
+
+    /**
+     * Set fkIidEstadoPersona
+     *
+     * @param \B\BuffaloBundle\Entity\TbEstadoPersona $fkIidEstadoPersona
+     * @return TbPersona
+     */
+    public function setFkIidEstadoPersona(\B\BuffaloBundle\Entity\TbEstadoPersona $fkIidEstadoPersona = null)
+    {
+        $this->fkIidEstadoPersona = $fkIidEstadoPersona;
+
+        return $this;
+    }
+
+    /**
+     * Get fkIidEstadoPersona
+     *
+     * @return \B\BuffaloBundle\Entity\TbEstadoPersona 
+     */
+    public function getFkIidEstadoPersona()
+    {
+        return $this->fkIidEstadoPersona;
+    }
+         public function __toString()
     {
         
     return $this->getVnombre()." ".$this->getVapellido();
     
+    } 
+    //Para implementar los metodos de UserInterfaces
+
+//Returns the roles granted to the user. 
+//Corregir
+ public function getRoles()
+    {
+	//Corregir
+        return array('ROLE_USER');
+}
+ //Returns the salt that was originally used to encode the password.
+    public function getSalt()
+    {
+        return null;
     }
+ //Removes sensitive data from the user.
+
+    public function eraseCredentials()
+    {
+        
+    }
+//Returns whether or not the given user is equivalent to this user.
+    public function equals(UserInterface $user)
+    {
+        return $user->getUsername() == $this->icedula;
+    }
+//Usuario Corregir
+    public function getUsername()
+    {
+	//Corregir
+        return $this->icedula;    
+    }
+        public function setUsername($username)
+    {
+	//Corregir
+        $this->icedula=(int)$username;    
+    }
+    //Contrasena
+    public function getPassword()   
+    {
+	//Corregir
+        return $this->iclave;
+    }
+    public function setPassword($iclave)   
+    {
+	//Corregir
+        $this->iclave=$iclave;
+    }
+    
+
 }

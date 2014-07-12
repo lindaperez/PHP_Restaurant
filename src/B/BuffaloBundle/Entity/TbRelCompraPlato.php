@@ -22,6 +22,13 @@ class TbRelCompraPlato
     private $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="iCANTIDAD", type="integer", nullable=false)
+     */
+    private $icantidad;
+
+    /**
      * @var \B\BuffaloBundle\Entity\TbPlato
      *
      * @ORM\ManyToOne(targetEntity="B\BuffaloBundle\Entity\TbPlato")
@@ -51,6 +58,29 @@ class TbRelCompraPlato
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set icantidad
+     *
+     * @param integer $icantidad
+     * @return TbRelCompraPlato
+     */
+    public function setIcantidad($icantidad)
+    {
+        $this->icantidad = $icantidad;
+
+        return $this;
+    }
+
+    /**
+     * Get icantidad
+     *
+     * @return integer 
+     */
+    public function getIcantidad()
+    {
+        return $this->icantidad;
     }
 
     /**
@@ -98,4 +128,5 @@ class TbRelCompraPlato
     {
         return $this->fkIidCompra;
     }
+    
 }

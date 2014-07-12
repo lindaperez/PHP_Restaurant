@@ -1,0 +1,30 @@
+ens_edoPlato:
+    path:     /
+    defaults: { _controller: "BBuffaloBundle:TbEstadoPlato:index" }
+
+ens_edoPlato_show:
+    path:     /{id}/show
+    defaults: { _controller: "BBuffaloBundle:TbEstadoPlato:show" }
+
+ens_edoPlato_new:
+    path:     /new
+    defaults: { _controller: "BBuffaloBundle:TbEstadoPlato:new" }
+
+ens_edoPlato_create:
+    path:     /create
+    defaults: { _controller: "BBuffaloBundle:TbEstadoPlato:create" }
+    requirements: { _method: post }
+
+ens_edoPlato_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BBuffaloBundle:TbEstadoPlato:edit" }
+
+ens_edoPlato_update:
+    path:     /{id}/update
+    defaults: { _controller: "BBuffaloBundle:TbEstadoPlato:update" }
+    requirements: { _method: post|put }
+
+ens_edoPlato_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BBuffaloBundle:TbEstadoPlato:delete" }
+    requirements: { _method: post|delete }

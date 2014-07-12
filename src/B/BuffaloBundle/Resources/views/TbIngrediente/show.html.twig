@@ -41,19 +41,16 @@
                 <th>Costo: </th>
                 <td>{{ entity.dcosto }}</td>
             </tr>
-            <tr>
-                <th>Precio: </th>
-                <td>{{ entity.dprecio }}</td>
-            </tr>
+         
             <tr>
                 <th>Estado</th>
-                <td>{{ entity.vestado }}</td>
+                <td>{{ entity.fkIidEstadoIng }}</td>
             </tr>
         </tbody>
     </table>
-
+    <br>
         <ul class="record_actions">
-            <br>
+        
     <li>
         <a href="{{ path('ens_ingredientes') }}">
             Volver a Lista de Ingredientes

@@ -1,0 +1,30 @@
+ens_edoIngrediente:
+    path:     /
+    defaults: { _controller: "BBuffaloBundle:TbEstadoIng:index" }
+
+ens_edoIngrediente_show:
+    path:     /{id}/show
+    defaults: { _controller: "BBuffaloBundle:TbEstadoIng:show" }
+
+ens_edoIngrediente_new:
+    path:     /new
+    defaults: { _controller: "BBuffaloBundle:TbEstadoIng:new" }
+
+ens_edoIngrediente_create:
+    path:     /create
+    defaults: { _controller: "BBuffaloBundle:TbEstadoIng:create" }
+    requirements: { _method: post }
+
+ens_edoIngrediente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BBuffaloBundle:TbEstadoIng:edit" }
+
+ens_edoIngrediente_update:
+    path:     /{id}/update
+    defaults: { _controller: "BBuffaloBundle:TbEstadoIng:update" }
+    requirements: { _method: post|put }
+
+ens_edoIngrediente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BBuffaloBundle:TbEstadoIng:delete" }
+    requirements: { _method: post|delete }

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TbIngrediente
  *
- * @ORM\Table(name="tb_Ingrediente")
+ * @ORM\Table(name="tb_Ingrediente", indexes={@ORM\Index(name="fk_iID_ESTADO_ING", columns={"fk_iID_ESTADO_ING"}), @ORM\Index(name="fk_iID_MEDIDA_ING", columns={"fk_iID_MEDIDA_ING"})})
  * @ORM\Entity
  */
 class TbIngrediente
@@ -43,18 +43,24 @@ class TbIngrediente
     private $dcosto;
 
     /**
-     * @var float
+     * @var \B\BuffaloBundle\Entity\TbEstadoIng
      *
-     * @ORM\Column(name="dPRECIO", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\ManyToOne(targetEntity="B\BuffaloBundle\Entity\TbEstadoIng")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fk_iID_ESTADO_ING", referencedColumnName="id")
+     * })
      */
-    private $dprecio;
+    private $fkIidEstadoIng;
 
     /**
-     * @var string
+     * @var \B\BuffaloBundle\Entity\TbMedida
      *
-     * @ORM\Column(name="vESTADO", type="string", length=45, nullable=false)
+     * @ORM\ManyToOne(targetEntity="B\BuffaloBundle\Entity\TbMedida")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fk_iID_MEDIDA_ING", referencedColumnName="id")
+     * })
      */
-    private $vestado;
+    private $fkIidMedidaIng;
 
 
 
@@ -138,55 +144,55 @@ class TbIngrediente
     }
 
     /**
-     * Set dprecio
+     * Set fkIidEstadoIng
      *
-     * @param float $dprecio
+     * @param \B\BuffaloBundle\Entity\TbEstadoIng $fkIidEstadoIng
      * @return TbIngrediente
      */
-    public function setDprecio($dprecio)
+    public function setFkIidEstadoIng(\B\BuffaloBundle\Entity\TbEstadoIng $fkIidEstadoIng = null)
     {
-        $this->dprecio = $dprecio;
+        $this->fkIidEstadoIng = $fkIidEstadoIng;
 
         return $this;
     }
 
     /**
-     * Get dprecio
+     * Get fkIidEstadoIng
      *
-     * @return float 
+     * @return \B\BuffaloBundle\Entity\TbEstadoIng 
      */
-    public function getDprecio()
+    public function getFkIidEstadoIng()
     {
-        return $this->dprecio;
+        return $this->fkIidEstadoIng;
     }
 
     /**
-     * Set vestado
+     * Set fkIidMedidaIng
      *
-     * @param string $vestado
+     * @param \B\BuffaloBundle\Entity\TbMedida $fkIidMedidaIng
      * @return TbIngrediente
      */
-    public function setVestado($vestado)
+    public function setFkIidMedidaIng(\B\BuffaloBundle\Entity\TbMedida $fkIidMedidaIng = null)
     {
-        $this->vestado = $vestado;
+        $this->fkIidMedidaIng = $fkIidMedidaIng;
 
         return $this;
     }
 
     /**
-     * Get vestado
+     * Get fkIidMedidaIng
      *
-     * @return string 
+     * @return \B\BuffaloBundle\Entity\TbMedida 
      */
-    public function getVestado()
+    public function getFkIidMedidaIng()
     {
-        return $this->vestado;
+        return $this->fkIidMedidaIng;
     }
-             //to string method   
-    public function __toString()
+ public function __toString()
     {
         
     return $this->getVnombre();
     
     }
-}
+    
+    }

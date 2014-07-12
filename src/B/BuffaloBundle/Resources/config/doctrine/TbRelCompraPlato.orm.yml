@@ -17,6 +17,13 @@ B\BuffaloBundle\Entity\TbRelCompraPlato:
             id: true
             generator:
                 strategy: IDENTITY
+    fields:
+        icantidad:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: iCANTIDAD
     manyToOne:
         fkIidCplato:
             targetEntity: TbPlato

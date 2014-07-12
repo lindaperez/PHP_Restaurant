@@ -2,3 +2,31 @@ b_buffalo:
     resource: "@BBuffaloBundle/Resources/config/routing.yml"
     prefix:   /
 
+BBuffaloBundle_homepage:
+    pattern:  /
+    defaults: { _controller: BBuffaloBundle:Default:index}
+    requirements:
+        _method:  GET
+
+-b_buffalo:
+    resource: "@BBuffaloBundle/Resources/config/routing.yml"
+    prefix:   /
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+login:
+    pattern:   /login
+    defaults:  { _controller: BBuffaloBundle:Default:login }
+login_check:
+    pattern:   /login_check
+
+
+
+

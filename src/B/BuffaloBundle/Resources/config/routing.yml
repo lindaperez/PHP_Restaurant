@@ -6,6 +6,23 @@ index:
     path:    /index 
     defaults: { _controller: BBuffaloBundle:Default:index }
 
+
+erroracceso:
+    pattern:  /erroracceso
+    defaults: { _controller: BBuffaloBundle:Default:erroracceso }
+
+logout:
+     pattern: /logout
+
+forgotpass:
+    pattern:  /forgotpass
+    defaults: { _controller: "BBuffaloBundle:Default:newforgot" }
+
+createforgot:
+    pattern:  /createforgot
+    defaults: { _controller: "BBuffaloBundle:Default:createforgot" }
+    requirements: { _method: post }
+
 BBuffaloBundle_ens_personas:
     resource: "@BBuffaloBundle/Resources/config/routing/tbpersona.yml"
     prefix:   /ens_personas
@@ -41,5 +58,21 @@ BBuffaloBundle_ens_pedidos:
 BBuffaloBundle_ens_inventario:
     resource: "@BBuffaloBundle/Resources/config/routing/tbrelplatoingrediente.yml"
     prefix:   /ens_inventario
+
+BBuffaloBundle_ens_edoMesa:
+    resource: "@BBuffaloBundle/Resources/config/routing/tbestadomesa.yml"
+    prefix:   /ens_edoMesa
+
+BBuffaloBundle_ens_edoPlato:
+    resource: "@BBuffaloBundle/Resources/config/routing/tbestadoplato.yml"
+    prefix:   /ens_edoPlato
+
+BBuffaloBundle_ens_edoIngrediente:
+    resource: "@BBuffaloBundle/Resources/config/routing/tbestadoing.yml"
+    prefix:   /ens_edoIngrediente
+
+BBuffaloBundle_ens_edoCompra:
+    resource: "@BBuffaloBundle/Resources/config/routing/tbestadocompra.yml"
+    prefix:   /ens_edoCompra
 
 

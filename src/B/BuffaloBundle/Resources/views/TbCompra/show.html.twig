@@ -29,23 +29,84 @@
 <div class="container" >
     <section class="register">
         
-    <h1>Venta a <strong> {{ entity.fkIidPersona }}-{{ entity.fkIidPersona.icedula }} </strong></h1>
+    <h1>Orden realizada por: <strong> {{ entity.fkIidPersona }}-{{ entity.fkIidPersona.icedula }} </strong></h1>
 
     <table class="record_properties">
         <tbody>
       <br>
             <tr>
-                <td>Fecha Venta: </td>
+                <td width="80"></td>
+                <td><strong>Estado: </strong></td><td width="10"></td>
+                <td>{{ entity.fkiIdEstadoCompra}}</td>
+            <td width="40"></td>
+            <td><strong>Mesa: </strong></td><td width="10"></td>
+                <td>{{ entity.fkIidMesa.inroMesa}}</td>
+            <td width="40"></td>
+            <td><strong>Fecha Orden: </strong></td><td width="10"></td>
                 <td>{{ entity.dtfechaCompra|date('d-m-Y') }}</td>
+            <td width="40"></td>
+                <td><strong>Costo Total de la Orden</strong></td><td width="10"></td>
+                <td>{{ entity.dcosto }}</td>
             </tr>
-            <tr>
-                <th>Cantidad</th>
-                <td>{{ entity.icantidad }}</td>
-            </tr>
-        </tbody>
+            </table>
+    <br><br><br><br>
+    <table>
+            
+                <h1>Listado de Pedidos</h1>
+                <tr>
+                    <td width="40"></td>
+                    <td align="left"><h1><strong>Plato</strong></h1></td>
+                    <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Precio--Unidad</strong></h1></td>
+                     <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Costo--Unidad</strong></h1></td>
+                     <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Unidades</strong></h1></td>
+                     <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Costo</strong></h1></td>
+                     <td width="40"></td>
+                    </tr>
+                <br>
+                
+                {% for plato in entity.platos  %}
+                
+                <tr>
+                    <td width="40"></td>
+                 <td align="left">
+
+                    <a href="{{ path('ens_solicitud_show', { 'id': plato.fkIidCplato.id }) }}">
+                {{ plato.fkIidCplato.vnombre }}</a> 
+                   
+                </td>
+                <td width="40"></td>
+                <td align="center">
+                     {{ plato.fkIidCplato.dprecio }}
+                    </td>
+                <td width="40"></td>
+                <td align="center">
+                    {{ plato.fkIidCplato.dprecio+(plato.fkIidCplato.dprecio*0.25) }}
+                    </td>
+                <td width="40"></td>
+                    <td align="center">
+                    {{ plato.icantidad}}
+                </td>
+                <td width="40"></td>
+                           <td align="center">
+                    {{ (plato.fkIidCplato.dprecio+(plato.fkIidCplato.dprecio*0.25))*plato.icantidad }}
+                    </td><td width="40"></td>
+                    <td>
+                     
+                </tr>
+                {% endfor %}
+                
+                
+    
     </table>
     <br>
-        <ul class="record_actions">
+    </section>
+    </div>
+<br><br>
+   <ul class="record_actions">
     <li>
         <a href="{{ path('ens_solicitud') }}">
             Volver a la Lista
@@ -57,5 +118,5 @@
         </a>
     </li>
     
-</ul>
+</ul>     
 {% endblock %}

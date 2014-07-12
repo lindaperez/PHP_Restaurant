@@ -17,6 +17,7 @@ class TbMesaType extends AbstractType
         $builder
             ->add('inroMesa')
             ->add('destatus')
+            ->add('fkIidEstadoMesa')
         ;
     }
     

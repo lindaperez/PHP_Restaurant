@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+
 class TbPlatoType extends AbstractType
 {
         /**
@@ -17,7 +18,8 @@ class TbPlatoType extends AbstractType
         $builder
             ->add('vnombre')
             ->add('dprecio')
-            ->add('vestado')
+            ->add('fkIidEstado')
+            
         ;
     }
     

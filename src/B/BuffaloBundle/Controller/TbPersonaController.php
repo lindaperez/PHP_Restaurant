@@ -40,6 +40,14 @@ class TbPersonaController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            
+            /*Gestion de Clave cifrada*/
+            $g_userName = $entity->getIcedula();
+            $g_password = $this->makekey();
+            $g_userInter = $this->makepassword($g_userName, $g_password);    
+            $entity->setIclave($g_userInter->getIclave());
+            /*Fin de Clave cifrada*/
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -79,8 +87,9 @@ class TbPersonaController extends Controller
     public function newAction()
     {
         $entity = new TbPersona();
+        $entity->setIclave(0000);
         $form   = $this->createCreateForm($entity);
-
+        
         return $this->render('BBuffaloBundle:TbPersona:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
@@ -221,4 +230,30 @@ class TbPersonaController extends Controller
             ->getForm()
         ;
     }
+    
+    
+    /*Metodos para la Clave*/
+     protected function makekey() {
+        $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        $cad = "";
+        for ($i = 0; $i < 6; $i++) {
+            $cad .= substr($str, rand(0, 61), 1);
+        }
+        return $cad;
+    }
+
+    protected function makepassword($username, $password) {
+        $user = new TbPersona();
+        $user->setUsername($username);
+        // encode the password
+
+        $factory = $this->get('security.encoder_factory');
+        $encoder = $factory->getEncoder($user);
+        $encodedPassword = $encoder->encodePassword($password, $user->getSalt());
+        $user->setPassword($encodedPassword);
+        return $user;
+    }
+
+    
+    /**/
 }

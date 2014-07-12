@@ -5,6 +5,9 @@ B\BuffaloBundle\Entity\TbPersona:
         fk_tb_Persona:
             columns:
                 - fk_iID_Tipo_Persona
+        fk_tb_Persona_1:
+            columns:
+                - fk_iID_ESTADO_PERSONA
     id:
         id:
             type: integer
@@ -70,6 +73,15 @@ B\BuffaloBundle\Entity\TbPersona:
             inversedBy: null
             joinColumns:
                 fk_iID_Tipo_Persona:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidEstadoPersona:
+            targetEntity: TbEstadoPersona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_ESTADO_PERSONA:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

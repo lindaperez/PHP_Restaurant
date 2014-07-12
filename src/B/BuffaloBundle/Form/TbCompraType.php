@@ -5,6 +5,9 @@ namespace B\BuffaloBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use B\BuffaloBundle\Entity\TbRelCompraPlato;
+use B\BuffaloBundle\Form\TbRelCompraPlatoType;
+
 
 class TbCompraType extends AbstractType
 {
@@ -19,10 +22,23 @@ class TbCompraType extends AbstractType
            'widget' => 'single_text'
            // this is actually the default format for single_text
            ))
-            ->add('icantidad')
             ->add('fkIidPersona')
             ->add('fkIidMesa')
-        ;
+            ->add('dcosto')
+            ->add('fkIidEstadoCompra')
+            ->add('platos','collection',
+           array('type'=> new TbRelCompraPlatoType(),
+           'label' => ' ',
+           'by_reference' => false,
+           'prototype' => new TbRelCompraPlato(),
+           'allow_add' => true, 
+           'allow_delete' => true,
+           'required' =>false,
+           ))
+                
+               ;
+        
+       
     }
     
     /**

@@ -27,40 +27,42 @@
 {% endfor %}
  
 <div class="container" >
+    <h1>Ordenes por Comensal</h1>
     <section class="register">
 
-    <h1>Listado de Ventas</h1>
-
+    
     <table class="records_list">
         <thead>
             <tr>
-                
-                 <td width="80"><h1><strong>Persona</strong></h1></td>
+                 <td align="center" width="120"><h1><strong>Persona</strong></h1></td>
                 <td width="10"></td>
-                 <td width="80"><h1><strong>Mesa</strong></h1></td>
+                 <td align="center" width="120"><h1><strong>Mesa</strong></h1></td>
                 <td width="10"></td>
-                <td width="80"><h1><strong>Fecha</strong></h1></td>
-                <td width="10"></td>
-                
-                <td width="80"><h1><strong>Cantidad</strong></h1></td>
+                <td align="center" width="120"><h1><strong>Fecha de Orden</strong></h1></td>
                 <td width="10"></td>
                 
-                <td width="80"><h1><strong>Acciones</strong></h1></td>
+                <td align="center" width="120"><h1><strong>Costo Total</strong></h1></td>
+                <td width="10"></td>
+                <td align="center" width="120"><h1><strong>Estado de Orden</strong></h1></td>
+                <td width="10"></td>
+                <td align="center" width="120"><h1><strong>Acciones</strong></h1></td>
                 <td width="10"></td>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td  width="80"><a href="{{ path('ens_solicitud_show', { 'id': entity.id }) }}">{{ entity.fkIidPersona }}</a></td>
+                <td align="center" width="120"><a href="{{ path('ens_solicitud_show', { 'id': entity.id }) }}">{{ entity.fkIidPersona }}</a></td>
                 <td width="10"></td>
-                <td  width="80">{{ entity.fkIidMesa }}</td>
+                <td align="center" width="120">{{ entity.fkIidMesa }}</td>
                 <td width="10"></td>
-                <td  width="80">{% if entity.dtfechaCompra %}{{ entity.dtfechaCompra|date('d-m-Y') }}{% endif %}</td>
+                <td align="center" width="120">{% if entity.dtfechaCompra %}{{ entity.dtfechaCompra|date('d-m-Y') }}{% endif %}</td>
                 <td width="10"></td>
-                <td  width="80">{{ entity.icantidad }}</td>
+                <td align="center" width="120">{{ entity.dcosto }}</td>
                 <td width="10"></td>
-                <td  width="80">
+                <td align="center" width="120">{{ entity.fkIidEstadoCompra }}</td>
+                <td width="10"></td>
+                <td align="center"  width="120">
                 <ul>
                     <li>
                         <a href="{{ path('ens_solicitud_edit', { 'id': entity.id }) }}">Ver/Editar</a>
@@ -72,14 +74,14 @@
         {% endfor %}
         </tbody>
     </table>
-
+    </section>
+</div><br>
         <ul>
         <li>
             <a href="{{ path('ens_solicitud_new') }}">
-               Crear Nueva Venta
+               Crear Nueva Orden de Compra
             </a>
         </li>
     </ul>
-    </section>
-</div>
+
     {% endblock %}

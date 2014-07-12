@@ -58,19 +58,19 @@
         {{ form_label(form.dcosto, 'Costo:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.dcosto) }}</td>
         </table>
+           
            <div class="error">
-            {{ form_errors(form.dprecio) }}</div>       
+            {{ form_errors(form.fkIidEstadoIng) }}</div>       
         <table>  <td width="100">
-        {{ form_label(form.dprecio, 'Precio:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(form.dprecio) }}</td>
-        </table>
-           <div class="error">
-            {{ form_errors(form.vestado) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(form.vestado, 'Estado:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(form.vestado) }}</td>
+        {{ form_label(form.fkIidEstadoIng, 'Estado:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.fkIidEstadoIng) }}</td>
         </table>
 </table>
+<p class="submit">   
+                <input type="submit" name="commit" value="Crear">
+            </p>    
+   {{ form_end(form) }}     
+<br><br>
         <ul class="record_actions">
     <li>
         <a href="{{ path('ens_ingredientes') }}">
@@ -78,10 +78,6 @@
         </a>
     </li>
 </ul>                          
-<p class="submit">   
-                <input type="submit" name="commit" value="Crear">
-            </p>    
-   {{ form_end(form) }}     
 
 </form>
 

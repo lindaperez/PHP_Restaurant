@@ -1,6 +1,10 @@
 B\BuffaloBundle\Entity\TbMesa:
     type: entity
     table: tb_Mesa
+    indexes:
+        fk_iID_ESTADO_MESA:
+            columns:
+                - fk_iID_ESTADO_MESA
     id:
         id:
             type: integer
@@ -24,4 +28,14 @@ B\BuffaloBundle\Entity\TbMesa:
             fixed: false
             comment: ''
             column: dESTATUS
+    manyToOne:
+        fkIidEstadoMesa:
+            targetEntity: TbEstadoMesa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_ESTADO_MESA:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

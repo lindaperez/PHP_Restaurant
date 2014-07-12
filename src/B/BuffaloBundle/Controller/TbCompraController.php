@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use B\BuffaloBundle\Entity\TbCompra;
 use B\BuffaloBundle\Form\TbCompraType;
-
+use B\BuffaloBundle\Entity\TbRelCompraPlato;
+use B\BuffaloBundle\Entity\TbEstadoCompra;
+use DateTime;
 /**
  * TbCompra controller.
  *
@@ -38,15 +40,78 @@ class TbCompraController extends Controller
         $entity = new TbCompra();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+          
+        //Verificar que el arreglo de platos no este vacio.       
+        $platos = $entity->getPlatos();
+        
+        if(count($platos)==0){
+          $message_error = "No debe agregar platos vacios. Elija los Platos que requiere."
+                        . "y quite los que no va a asociar al comprador.";
+                $this->get('session')->getFlashBag()->add('flash_error', $message_error);
 
+                return $this->render('BBuffaloBundle:TbCompra:new.html.twig', array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+                ));
+        }
+        $i = 0;
+        foreach ($platos as &$plato) {
+            //print "1";
+            
+            $i = $i + 1;
+            if ($plato == null) {
+                  //print "3";
+                $message_error = "No debe agregar platos vacios. Elija los Platos que requiere."
+                        . "y quite los que no va a asociar al comprador.";
+                $this->get('session')->getFlashBag()->add('flash_error', $message_error);
+
+                return $this->render('BBuffaloBundle:TbCompra:new.html.twig', array(
+                'entity' => $entity,
+                'form'   => $form->createView(),
+                ));
+            } else {
+                //print_r($plato);
+                //print_r($plato->getFkIidCplato() );
+                if(($plato->getFkIidCplato() == null) && $i==1) {
+                //print "c";
+                    $message_error = "No Puede agregar Platos vacios.";
+                    $this->get('session')->getFlashBag()->add('flash_error', $message_error);
+
+                    return $this->render('BBuffaloBundle:TbCompra:new.html.twig', array(
+                        'entity' => $entity,
+                        'form'   => $form->createView(),
+                    ));
+                //  print "2";
+                }
+                
+            }
+        }
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+             $costototal=0;
+            //1. Actualizar Contratos Existentes. Se establecen las relaciones.
+
+                foreach ($platos as &$plato) {
+                    if ($plato != null && $plato->getFkIidCplato() != null) {
+                    $relplato=new TbRelCompraPlato();
+                    $relplato->setFkIidCompra($entity);
+                    $relplato->setFkIidCplato($plato->getFkIidCplato());
+                    $relplato->setIcantidad($plato->getIcantidad());
+                    $costototal=$costototal+$plato->getIcantidad()*($plato->getFkIidCplato()->getdPrecio()
+                            +($plato->getFkIidCplato()->getdPrecio()*0.25));
+                    $em->persist($relplato);
+                    
+                    }
+                }
+                $entity->setDcosto($costototal);
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ens_solicitud_show', array('id' => $entity->getId())));
+        return $this->render('BBuffaloBundle:TbCompra:show.html.twig', array(
+            'entity' => $entity,
+        ));    
         }
-
+        
         return $this->render('BBuffaloBundle:TbCompra:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
@@ -79,8 +144,19 @@ class TbCompraController extends Controller
     public function newAction()
     {
         $entity = new TbCompra();
-        $form   = $this->createCreateForm($entity);
+        
+        $em = $this->getDoctrine()->getManager();
 
+        $estadoC = $em->getRepository('BBuffaloBundle:TbEstadoCompra')->find(2);
+             //Buscar los platos 
+        date_default_timezone_set('America/Caracas');
+        $date = new DateTime('NOW');
+        $entity->setDtfechaCompra($date);
+        $entity->setFkIidEstadoCompra($estadoC);
+        $entity->setDcosto(0);
+     
+        $form   = $this->createCreateForm($entity);
+        
         return $this->render('BBuffaloBundle:TbCompra:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
@@ -100,7 +176,11 @@ class TbCompraController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TbCompra entity.');
         }
-
+        
+        //Buscar los platos en la TbRelCompraPlato
+        $listaCompraPlato = $em->getRepository('BBuffaloBundle:TbRelCompraPlato')->
+                findBy(array('fkIidCompra'=>$entity));
+        $entity->setPlatos($listaCompraPlato);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('BBuffaloBundle:TbCompra:show.html.twig', array(
@@ -122,7 +202,11 @@ class TbCompraController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TbCompra entity.');
         }
-
+        $listaCompraPlato = $em->getRepository('BBuffaloBundle:TbRelCompraPlato')->
+                findBy(array('fkIidCompra'=>$entity));
+        $entity->setPlatos($listaCompraPlato);
+        
+        
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 

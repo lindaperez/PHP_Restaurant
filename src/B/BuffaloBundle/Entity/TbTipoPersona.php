@@ -68,5 +68,5 @@ class TbTipoPersona
         
     return $this->getVtitulo();
     
-    }
+}
 }

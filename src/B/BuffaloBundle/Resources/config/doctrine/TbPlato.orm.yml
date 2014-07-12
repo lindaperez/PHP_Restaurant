@@ -1,6 +1,10 @@
 B\BuffaloBundle\Entity\TbPlato:
     type: entity
     table: tb_Plato
+    indexes:
+        fk_iID_ESTADO:
+            columns:
+                - fk_iID_ESTADO
     id:
         id:
             type: integer
@@ -25,11 +29,14 @@ B\BuffaloBundle\Entity\TbPlato:
             scale: 0
             comment: ''
             column: dPRECIO
-        vestado:
-            type: string
-            nullable: false
-            length: 45
-            fixed: false
-            comment: ''
-            column: vESTADO
+    manyToOne:
+        fkIidEstado:
+            targetEntity: TbEstadoPlato
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_ESTADO:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }

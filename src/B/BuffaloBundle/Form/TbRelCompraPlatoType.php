@@ -5,7 +5,7 @@ namespace B\BuffaloBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
+use B\BuffaloBundle\Form\EventListener\AddTbPlatoFieldSubscriber;
 class TbRelCompraPlatoType extends AbstractType
 {
         /**
@@ -14,9 +14,12 @@ class TbRelCompraPlatoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $propertyPathToTbPlato = 'fkIidCplato';
         $builder
+            ->addEventSubscriber(new AddTbPlatoFieldSubscriber($propertyPathToTbPlato))
             ->add('fkIidCplato')
             ->add('fkIidCompra')
+            ->add('icantidad')
         ;
     }
     

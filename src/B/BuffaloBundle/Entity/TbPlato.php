@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TbPlato
  *
- * @ORM\Table(name="tb_Plato")
+ * @ORM\Table(name="tb_Plato", indexes={@ORM\Index(name="fk_iID_ESTADO", columns={"fk_iID_ESTADO"})})
  * @ORM\Entity
  */
 class TbPlato
@@ -36,11 +36,14 @@ class TbPlato
     private $dprecio;
 
     /**
-     * @var string
+     * @var \B\BuffaloBundle\Entity\TbEstadoPlato
      *
-     * @ORM\Column(name="vESTADO", type="string", length=45, nullable=false)
+     * @ORM\ManyToOne(targetEntity="B\BuffaloBundle\Entity\TbEstadoPlato")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fk_iID_ESTADO", referencedColumnName="id")
+     * })
      */
-    private $vestado;
+    private $fkIidEstado;
 
 
 
@@ -101,26 +104,26 @@ class TbPlato
     }
 
     /**
-     * Set vestado
+     * Set fkIidEstado
      *
-     * @param string $vestado
+     * @param \B\BuffaloBundle\Entity\TbEstadoPlato $fkIidEstado
      * @return TbPlato
      */
-    public function setVestado($vestado)
+    public function setFkIidEstado(\B\BuffaloBundle\Entity\TbEstadoPlato $fkIidEstado = null)
     {
-        $this->vestado = $vestado;
+        $this->fkIidEstado = $fkIidEstado;
 
         return $this;
     }
 
     /**
-     * Get vestado
+     * Get fkIidEstado
      *
-     * @return string 
+     * @return \B\BuffaloBundle\Entity\TbEstadoPlato 
      */
-    public function getVestado()
+    public function getFkIidEstado()
     {
-        return $this->vestado;
+        return $this->fkIidEstado;
     }
              //to string method   
     public function __toString()
@@ -128,6 +131,6 @@ class TbPlato
         
     return $this->vnombre;
     
-    }
+}
     
 }

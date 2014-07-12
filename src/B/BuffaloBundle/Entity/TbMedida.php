@@ -62,7 +62,7 @@ class TbMedida
     {
         return $this->vnombre;
     }
-         //to string method   
+          //to string method   
     public function __toString()
     {
         
@@ -70,4 +70,4 @@ class TbMedida
     
     }
     
-    }
+}

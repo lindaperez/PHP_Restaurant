@@ -45,11 +45,16 @@
         {{ form_label(form.inroMesa, 'Nro de Mesa:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.inroMesa) }}</td>
         </table>
-      
+      <div class="error">
+            {{ form_errors(form.fkIidEstadoMesa) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.fkIidEstadoMesa, 'Estado:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.fkIidEstadoMesa) }}</td>
+        </table>
 <div class="error">
             {{ form_errors(form.destatus) }}</div>       
         <table>  <td width="100">
-        {{ form_label(form.destatus, 'Estatus:', {'required': 'true'}) }}</td>
+        {{ form_label(form.destatus, 'Descripcion:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.destatus) }}</td>
         </table>
            

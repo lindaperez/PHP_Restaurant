@@ -27,15 +27,19 @@
 {% endfor %}
  
 <div class="container" >
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <h1>Ordenes por Comensal</h1>
     <section class="register">
 
-        <h1>Editar Venta</h1>
+        <h1>Estado de la  Orden</h1>
 
      <form action="{{ path('ens_solicitud_update',{ 'id': entity.id }) }}" method="post" class="login">
  {{ form_start(edit_form) }}
 {{ form_errors(edit_form) }}
        <div style="display: none;">
         {{ form_row(edit_form.submit, { 'label': 'Editar' }) }}
+           {{ form_row(edit_form.dcosto, { 'label': 'Costo' }) }}
+           {{ form_row(edit_form.dtfechaCompra, { 'label': 'Fecha' }) }}
     </div>
           <table>
               <td>
@@ -45,6 +49,8 @@
         {{ form_label(edit_form.fkIidPersona, 'Persona:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(edit_form.fkIidPersona) }}</td>
         </table>
+                    <td width="50"></td>
+                  <td>
         <div class="error">
             {{ form_errors(edit_form.fkIidMesa) }}</div>       
         <table>  <td width="100">
@@ -52,40 +58,117 @@
             <td>{{ form_widget(edit_form.fkIidMesa) }}</td>
         </table>
                   </td>
-                  <td width="50"></td>
+                  
+                        <td width="50"></td>
                   <td>
-          <div class="error">
-            {{ form_errors(edit_form.icantidad) }}</div>       
+                      <div class="error">
+            {{ form_errors(edit_form.fkIidEstadoCompra) }}</div>       
         <table>  <td width="100">
-        {{ form_label(edit_form.icantidad, 'Cantidad:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.icantidad) }}</td>
+        {{ form_label(edit_form.fkIidEstadoCompra, 'Estado:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.fkIidEstadoCompra) }}</td>
         </table>
-          <div class="error">
-            {{ form_errors(edit_form.dtfechaCompra) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(edit_form.dtfechaCompra, 'Fecha:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.dtfechaCompra,{'type':'date'}) }}</td>
-        </table>
-              </table>
-    <br>
-        <ul class="record_actions">
+                      </td>
+                                  <div style="display: none;">
+            {{ form_label(edit_form.platos, 'Plato:') }}
+            {{ form_widget(edit_form.platos) }}
+            </div>
 
+              </table>
+         
+    <br>
+
+
+
+  <table class="record_properties">
+        <tbody>
+      <br>
+            <tr>
+                <td width="0"></td>
+            <td><strong>Mesa: </strong></td><td width="40"></td>
+                <td>{{ entity.fkIidMesa.inroMesa}}</td>
+            <td width="175"></td>
+            <td><strong>Fecha Orden: </strong></td><td width="20"></td>
+                <td>{{ entity.dtfechaCompra|date('d-m-Y') }}</td>
+            <td width="100"></td>
+                <td><strong>Costo Total de la Orden:</strong></td><td width="10"></td>
+                <td>{{ entity.dcosto }}</td>
+            </tr>
+            </table>
+    <br><br><br><br>
+    <table>
+            
+                <h1>Listado de Pedidos</h1>
+                <br>
+                <tr>
+                    <td width="0"></td>
+                    <td width="250" align="left"><h1><strong>Plato</strong></h1></td>
+                    <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Precio--Unidad</strong></h1></td>
+                     <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Costo--Unidad</strong></h1></td>
+                     <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Unidades</strong></h1></td>
+                     <td width="40"></td>
+                     <td align="center" width="100"><h1><strong>Costo</strong></h1></td>
+                     <td width="40"></td>
+                    </tr>
+                
+                <br>
+                
+                {% for plato in entity.platos  %}
+                
+                <tr>
+                    <td width="0"></td>
+                 <td width="250" align="left">
+
+                    <a href="{{ path('ens_solicitud_show', { 'id': plato.fkIidCplato.id }) }}">
+                {{ plato.fkIidCplato.vnombre }}</a> 
+                   
+                </td>
+                <td width="40"></td>
+                <td align="center">
+                     {{ plato.fkIidCplato.dprecio }}
+                    </td>
+                <td width="40"></td>
+                <td align="center">
+                    {{ plato.fkIidCplato.dprecio+(plato.fkIidCplato.dprecio*0.25) }}
+                    </td>
+                <td width="40"></td>
+                    <td align="center">
+                    {{ plato.icantidad}}
+                </td>
+                <td width="40"></td>
+                           <td align="center">
+                    {{ (plato.fkIidCplato.dprecio+(plato.fkIidCplato.dprecio*0.25))*plato.icantidad }}
+                    </td><td width="40"></td>
+                    <td>
+                     
+                </tr>
+                
+                {% endfor %}
+                
+                
     
-</ul>
+    </table>
+   
+     <br>    <br><br>    <br>
     <p class="submit">   
                 <input type="submit" name="commit" value="Editar">
             </p>    
    {{ form_end(edit_form) }}     
 </form>
-
+    </section>
+    </div>
+<br>
         <ul class="record_actions">
     <li>
         <a href="{{ path('ens_solicitud') }}">
-         Listado de Ventas
+         Listado de Ordenes de Compra
         </a>
     </li>
     
 </ul>
-    </section>
-    </div>
+  
+  
+   
 {% endblock %}
