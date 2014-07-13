@@ -127,6 +127,5 @@ class TbRelCompraPlato
     public function getFkIidCompra()
     {
         return $this->fkIidCompra;
-    }
-    
+    }  
 }

@@ -193,6 +193,6 @@ class TbIngrediente
         
     return $this->getVnombre();
     
-    }
+}
     
     }

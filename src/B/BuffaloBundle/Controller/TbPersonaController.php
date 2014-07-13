@@ -45,13 +45,20 @@ class TbPersonaController extends Controller
             $g_userName = $entity->getIcedula();
             $g_password = $this->makekey();
             $g_userInter = $this->makepassword($g_userName, $g_password);    
-            $entity->setIclave($g_userInter->getIclave());
+            $entity->setVclave($g_userInter->getVclave());
             /*Fin de Clave cifrada*/
-            
             $em = $this->getDoctrine()->getManager();
+            //tipo-persona
+            
+            $estado_persona= $em->getRepository('BBuffaloBundle:TbEstadoPersona')->find(1);
+            $entity->setFkIidEstadoPersona($estado_persona);
+            
+            
             $em->persist($entity);
             $em->flush();
-
+                //Envio de correo de confirmacion
+             
+             $this->mailer($entity, $g_password, $entity->getVcorreo());
             return $this->redirect($this->generateUrl('ens_personas_show', array('id' => $entity->getId())));
         }
 
@@ -87,7 +94,7 @@ class TbPersonaController extends Controller
     public function newAction()
     {
         $entity = new TbPersona();
-        $entity->setIclave(0000);
+        $entity->setVclave(0000);
         $form   = $this->createCreateForm($entity);
         
         return $this->render('BBuffaloBundle:TbPersona:new.html.twig', array(
@@ -256,4 +263,20 @@ class TbPersonaController extends Controller
 
     
     /**/
+    
+     public function mailer($entity, $pass, $to) {
+
+        $message = \Swift_Message::newInstance()
+                ->setSubject('Empresa Buffalo Registro exitoso')
+                ->setFrom('rosmery.p.p@gmail.com')
+                ->setTo($to)
+                ->setBody(
+                $this->renderView(
+                        'BBuffaloBundle:Default:mail.html.twig', array('entity' => $entity, 'pass' => $pass)
+                )
+                , 'text/html')
+        ;
+        $this->get('mailer')->send($message);
+    }
+
 }

@@ -67,5 +67,5 @@ class TbEstadoIng
         
     return $this->getVdescripcion();
     
-    }
+}
 }

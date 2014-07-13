@@ -67,5 +67,5 @@ class TbEstadoPersona
         
     return $this->getVdescripcion();
     
-    }
+}
 }

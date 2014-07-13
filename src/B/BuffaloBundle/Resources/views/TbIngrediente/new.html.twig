@@ -52,6 +52,12 @@
         {{ form_label(form.icantidad, 'Cantidad:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.icantidad) }}</td>
         </table>
+               <div class="error">
+            {{ form_errors(form.fkIidMedidaIng) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.fkIidMedidaIng, 'Medida:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.fkIidMedidaIng) }}</td>
+        </table>
            <div class="error">
             {{ form_errors(form.dcosto) }}</div>       
         <table>  <td width="100">
@@ -65,6 +71,8 @@
         {{ form_label(form.fkIidEstadoIng, 'Estado:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.fkIidEstadoIng) }}</td>
         </table>
+           
+        
 </table>
 <p class="submit">   
                 <input type="submit" name="commit" value="Crear">

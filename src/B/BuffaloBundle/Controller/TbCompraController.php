@@ -71,8 +71,7 @@ class TbCompraController extends Controller
                 'form'   => $form->createView(),
                 ));
             } else {
-                //print_r($plato);
-                //print_r($plato->getFkIidCplato() );
+                 
                 if(($plato->getFkIidCplato() == null) && $i==1) {
                 //print "c";
                     $message_error = "No Puede agregar Platos vacios.";
@@ -89,9 +88,23 @@ class TbCompraController extends Controller
         }
         if ($form->isValid()) {
              $costototal=0;
-            //1. Actualizar Contratos Existentes. Se establecen las relaciones.
-
+            
                 foreach ($platos as &$plato) {
+                           //Buscar la cantidad de plato//
+                 $relPlatoIngA= $em->getRepository('BBuffaloBundle:TbRelPlatoIngrediente')->
+                         findBy(array('fkIidPlato'=> $plato->getFkIidCplato()));
+                 
+               //Buscar el ingrediente
+                 foreach ($relPlatoIngA as &$ing) { 
+                    $ingCant= $em->getRepository('BBuffaloBundle:TbIngrediente')->
+                            find($ing->getFkIidIngrediente());
+
+                    $cant=($ingCant->getIcantidad()-($plato->getIcantidad())*$ing->getDcantidad());
+                  //Restar la cantidad del plato
+                    $ingCant->setIcantidad($cant);
+                       $em->flush();
+                 }
+                //Fin cant ing por Comp
                     if ($plato != null && $plato->getFkIidCplato() != null) {
                     $relplato=new TbRelCompraPlato();
                     $relplato->setFkIidCompra($entity);
@@ -100,10 +113,24 @@ class TbCompraController extends Controller
                     $costototal=$costototal+$plato->getIcantidad()*($plato->getFkIidCplato()->getdPrecio()
                             +($plato->getFkIidCplato()->getdPrecio()*0.25));
                     $em->persist($relplato);
-                    
+                     //Cantidad de ingredientes por compra//
+                //Restar lo precios de la relacion platoing a los ing
+                
+               //print_r($plato);
+        
+               
                     }
                 }
                 $entity->setDcosto($costototal);
+            //Ocupar Mesa
+            $mesa= $em->getRepository('BBuffaloBundle:TbMesa')->
+                    find($entity->getFkIidMesa());
+             //Buscar estado de la mesa disponible
+            $edo_mesa= $em->getRepository('BBuffaloBundle:TbEstadoMesa')->
+                    find(2);
+            $mesa->setFkIidEstadoMesa($edo_mesa);
+            //Fin de Ocupar Mesa
+                
             $em->persist($entity);
             $em->flush();
 
@@ -248,7 +275,21 @@ class TbCompraController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find TbCompra entity.');
         }
-
+        
+        //Buscar estado orden = servida 
+        //Buscar estado de la mesa         
+        
+         if ($entity->getFkIidEstadoCompra()->getId()==1){
+             //Buscar la Mesa
+            $mesa= $em->getRepository('BBuffaloBundle:TbMesa')->
+                    find($entity->getFkIidMesa());
+             //Buscar estado de la mesa disponible
+            $edo_mesa= $em->getRepository('BBuffaloBundle:TbEstadoMesa')->
+                    find(1);
+            $mesa->setFkIidEstadoMesa($edo_mesa);
+            
+         }
+         //
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);

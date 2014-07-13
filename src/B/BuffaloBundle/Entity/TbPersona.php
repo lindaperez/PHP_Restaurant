@@ -64,11 +64,11 @@ class TbPersona implements UserInterface
     private $vdireccion;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="iCLAVE", type="integer", nullable=false)
+     * @ORM\Column(name="vCLAVE", type="string", length=128, nullable=false)
      */
-    private $iclave;
+    private $vclave;
 
     /**
      * @var \B\BuffaloBundle\Entity\TbTipoPersona
@@ -241,26 +241,26 @@ class TbPersona implements UserInterface
     }
 
     /**
-     * Set iclave
+     * Set vclave
      *
-     * @param integer $iclave
+     * @param string $vclave
      * @return TbPersona
      */
-    public function setIclave($iclave)
+    public function setVclave($vclave)
     {
-        $this->iclave = $iclave;
+        $this->vclave = $vclave;
 
         return $this;
     }
 
     /**
-     * Get iclave
+     * Get vclave
      *
-     * @return integer 
+     * @return string 
      */
-    public function getIclave()
+    public function getVclave()
     {
-        return $this->iclave;
+        return $this->vclave;
     }
 
     /**
@@ -313,7 +313,7 @@ class TbPersona implements UserInterface
         
     return $this->getVnombre()." ".$this->getVapellido();
     
-    } 
+}
     //Para implementar los metodos de UserInterfaces
 
 //Returns the roles granted to the user. 
@@ -354,12 +354,12 @@ class TbPersona implements UserInterface
     public function getPassword()   
     {
 	//Corregir
-        return $this->iclave;
+        return $this->vclave;
     }
-    public function setPassword($iclave)   
+    public function setPassword($vclave)   
     {
 	//Corregir
-        $this->iclave=$iclave;
+        $this->vclave=$vclave;
     }
     
 

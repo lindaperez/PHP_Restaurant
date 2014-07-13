@@ -65,8 +65,23 @@
             <td>{{ form_widget(edit_form.fkIidEstadoIng) }}</td>
         </table>
            
+            <div class="error">
+            {{ form_errors(edit_form.fkIidMedidaIng) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(edit_form.fkIidMedidaIng, 'Medida:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.fkIidMedidaIng) }}</td>
+        </table>
 </table>
+                               
+<p class="submit">   
+                <input type="submit" name="commit" value="Editar">
+            </p>    
+               {{ form_end(edit_form) }} 
             </form>
+    
+    
+</section>
+    <br><br>
         <ul class="record_actions">
     <li>
         <a href="{{ path('ens_ingredientes') }}">
@@ -74,17 +89,6 @@
         </a>
     </li>
     
-</ul>                          
-<p class="submit">   
-                <input type="submit" name="commit" value="Editar">
-            </p>    
-   {{ form_end(edit_form) }}     
-
-
-
-    
-
-
-</section>
+</ul>   
     </div>
 {% endblock %}

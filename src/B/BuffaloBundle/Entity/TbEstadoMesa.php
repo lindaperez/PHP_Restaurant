@@ -67,5 +67,5 @@ class TbEstadoMesa
         
     return $this->getVdescripcion();
     
-    }
+}
 }

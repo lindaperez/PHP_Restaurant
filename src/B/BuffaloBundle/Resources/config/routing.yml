@@ -75,4 +75,7 @@ BBuffaloBundle_ens_edoCompra:
     resource: "@BBuffaloBundle/Resources/config/routing/tbestadocompra.yml"
     prefix:   /ens_edoCompra
 
+BBuffaloBundle_ens_edoPersona:
+    resource: "@BBuffaloBundle/Resources/config/routing/tbestadopersona.yml"
+    prefix:   /ens_edoPersona
 

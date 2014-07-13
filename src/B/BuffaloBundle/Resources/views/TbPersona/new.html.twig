@@ -39,6 +39,7 @@
        <td>
         <div style="display: none;">
         {{ form_row(form.submit, { 'label': 'Crear' }) }}
+        {{ form_row(form.vclave, { 'label': 'Clave' }) }}    
     </div>
       <div class="error">
             {{ form_errors(form.icedula) }}</div>       
@@ -76,12 +77,7 @@
         {{ form_label(form.vcorreo, 'Correo:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.vcorreo) }}</td>
         </table>
-      <div class="error">
-            {{ form_errors(form.iclave) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(form.iclave, 'Clave de Acceso:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(form.iclave) }}</td>
-        </table>
+      
    
                </td>
                <td width='50'></td>

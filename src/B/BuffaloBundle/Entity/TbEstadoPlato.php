@@ -68,5 +68,5 @@ class TbEstadoPlato
         
     return $this->getVdescripcion();
     
-    }
+}
 }

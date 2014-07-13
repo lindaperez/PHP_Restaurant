@@ -15,11 +15,20 @@
             
             {% block content_header_more %}
             
-            
+    
     {{ parent() }}
+    {% if app.user!=null %}
+    <ul>Bienvenido, <strong>{{  app.user.vnombre }} {{  app.user.vapellido}}</strong> ::{{app.session.get('usuario_rol')}}
+ ::{{app.session.get('usuario_tipo_rol')}} ::{{app.session.get('usuario_estatus_registro')}} <a href="{{ path('logout') }}">Salir</a></ul>
+    
+    {% else %}
+    <li><a href="{{ path('ens_personas_new') }}">Registrarse</a></li>  
+    <li><a href="{{ path('login') }}">Ingresar</a></li>  
+    {% endif%}
                 
         
             {% endblock %}
+        
                 
         </ul>
 

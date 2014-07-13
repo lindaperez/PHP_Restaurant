@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TbPersonaType extends AbstractType
+class TbEstadoPersonaType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,14 +15,7 @@ class TbPersonaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('icedula')
-            ->add('vnombre')
-            ->add('vapellido')
-            ->add('vcorreo')
-            ->add('itelefono')
-            ->add('vdireccion')
-            ->add('vclave')
-            ->add('fkIidTipoPersona')
+            ->add('vdescripcion')
         ;
     }
     
@@ -32,7 +25,7 @@ class TbPersonaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'B\BuffaloBundle\Entity\TbPersona'
+            'data_class' => 'B\BuffaloBundle\Entity\TbEstadoPersona'
         ));
     }
 
@@ -41,6 +34,6 @@ class TbPersonaType extends AbstractType
      */
     public function getName()
     {
-        return 'b_buffalobundle_tbpersona';
+        return 'b_buffalobundle_tbestadopersona';
     }
 }

@@ -196,7 +196,7 @@ class TbCompra
         
     return strval($this->getId());
     
-    }
+}
     protected $platos; 
     
     public function __construct()

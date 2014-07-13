@@ -1,3 +1,4 @@
+
  {% extends '::layout.html.twig' %}
 
 {% block content %}
@@ -43,11 +44,12 @@
     </div>
           <table>
               <td>
-          <div class="error">
+     
+                        <div class="error">
             {{ form_errors(edit_form.fkIidPersona) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(edit_form.fkIidPersona, 'Persona:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.fkIidPersona) }}</td>
+        <table>  <td width="90">
+                Persona:
+            <td><select disabled> <option>{{entity.fkIidPersona}}</option></select></td>
         </table>
                     <td width="50"></td>
                   <td>
@@ -169,6 +171,8 @@
     
 </ul>
   
-  
+  <script>
+      ('#b_buffalobundle_tbcompra_fkIidPersona').prop()
+      </script>
    
 {% endblock %}

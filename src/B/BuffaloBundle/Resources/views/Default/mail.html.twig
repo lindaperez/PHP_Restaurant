@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Buffalo C.A.</title>
+        <link href="/bundles/framework/css/structure.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/bundles/framework/css/body.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/bundles/bbuffalo/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+     
+            <link rel="stylesheet" href="/bundles/acmedemo/css/demo.css" />
+    
+    </head>
+    <body>
+
+        <div id="content">
+            <div class="header clear-fix">
+                <div class="header-logo">
+                    
+                </div>
+                           <div class="sf-reset">
+                	<div class="wrap">
+	<div class="clearfix"></div>
+	
+	</div>
+ 
+ 
+                    <br><br>
+         
+        <div style="clear: both"></div>
+    
+    <div class="block">
+            <h1 class="title">Confirmación de Registro Buffalo.</h1>
+ 
+       <p> Hola, <strong>{{ entity.vnombre }}</strong>, esperamos que tengas un buen dia.
+           <br><br>Tu solicitud de Registro fue realizada correctamente en el sistema. <em></em> <br>
+           <br><br>Tus datos registrados fueron los siguientes:  <em></em> <br>
+      <br>
+    <table class="record_properties">
+      <tr>
+        <br>
+            <tr>
+            <td width="250" height="20">Cedula: </td>
+                <td>{{ entity.icedula }}</td>
+            </tr>
+            
+            <tr>
+            <td height="20">Nombre: </td>
+            <td><em> {{ entity.vnombre }}</em></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td height="20">Apellido: </td>
+                <td><em>{{ entity.vapellido }}</em></td>
+            </tr>
+            <tr>
+            <td height="20">Correo: </td>
+            <td><em>{{ entity.vcorreo }}</em></td>
+            </tr>
+            
+            <tr>
+                <td height="20">Telefono Movil: </td>
+                <td><em>{{ entity.itelefono}}</em></td>
+            </tr>
+               <tr>
+                <td height="20">Direcci'on: </td>
+                <td><em>{{ entity.vdireccion}}</em></td>
+      
+            
+         </tr>
+    
+    </table>
+       <br><h1>Para acceder a tu cuenta </h1><br>
+      Debes esperar que Buffalo revise tu registro y te envíe un correo de confirmación de solicitud aceptada.<br>
+      <br>
+       Tus Datos de Acceso al Sistema son los siguientes::<br><br>
+      Usuario es: <strong><em> {{ entity.icedula}}</em></strong> <br>
+      Contraseña es: <strong><em> {{ pass }}</em></strong><br>
+       </p>
+        </div>
+
+            </div>
+        </div>
+            </div>
+    
+
+</body>
+</html>

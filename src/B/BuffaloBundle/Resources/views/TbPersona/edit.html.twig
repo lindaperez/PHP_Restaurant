@@ -36,6 +36,7 @@
        <td>
         <div style="display: none;">
         {{ form_row(edit_form.submit, { 'label': 'Crear' }) }}
+        {{ form_row(edit_form.vclave, { 'label': 'Clave' }) }}
     </div>
       <div class="error">
             {{ form_errors(edit_form.icedula) }}</div>       
@@ -73,12 +74,7 @@
         {{ form_label(edit_form.vcorreo, 'Correo:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(edit_form.vcorreo) }}</td>
         </table>
-      <div class="error">
-            {{ form_errors(edit_form.iclave) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(edit_form.iclave, 'Clave de Acceso:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.iclave) }}</td>
-        </table>
+      
    
                </td>
                <td width='50'></td>

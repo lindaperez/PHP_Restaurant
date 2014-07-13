@@ -33,7 +33,7 @@
                         <li><a href="#"><span class="iconic plus-alt"></span> Servicios</a>
                         <ul>
                             <li><a href="{{ path('ens_solicitud')}}">Solicitud de Compra</a></li>
-                            <li><a href="{{ path('ens_mesas')}}">Gestión de Mesas</a></li>      
+                              
                             <li><a href="{{ path('ens_inventario')}}">Estatus de Inventario</a></li>
                             <li><a href="{{ path('index')}}">Estatus de Órdenes</a></li>
                             <li><a href="{{ path('index')}}">Estatus de Comensales</a></li>
@@ -60,6 +60,7 @@
                         <li><a href="#"><span class="iconic plus-alt"></span> Sistema</a>
                         <ul>
                             <li><a href="{{ path('ens_roles')}}">Roles de Personal</a></li>
+                            <li><a href="{{ path('ens_edoPersona')}}">Estado de Personal</a></li>
                             <li><a href="{{ path('ens_edoCompra')}}">Estado de Compra</a></li>      
                             <li><a href="{{ path('ens_edoPlato')}}">Estado Plato</a></li>      
                             <li><a href="{{ path('ens_edoIngrediente')}}">Estado Ingredientes</a></li>      
@@ -70,7 +71,8 @@
                         
                         <li><a href="#"><span class="iconic plus-alt"></span> Inventario</a>
                         <ul>
-                            
+                            <li><a href="{{ path('ens_inventario')}}">Gestión Platos-Ingredientes</a></li>    
+                            <li><a href="{{ path('ens_mesas')}}">Gestión de Mesas</a></li>    
                             <li><a href="{{ path('ens_platos')}}">Gestión de Platos</a></li>      
                             <li><a href="{{ path('ens_medidas')}}">Gestión de Medidas</a></li>      
                             <li><a href="{{ path('ens_ingredientes')}}">Gestión de Ingredientes</a></li>      

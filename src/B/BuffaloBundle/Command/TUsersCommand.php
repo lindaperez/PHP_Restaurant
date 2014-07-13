@@ -1,7 +1,7 @@
 <?php 
 
 //Con ERRORES
-namespace Tech\TBundle\Command;
+namespace B\BuffaloBundle\Command;
  
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;

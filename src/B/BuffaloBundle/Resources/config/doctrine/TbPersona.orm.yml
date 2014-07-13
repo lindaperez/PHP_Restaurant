@@ -59,12 +59,13 @@ B\BuffaloBundle\Entity\TbPersona:
             fixed: false
             comment: ''
             column: vDIRECCION
-        iclave:
-            type: integer
+        vclave:
+            type: string
             nullable: false
-            unsigned: false
+            length: 128
+            fixed: false
             comment: ''
-            column: iCLAVE
+            column: vCLAVE
     manyToOne:
         fkIidTipoPersona:
             targetEntity: TbTipoPersona

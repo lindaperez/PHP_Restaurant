@@ -68,6 +68,6 @@ class TbMedida
         
     return $this->getVnombre();
     
-    }
+}
     
 }

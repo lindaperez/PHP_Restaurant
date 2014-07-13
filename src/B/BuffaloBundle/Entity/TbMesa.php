@@ -131,6 +131,6 @@ class TbMesa
         
     return strval($this->getInroMesa());
     
-    }
+}
     
 }

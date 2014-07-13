@@ -67,5 +67,5 @@ class TbEstadoCompra
         
     return $this->getVdescripcion();
     
-    }
+}
 }
