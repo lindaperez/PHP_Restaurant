@@ -41,6 +41,8 @@
         {{ form_row(edit_form.submit, { 'label': 'Editar' }) }}
            {{ form_row(edit_form.dcosto, { 'label': 'Costo' }) }}
            {{ form_row(edit_form.dtfechaCompra, { 'label': 'Fecha' }) }}
+           {{ form_row(edit_form.fkIidPersona, { 'label': 'Persona' }) }}
+           {{ form_row(edit_form.fkIidMesa, { 'label': 'Persona' }) }}
     </div>
           <table>
               <td>
@@ -51,23 +53,32 @@
                 Persona:
             <td><select disabled> <option>{{entity.fkIidPersona}}</option></select></td>
         </table>
+                        <div class="error">
+            {{ form_errors(edit_form.fkIidEstadoCompra) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(edit_form.fkIidEstadoCompra, 'Estado:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.fkIidEstadoCompra) }}</td>
+        </table>
+                
                     <td width="50"></td>
                   <td>
-        <div class="error">
+        
+                          <div class="error">
             {{ form_errors(edit_form.fkIidMesa) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(edit_form.fkIidMesa, 'Mesa:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.fkIidMesa) }}</td>
+        <table>  <td width="90">
+                Mesa:
+            <td><select disabled> <option>{{entity.fkIidMesa}}</option></select></td>
         </table>
                   </td>
                   
                         <td width="50"></td>
                   <td>
-                      <div class="error">
-            {{ form_errors(edit_form.fkIidEstadoCompra) }}</div>       
-        <table>  <td width="100">
-        {{ form_label(edit_form.fkIidEstadoCompra, 'Estado:', {'required': 'true'}) }}</td>
-            <td>{{ form_widget(edit_form.fkIidEstadoCompra) }}</td>
+                        
+        <div class="error">
+            {{ form_errors(edit_form.fkIidMesero) }}</div>       
+        <table>  <td width="90">
+        {{ form_label(edit_form.fkIidMesero, 'Mesero:') }}</td>
+            <td>{{ form_widget(edit_form.fkIidMesero,{'required': 'true'}) }}</td>
         </table>
                       </td>
                                   <div style="display: none;">

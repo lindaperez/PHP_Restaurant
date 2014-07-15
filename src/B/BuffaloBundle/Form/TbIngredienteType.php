@@ -18,6 +18,7 @@ class TbIngredienteType extends AbstractType
             ->add('vnombre')
             ->add('icantidad')
             ->add('dcosto')
+            ->add('dcantidadMinima')
             ->add('fkIidEstadoIng')
             ->add('fkIidMedidaIng')
         ;

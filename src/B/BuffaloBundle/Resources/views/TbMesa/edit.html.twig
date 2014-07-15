@@ -53,6 +53,12 @@
         {{ form_label(edit_form.destatus, 'Estatus:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(edit_form.destatus) }}</td>
         </table>
+           <div class="error">
+            {{ form_errors(edit_form.fkIidEstadoMesa) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(edit_form.fkIidEstadoMesa, 'Estatus:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.fkIidEstadoMesa) }}</td>
+        </table>
            
 </table>                          
 <p class="submit">   

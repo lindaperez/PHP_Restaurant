@@ -38,6 +38,13 @@ B\BuffaloBundle\Entity\TbIngrediente:
             scale: 0
             comment: ''
             column: dCOSTO
+        dcantidadMinima:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: dCANTIDAD_MINIMA
     manyToOne:
         fkIidEstadoIng:
             targetEntity: TbEstadoIng

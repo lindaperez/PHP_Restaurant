@@ -41,7 +41,7 @@ class TbCompraController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $em = $this->getDoctrine()->getManager();
-          
+        $em2 = $this->getDoctrine()->getManager();
         //Verificar que el arreglo de platos no este vacio.       
         $platos = $entity->getPlatos();
         
@@ -71,7 +71,20 @@ class TbCompraController extends Controller
                 'form'   => $form->createView(),
                 ));
             } else {
+                               //Buscar la cantidad de plato//
+                 $relPlatoIngA= $em2->getRepository('BBuffaloBundle:TbRelPlatoIngrediente')->
+                         findBy(array('fkIidPlato'=> $plato->getFkIidCplato()));
                  
+               //Buscar el ingrediente
+                 foreach ($relPlatoIngA as &$ing) { 
+                    $ingCant= $em2->getRepository('BBuffaloBundle:TbIngrediente')->
+                            find($ing->getFkIidIngrediente());
+
+                    $cant=($ingCant->getIcantidad()-($plato->getIcantidad())*$ing->getDcantidad());
+                  //Restar la cantidad del plato
+                    $ingCant->setIcantidad($cant);
+                       $em2->flush();
+                 }
                 if(($plato->getFkIidCplato() == null) && $i==1) {
                 //print "c";
                     $message_error = "No Puede agregar Platos vacios.";
@@ -90,20 +103,7 @@ class TbCompraController extends Controller
              $costototal=0;
             
                 foreach ($platos as &$plato) {
-                           //Buscar la cantidad de plato//
-                 $relPlatoIngA= $em->getRepository('BBuffaloBundle:TbRelPlatoIngrediente')->
-                         findBy(array('fkIidPlato'=> $plato->getFkIidCplato()));
-                 
-               //Buscar el ingrediente
-                 foreach ($relPlatoIngA as &$ing) { 
-                    $ingCant= $em->getRepository('BBuffaloBundle:TbIngrediente')->
-                            find($ing->getFkIidIngrediente());
-
-                    $cant=($ingCant->getIcantidad()-($plato->getIcantidad())*$ing->getDcantidad());
-                  //Restar la cantidad del plato
-                    $ingCant->setIcantidad($cant);
-                       $em->flush();
-                 }
+             
                 //Fin cant ing por Comp
                     if ($plato != null && $plato->getFkIidCplato() != null) {
                     $relplato=new TbRelCompraPlato();
@@ -181,7 +181,11 @@ class TbCompraController extends Controller
         $entity->setDtfechaCompra($date);
         $entity->setFkIidEstadoCompra($estadoC);
         $entity->setDcosto(0);
-     
+            //Buscar los meseros disponibles
+        //$estadoMesero = $em->getRepository('BBuffaloBundle:TbTipoPersona')->find(3);
+        //$meseros = $em->getRepository('BBuffaloBundle:TbPersona')->
+         //       findBy(array('fkIidTipoPersona'=>$estadoMesero));
+        //$entity->setFkIidMesero($meseros);
         $form   = $this->createCreateForm($entity);
         
         return $this->render('BBuffaloBundle:TbCompra:new.html.twig', array(

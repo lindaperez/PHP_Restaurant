@@ -52,12 +52,24 @@
         {{ form_label(form.icantidad, 'Cantidad:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.icantidad) }}</td>
         </table>
+           </td><td width="20">
+           </td>
+           <td>
+           <div class="error">
+            {{ form_errors(form.dcantidadMinima) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(form.dcantidadMinima, 'Cantidad Minima:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(form.dcantidadMinima) }}</td>
+        </table>
+           
                <div class="error">
             {{ form_errors(form.fkIidMedidaIng) }}</div>       
         <table>  <td width="100">
         {{ form_label(form.fkIidMedidaIng, 'Medida:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.fkIidMedidaIng) }}</td>
         </table>
+               </td><td width="20">
+           </td><td>
            <div class="error">
             {{ form_errors(form.dcosto) }}</div>       
         <table>  <td width="100">
@@ -71,6 +83,8 @@
         {{ form_label(form.fkIidEstadoIng, 'Estado:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(form.fkIidEstadoIng) }}</td>
         </table>
+           
+               
            
         
 </table>

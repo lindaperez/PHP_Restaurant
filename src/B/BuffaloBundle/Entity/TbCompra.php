@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * TbCompra
  *
- * @ORM\Table(name="tb_Compra", indexes={@ORM\Index(name="fk_tb_Compra_Persona", columns={"fk_iID_PERSONA"}), @ORM\Index(name="fk_tb_Mesa", columns={"fk_iID_MESA"}), @ORM\Index(name="fk_tb_Compra_1", columns={"fk_iID_ESTADO_COMPRA"})})
+ * @ORM\Table(name="tb_Compra", indexes={@ORM\Index(name="fk_tb_Compra_Persona", columns={"fk_iID_PERSONA"}), @ORM\Index(name="fk_tb_Mesa", columns={"fk_iID_MESA"}), @ORM\Index(name="fk_tb_Compra_Persona2", columns={"fk_iID_MESERO"}), @ORM\Index(name="fk_tb_Compra_1", columns={"fk_iID_ESTADO_COMPRA"})})
  * @ORM\Entity
  */
 class TbCompra
@@ -64,6 +64,16 @@ class TbCompra
      * })
      */
     private $fkIidEstadoCompra;
+
+    /**
+     * @var \B\BuffaloBundle\Entity\TbPersona
+     *
+     * @ORM\ManyToOne(targetEntity="B\BuffaloBundle\Entity\TbPersona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fk_iID_MESERO", referencedColumnName="id")
+     * })
+     */
+    private $fkIidMesero;
 
 
 
@@ -191,7 +201,31 @@ class TbCompra
     {
         return $this->fkIidEstadoCompra;
     }
-          public function __toString()
+
+    /**
+     * Set fkIidMesero
+     *
+     * @param \B\BuffaloBundle\Entity\TbPersona $fkIidMesero
+     * @return TbCompra
+     */
+    public function setFkIidMesero(\B\BuffaloBundle\Entity\TbPersona $fkIidMesero = null)
+    {
+        $this->fkIidMesero = $fkIidMesero;
+
+        return $this;
+    }
+
+    /**
+     * Get fkIidMesero
+     *
+     * @return \B\BuffaloBundle\Entity\TbPersona 
+     */
+    public function getFkIidMesero()
+    {
+        return $this->fkIidMesero;
+    }
+
+            public function __toString()
     {
         
     return strval($this->getId());
@@ -235,4 +269,4 @@ class TbCompra
            $this->platos=$platos;
 
     }
-}
+}   

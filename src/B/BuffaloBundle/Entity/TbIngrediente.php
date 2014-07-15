@@ -43,6 +43,13 @@ class TbIngrediente
     private $dcosto;
 
     /**
+     * @var float
+     *
+     * @ORM\Column(name="dCANTIDAD_MINIMA", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $dcantidadMinima;
+
+    /**
      * @var \B\BuffaloBundle\Entity\TbEstadoIng
      *
      * @ORM\ManyToOne(targetEntity="B\BuffaloBundle\Entity\TbEstadoIng")
@@ -141,6 +148,29 @@ class TbIngrediente
     public function getDcosto()
     {
         return $this->dcosto;
+    }
+
+    /**
+     * Set dcantidadMinima
+     *
+     * @param float $dcantidadMinima
+     * @return TbIngrediente
+     */
+    public function setDcantidadMinima($dcantidadMinima)
+    {
+        $this->dcantidadMinima = $dcantidadMinima;
+
+        return $this;
+    }
+
+    /**
+     * Get dcantidadMinima
+     *
+     * @return float 
+     */
+    public function getDcantidadMinima()
+    {
+        return $this->dcantidadMinima;
     }
 
     /**

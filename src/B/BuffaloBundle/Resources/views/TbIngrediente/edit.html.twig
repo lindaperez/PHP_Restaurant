@@ -51,6 +51,12 @@
         {{ form_label(edit_form.icantidad, 'Cantidad:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(edit_form.icantidad) }}</td>
         </table>
+             <div class="error">
+            {{ form_errors(edit_form.dcantidadMinima) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(edit_form.dcantidadMinima, 'Cantidad Minima:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.dcantidadMinima) }}</td>
+        </table>
            <div class="error">
             {{ form_errors(edit_form.dcosto) }}</div>       
         <table>  <td width="100">

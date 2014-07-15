@@ -36,6 +36,8 @@
                 
                 <td width="80"><h1><strong>Nro de Mesa</strong></h1></td>
                 <td width="10"></td>
+                <td width="80"><h1><strong>Descripcion</strong></h1></td>
+                <td width="10"></td>
                 <td width="80"><h1><strong>Estatus</strong></h1></td>
                 <td width="10"></td>
                 <td width="80"><h1><strong>Acciones</strong></h1></td>
@@ -48,6 +50,8 @@
                 <td width="80"><a href="{{ path('ens_mesas_show', { 'id': entity.id }) }}">{{ entity.inroMesa }}</a></td>
                 <td width="10"></td>
                 <td width="80">{{ entity.destatus }}</td>
+                <td width="10"></td>
+                <td width="80">{{ entity.fkIidEstadoMesa}}</td>
                 <td width="10"></td>
                 <td>
                 <ul>

@@ -8,6 +8,9 @@ B\BuffaloBundle\Entity\TbCompra:
         fk_tb_Mesa:
             columns:
                 - fk_iID_MESA
+        fk_tb_Compra_Persona2:
+            columns:
+                - fk_iID_MESERO
         fk_tb_Compra_1:
             columns:
                 - fk_iID_ESTADO_COMPRA
@@ -59,6 +62,15 @@ B\BuffaloBundle\Entity\TbCompra:
             inversedBy: null
             joinColumns:
                 fk_iID_ESTADO_COMPRA:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidMesero:
+            targetEntity: TbPersona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_MESERO:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -38,6 +38,7 @@
            {{ form_row(form.dtfechaCompra, { 'label': 'Fecha', 'required':'true' }) }}
            {{ form_row(form.dcosto, { 'label': 'Costo','required':'true'  }) }}
            {{ form_row(form.fkIidEstadoCompra, { 'label': 'Estado','required':'true'  }) }}
+           
     </div>
           <table>
               <tr>
@@ -49,16 +50,22 @@
         {{ form_label(form.fkIidPersona, 'Persona:') }}</td>
             <td>{{ form_widget(form.fkIidPersona,{'required': 'true'}) }}</td>
         </table>
-                  </td>
-                  <td width="20"></td>
-                  <td>
-          <div class="error">
+                  <div class="error">
             {{ form_errors(form.fkIidEstadoCompra) }}</div>       
         <table>  <td width="90">
                 Estado:
             <td><select disabled> <option>{{entity.fkIidEstadoCompra}}</option></select></td>
         </table>
-        
+                  </td>
+                  <td width="20"></td>
+                  <td>
+          
+        <div class="error">
+            {{ form_errors(form.fkIidMesero) }}</div>       
+        <table>  <td width="90">
+        {{ form_label(form.fkIidMesero, 'Mesero:') }}</td>
+            <td>{{ form_widget(form.fkIidMesero,{'required': 'true'}) }}</td>
+        </table>
     
                   </td>
                   <td width="20"></td>

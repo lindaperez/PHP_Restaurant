@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use B\BuffaloBundle\Entity\TbRelCompraPlato;
 use B\BuffaloBundle\Form\TbRelCompraPlatoType;
-
+use Doctrine\ORM\EntityRepository;
 
 class TbCompraType extends AbstractType
 {
@@ -22,10 +22,42 @@ class TbCompraType extends AbstractType
            'widget' => 'single_text'
            // this is actually the default format for single_text
            ))
-            ->add('fkIidPersona')
-            ->add('fkIidMesa')
+            ->add('fkIidPersona','entity', array('empty_value'=>'Seleccionar',
+                'class' => 'B\BuffaloBundle\Entity\TbPersona',
+                'query_builder' => function (EntityRepository $repository){
+                $qb = $repository->createQueryBuilder('q')                        
+                ;
+                
+                return $qb;
+                
+            }
+              ))
+            ->add('fkIidMesa','entity', array('empty_value'=>'Seleccionar',
+                'class' => 'B\BuffaloBundle\Entity\TbMesa',
+                'query_builder' => function (EntityRepository $repository){
+                $qb = $repository->createQueryBuilder('q')
+                        ->where('q.fkIidEstadoMesa= :id')
+                        ->setParameter('id', 1)
+                ;
+                
+                return $qb;
+                
+            }
+              ))
             ->add('dcosto')
             ->add('fkIidEstadoCompra')
+            ->add('fkIidMesero','entity', array('empty_value'=>'Seleccionar',
+                'class' => 'B\BuffaloBundle\Entity\TbPersona',
+                'query_builder' => function (EntityRepository $repository){
+                $qb = $repository->createQueryBuilder('q')
+                        ->where('q.fkIidTipoPersona= :id')
+                        ->setParameter('id', 3)
+                ;
+                
+                return $qb;
+                
+            }
+              ))
             ->add('platos','collection',
            array('type'=> new TbRelCompraPlatoType(),
            'label' => ' ',
