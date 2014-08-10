@@ -132,5 +132,6 @@ class TbPlato
     return $this->vnombre;
     
 }
+
     
 }

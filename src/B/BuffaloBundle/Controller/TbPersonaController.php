@@ -134,14 +134,15 @@ class TbPersonaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BBuffaloBundle:TbPersona')->find($id);
-
+        
         if (!$entity) {
+            
             throw $this->createNotFoundException('Unable to find TbPersona entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
-
+        
         return $this->render('BBuffaloBundle:TbPersona:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
@@ -184,13 +185,15 @@ class TbPersonaController extends Controller
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
-
+        //print_r($editForm['fkIidEstadoPersona']->getData());
+        print_r($editForm->getErrorsAsString());
         if ($editForm->isValid()) {
+                
             $em->flush();
 
             return $this->redirect($this->generateUrl('ens_personas_edit', array('id' => $id)));
         }
-
+            
         return $this->render('BBuffaloBundle:TbPersona:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),

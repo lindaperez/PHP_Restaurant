@@ -11,6 +11,42 @@ erroracceso:
     pattern:  /erroracceso
     defaults: { _controller: BBuffaloBundle:Default:erroracceso }
 
+comensalesPorPersonal:
+    pattern:   /comensalesPorPersonal
+    defaults:  { _controller: BBuffaloBundle:Default:comensalesPorPersonal }
+
+comensalesPersonal:
+    pattern:   /comensalesPersonal
+    defaults:  { _controller: BBuffaloBundle:Default:comensalesPersonal }
+
+ganancias:
+    pattern:   /ganancias
+    defaults:  { _controller: BBuffaloBundle:Default:ganancias }
+
+gananciasMesDia:
+    pattern:   /gananciasMesDia
+    defaults:  { _controller: BBuffaloBundle:Default:gananciasMesDia }
+
+gananciasMes2:
+    pattern:   /gananciasMes2
+    defaults:  { _controller: BBuffaloBundle:Default:gananciasMes2 }
+
+gananciasMes:
+    pattern:   /gananciasMes
+    defaults:  { _controller: BBuffaloBundle:Default:gananciasMes }
+
+
+
+
+platosSolicitados:
+    pattern:   /platosSolicitados
+    defaults:  { _controller: BBuffaloBundle:Default:platosSolicitados }
+
+maxplatos:
+    pattern:   /maxplatos
+    defaults:  { _controller: BBuffaloBundle:Default:maxplatos }
+
+
 logout:
      pattern: /logout
 
@@ -22,6 +58,7 @@ createforgot:
     pattern:  /createforgot
     defaults: { _controller: "BBuffaloBundle:Default:createforgot" }
     requirements: { _method: post }
+
 
 BBuffaloBundle_ens_personas:
     resource: "@BBuffaloBundle/Resources/config/routing/tbpersona.yml"

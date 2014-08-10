@@ -293,7 +293,7 @@ class TbCompraController extends Controller
             $mesa->setFkIidEstadoMesa($edo_mesa);
             
          }
-         //
+         //VERIFICAR 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);

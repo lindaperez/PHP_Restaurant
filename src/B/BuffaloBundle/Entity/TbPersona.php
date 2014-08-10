@@ -296,7 +296,7 @@ class TbPersona implements UserInterface
     {
         $this->fkIidEstadoPersona = $fkIidEstadoPersona;
 
-        return $this;
+        
     }
 
     /**

@@ -39,7 +39,8 @@
        <td>
         <div style="display: none;">
         {{ form_row(form.submit, { 'label': 'Crear' }) }}
-        {{ form_row(form.vclave, { 'label': 'Clave' }) }}    
+        {{ form_row(form.vclave, { 'label': 'Clave' }) }} 
+        {{ form_row(form.fkIidEstadoPersona, { 'label': 'Estado','required':false }) }}
     </div>
       <div class="error">
             {{ form_errors(form.icedula) }}</div>       
@@ -108,13 +109,15 @@
 
 </section>
 </div>
+{% if (app.session.get('usuario_rol')=="Administrador") or (app.session.get('usuario_rol')=="Caja") %}
         <ul class="record_actions">
     <li>
         <a href="{{ path('ens_personas') }}">
             <br><br>
-            Lista de Empresas
+            Lista de Personas
         </a>
     </li>
 </ul>
+  {%endif%}
 {% endblock %}
 

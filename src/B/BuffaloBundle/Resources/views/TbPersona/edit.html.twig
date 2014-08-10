@@ -31,12 +31,15 @@
 
     <section class="register"> 
 <form action="{{ path('ens_personas_update',{ 'id': entity.id }) }}" method="post" class="login">
+    {{ form_start(edit_form) }}
+{{ form_errors(edit_form) }}
         <table>
         <td width='10'></td>
        <td>
         <div style="display: none;">
         {{ form_row(edit_form.submit, { 'label': 'Crear' }) }}
         {{ form_row(edit_form.vclave, { 'label': 'Clave' }) }}
+        
     </div>
       <div class="error">
             {{ form_errors(edit_form.icedula) }}</div>       
@@ -57,6 +60,7 @@
         {{ form_label(edit_form.fkIidTipoPersona, 'Rol:', {'required': 'true'}) }}</td>
             <td>{{ form_widget(edit_form.fkIidTipoPersona) }}</td>
         </table>
+           
 
            </td>
            <td width='50'></td>
@@ -76,6 +80,13 @@
         </table>
       
    
+           
+       <div class="error">
+            {{ form_errors(edit_form.fkIidEstadoPersona) }}</div>       
+        <table>  <td width="100">
+        {{ form_label(edit_form.fkIidEstadoPersona, 'Estatus:', {'required': 'true'}) }}</td>
+            <td>{{ form_widget(edit_form.fkIidEstadoPersona) }}</td>
+        </table>
                </td>
                <td width='50'></td>
                <td>
@@ -96,11 +107,13 @@
                </td>
                
                </table>
-     
-    
-    
-                {{ form_end(edit_form) }}     
-       </form>  <br>
+           
+     <br>    <br><br>    <br>
+    <p class="submit">   
+                <input type="submit" name="commit" value="Editar">
+            </p>    
+   {{ form_end(edit_form) }}     
+</form>
         <ul class="record_actions">
     <li>
         <a href="{{ path('ens_personas') }}">

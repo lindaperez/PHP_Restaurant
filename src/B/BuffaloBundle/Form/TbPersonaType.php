@@ -23,6 +23,7 @@ class TbPersonaType extends AbstractType
             ->add('vdireccion')
             ->add('vclave')
             ->add('fkIidTipoPersona')
+            ->add('fkIidEstadoPersona')
         ;
     }
     

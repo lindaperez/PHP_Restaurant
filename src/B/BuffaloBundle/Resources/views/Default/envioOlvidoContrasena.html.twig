@@ -1,0 +1,80 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+{% for flashMessage in app.session.flashbag.get('flash_info') %}
+<div class="isa_info">
+        {{ flashMessage }}
+</div>
+
+{% endfor %}
+
+
+{% for flashMessage in app.session.flashbag.get('flash_warning') %}
+<div class="isa_warning">
+        {{ flashMessage }}
+</div>
+
+{% endfor %}
+
+
+
+{% for flashMessage in app.session.flashbag.get('flash_error') %}
+<div class="isa_error">
+        {{ flashMessage }}
+</div>
+
+{% endfor %}
+
+
+
+{% for flashMessage in app.session.flashbag.get('flash_success') %}
+<div class="isa_success">
+        {{ flashMessage }}
+</div>
+
+{% endfor %}
+
+<h1 class="title">Restablecimiento de Contraseña</h1>
+
+<div class="container" >
+
+    <section class="register">
+        <h1>    Introduzca los siguientes datos: </h1>
+        <br>
+    <form action="{{ path('createforgot') }}" method="post" id="login">
+                      {{ form_start(form) }}
+        {{ form_errors(form) }}  
+
+
+    <div class="error">{{ form_errors(form.icedula) }}</div>
+    <table>  
+        <td width='100'></td>
+        <td width="100">
+        {{ form_label(form.icedula, 'Usuario:') }}</td><td>
+        {{ form_widget(form.icedula) }}<br></td></table>
+
+    <div class="error">{{ form_errors(form.vcorreo) }}</div>
+    <table>
+        <td width='100'></td>
+        <td width="100">
+        {{ form_label(form.vcorreo, 'Correo:') }}</td><td>
+        {{ form_widget(form.vcorreo) }}<br></td></table>
+
+    <div style="display: none;">
+                {{ form_row(form.submit, { 'label': 'Enviar' }) }}        
+    </div>
+
+    <div align="right">
+        
+        <p class="submit">   
+            <input type="submit" name="commit" value="Enviar">
+
+    </div>
+           {{ form_end(form) }} 
+</form>
+        </section>
+    </div>
+{% endblock %}
+
+
