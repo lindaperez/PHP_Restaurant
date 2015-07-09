@@ -42,6 +42,13 @@ class TbProducto
      */
     private $vcantidad;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="vTitulo", type="integer", nullable=false)
+     */
+    private $vtitulo;
+
 
 
     /**
@@ -121,5 +128,28 @@ class TbProducto
     public function getVcantidad()
     {
         return $this->vcantidad;
+    }
+
+    /**
+     * Set vtitulo
+     *
+     * @param integer $vtitulo
+     * @return TbProducto
+     */
+    public function setVtitulo($vtitulo)
+    {
+        $this->vtitulo = $vtitulo;
+
+        return $this;
+    }
+
+    /**
+     * Get vtitulo
+     *
+     * @return integer 
+     */
+    public function getVtitulo()
+    {
+        return $this->vtitulo;
     }
 }

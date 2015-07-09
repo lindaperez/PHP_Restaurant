@@ -1,15 +1,98 @@
 {% extends '::layout.html.twig' %}
 
 {% block content %}
-    <h1>TbProducto creation</h1>
 
-    {{ form(form) }}
+    {% for flashMessage in app.session.flashbag.get('flash_info') %}
+        <div class="isa_info">
+            {{ flashMessage }}
+        </div>
+        <br><br>
+    {% endfor %}
 
+
+    {% for flashMessage in app.session.flashbag.get('flash_warning') %}
+        <div class="isa_warning">
+            {{ flashMessage }}
+        </div>
+        <br><br>
+    {% endfor %}
+
+
+
+    {% for flashMessage in app.session.flashbag.get('flash_error') %}
+        <div class="isa_error">
+            {{ flashMessage }}
+        </div>
+        <br><br>
+    {% endfor %}
+
+    <h1>Registro de Productos</h1>
+
+    <div class="container" >
+
+        <section class="register">    
+            <form action="{{ path('Producto_create') }}" method="post" id="login">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <table>
+                    <td width='10'></td>
+                    <td>
+                        <div style="display: none;">
+                            {{ form_row(form.submit, { 'label': 'Crear' }) }}
+                        </div>
+                        <div class="error">
+                            {{ form_errors(form.vtitulo) }}</div>       
+                        <table>  <td width="100">
+                                {{ form_label(form.vtitulo, 'Titulo:', {'required': 'true'}) }}</td>
+                            <td>{{ form_widget(form.vtitulo) }}</td>
+                        </table>
+                    <div class="error">
+                            {{ form_errors(form.vcantidad) }}</div>       
+                        <table>  <td width="100">
+                                {{ form_label(form.vcantidad, 'Cantidad:', {'required': 'true'}) }}</td>
+                            <td>{{ form_widget(form.vcantidad) }}</td>
+                        </table>
+                    </td>
+                    <td width='50'></td>
+                    <td>
+                        <div class="error">
+                            {{ form_errors(form.vmonto) }}</div>       
+                        <table>  <td width="100">
+                                {{ form_label(form.vmonto, 'Monto', {'required': 'true'}) }}</td>
+                            <td>{{ form_widget(form.vmonto) }}</td>
+                        </table>
+                    </td>
+                    <td width='50'></td>
+                    <td>
+                    <div class="error">
+                            {{ form_errors(form.vprecio) }}</div>       
+                        <table>  <td width="100">
+                                {{ form_label(form.vprecio, 'Precio:', {'required': 'true'}) }}</td>
+                            <td>{{ form_widget(form.vprecio) }}</td>
+                        </table>    
+                    </td>
+
+                </table>
+                <p class="submit">   
+                    <input type="submit" name="commit" value="Crear">
+                </p>    
+                {{ form_end(form) }}     
+
+            </form>
+
+        </section>
+    </div>
+    {% if (app.session.get('usuario_rol')=="Administrador") or (app.session.get('usuario_rol')=="Caja") %}
         <ul class="record_actions">
-    <li>
-        <a href="{{ path('Producto') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+            <li>
+                <a href="{{ path('Producto') }}">
+                    <br><br>
+                    Lista de Productos
+                </a>
+            </li>
+        </ul>
+    {%endif%}
 {% endblock %}
+
+
+

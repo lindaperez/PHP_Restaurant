@@ -15,6 +15,7 @@ class TbProductoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('vtitulo')
             ->add('vmonto')
             ->add('vprecio')
             ->add('vcantidad')

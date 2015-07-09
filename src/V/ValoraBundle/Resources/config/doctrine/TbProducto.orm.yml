@@ -31,4 +31,10 @@ V\ValoraBundle\Entity\TbProducto:
             unsigned: false
             comment: ''
             column: vCantidad
+        vtitulo:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: vTitulo
     lifecycleCallbacks: {  }

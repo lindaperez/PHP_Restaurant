@@ -65,7 +65,7 @@ class TbTipoPersona
 
     public function __toString() {
         return $this->getVdescripcion();
-    }
+}
     
 }
 
