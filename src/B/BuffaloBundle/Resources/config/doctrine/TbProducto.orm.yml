@@ -1,10 +1,10 @@
-B\BuffaloBundle\Entity\TbMesa:
+B\BuffaloBundle\Entity\TbProducto:
     type: entity
-    table: tb_Mesa
+    table: tb_Producto
     indexes:
-        fk_iID_ESTADO_MESA:
+        fk_iID_ESTADO:
             columns:
-                - fk_iID_ESTADO_MESA
+                - fk_iID_ESTADO
     id:
         id:
             type: integer
@@ -15,27 +15,35 @@ B\BuffaloBundle\Entity\TbMesa:
             generator:
                 strategy: IDENTITY
     fields:
-        inroMesa:
-            type: integer
-            nullable: false
-            unsigned: false
-            comment: ''
-            column: iNRO_MESA
-        destatus:
+        vnombre:
             type: string
             nullable: false
             length: 45
             fixed: false
             comment: ''
-            column: dESTATUS
+            column: vNOMBRE
+        dprecio:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: dPRECIO
+        icosto:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            default: '0'
+            column: iCOSTO
     manyToOne:
-        fkIidEstadoMesa:
-            targetEntity: TbEstadoMesa
+        fkIidEstado:
+            targetEntity: TbEstadoPlato
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                fk_iID_ESTADO_MESA:
+                fk_iID_ESTADO:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -37,24 +37,6 @@ B\BuffaloBundle\Entity\TbCompra:
             comment: ''
             column: dCOSTO
     manyToOne:
-        fkIidPersona:
-            targetEntity: TbPersona
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                fk_iID_PERSONA:
-                    referencedColumnName: id
-            orphanRemoval: false
-        fkIidMesa:
-            targetEntity: TbMesa
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                fk_iID_MESA:
-                    referencedColumnName: id
-            orphanRemoval: false
         fkIidEstadoCompra:
             targetEntity: TbEstadoCompra
             cascade: {  }
@@ -64,6 +46,15 @@ B\BuffaloBundle\Entity\TbCompra:
                 fk_iID_ESTADO_COMPRA:
                     referencedColumnName: id
             orphanRemoval: false
+        fkIidPersona:
+            targetEntity: TbPersona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_PERSONA:
+                    referencedColumnName: id
+            orphanRemoval: false
         fkIidMesero:
             targetEntity: TbPersona
             cascade: {  }
@@ -71,6 +62,15 @@ B\BuffaloBundle\Entity\TbCompra:
             inversedBy: null
             joinColumns:
                 fk_iID_MESERO:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkIidMesa:
+            targetEntity: TbMesa
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_iID_MESA:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -59,6 +59,14 @@ B\BuffaloBundle\Entity\TbPersona:
             fixed: false
             comment: ''
             column: vDIRECCION
+        vruc:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            default: xxxx-xxx-xxxx
+            column: vRUC
         vclave:
             type: string
             nullable: false

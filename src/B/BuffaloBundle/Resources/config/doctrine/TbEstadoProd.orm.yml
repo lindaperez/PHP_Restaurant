@@ -1,6 +1,6 @@
-B\BuffaloBundle\Entity\TbEstadoCompra:
+B\BuffaloBundle\Entity\TbEstadoProd:
     type: entity
-    table: tb_ESTADO_COMPRA
+    table: tb_Estado_Prod
     id:
         id:
             type: integer
