@@ -30,9 +30,10 @@ V\ValoraBundle\Entity\TbPersona:
             comment: ''
             column: vNombre
         vapellido:
-            type: integer
+            type: string
             nullable: false
-            unsigned: false
+            length: 150
+            fixed: false
             comment: ''
             column: vApellido
         icorreo:

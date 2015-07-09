@@ -36,9 +36,9 @@ class TbPersona
     private $vnombre;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="vApellido", type="integer", nullable=false)
+     * @ORM\Column(name="vApellido", type="string", length=150, nullable=false)
      */
     private $vapellido;
 
@@ -127,7 +127,7 @@ class TbPersona
     /**
      * Set vapellido
      *
-     * @param integer $vapellido
+     * @param string $vapellido
      * @return TbPersona
      */
     public function setVapellido($vapellido)
@@ -140,7 +140,7 @@ class TbPersona
     /**
      * Get vapellido
      *
-     * @return integer 
+     * @return string 
      */
     public function getVapellido()
     {

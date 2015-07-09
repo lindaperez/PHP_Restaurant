@@ -36,14 +36,14 @@ class TbServicio
     private $dfechaCierre;
 
     /**
-     * @var \V\ValoraBundle\Entity\TbPersona
+     * @var \V\ValoraBundle\Entity\TbEdoServicio
      *
-     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbPersona")
+     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbEdoServicio")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="tb_Cliente", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="dEstatus_Servicio", referencedColumnName="id")
      * })
      */
-    private $tbCliente;
+    private $destatusServicio;
 
     /**
      * @var \V\ValoraBundle\Entity\TbRelPaqueteProducto
@@ -56,14 +56,14 @@ class TbServicio
     private $fkPaquete;
 
     /**
-     * @var \V\ValoraBundle\Entity\TbEdoServicio
+     * @var \V\ValoraBundle\Entity\TbPersona
      *
-     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbEdoServicio")
+     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbPersona")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="dEstatus_Servicio", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="tb_Cliente", referencedColumnName="id")
      * })
      */
-    private $destatusServicio;
+    private $tbCliente;
 
 
 
@@ -124,26 +124,26 @@ class TbServicio
     }
 
     /**
-     * Set tbCliente
+     * Set destatusServicio
      *
-     * @param \V\ValoraBundle\Entity\TbPersona $tbCliente
+     * @param \V\ValoraBundle\Entity\TbEdoServicio $destatusServicio
      * @return TbServicio
      */
-    public function setTbCliente(\V\ValoraBundle\Entity\TbPersona $tbCliente = null)
+    public function setDestatusServicio(\V\ValoraBundle\Entity\TbEdoServicio $destatusServicio = null)
     {
-        $this->tbCliente = $tbCliente;
+        $this->destatusServicio = $destatusServicio;
 
         return $this;
     }
 
     /**
-     * Get tbCliente
+     * Get destatusServicio
      *
-     * @return \V\ValoraBundle\Entity\TbPersona 
+     * @return \V\ValoraBundle\Entity\TbEdoServicio 
      */
-    public function getTbCliente()
+    public function getDestatusServicio()
     {
-        return $this->tbCliente;
+        return $this->destatusServicio;
     }
 
     /**
@@ -170,25 +170,25 @@ class TbServicio
     }
 
     /**
-     * Set destatusServicio
+     * Set tbCliente
      *
-     * @param \V\ValoraBundle\Entity\TbEdoServicio $destatusServicio
+     * @param \V\ValoraBundle\Entity\TbPersona $tbCliente
      * @return TbServicio
      */
-    public function setDestatusServicio(\V\ValoraBundle\Entity\TbEdoServicio $destatusServicio = null)
+    public function setTbCliente(\V\ValoraBundle\Entity\TbPersona $tbCliente = null)
     {
-        $this->destatusServicio = $destatusServicio;
+        $this->tbCliente = $tbCliente;
 
         return $this;
     }
 
     /**
-     * Get destatusServicio
+     * Get tbCliente
      *
-     * @return \V\ValoraBundle\Entity\TbEdoServicio 
+     * @return \V\ValoraBundle\Entity\TbPersona 
      */
-    public function getDestatusServicio()
+    public function getTbCliente()
     {
-        return $this->destatusServicio;
+        return $this->tbCliente;
     }
 }
