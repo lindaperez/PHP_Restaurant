@@ -1,0 +1,63 @@
+V\ValoraBundle\Entity\TbServicio:
+    type: entity
+    table: tb_Servicio
+    indexes:
+        tb_Cliente:
+            columns:
+                - tb_Cliente
+    uniqueConstraints:
+        tb_Estado_Servicio:
+            columns:
+                - dEstatus_Servicio
+        fk_Paquete:
+            columns:
+                - fk_Paquete
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        dfechaSolicitud:
+            type: date
+            nullable: false
+            comment: ''
+            column: dFecha_Solicitud
+        dfechaCierre:
+            type: date
+            nullable: false
+            comment: ''
+            column: dFecha_Cierre
+    manyToOne:
+        tbCliente:
+            targetEntity: TbPersona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                tb_Cliente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkPaquete:
+            targetEntity: TbRelPaqueteProducto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_Paquete:
+                    referencedColumnName: id
+            orphanRemoval: false
+        destatusServicio:
+            targetEntity: TbEdoServicio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                dEstatus_Servicio:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

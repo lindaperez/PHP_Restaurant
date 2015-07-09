@@ -27,85 +27,43 @@
 	<nav>
 		<ul class="menu">
 			<li><a href="{{path('index')}}"><span class="iconic home"></span> Inicio</a></li>
-                     {% if (app.session.get('usuario_rol')!=null) %}
-                        {% if (app.session.get('usuario_rol')!="Mesero" and app.session.get('usuario_rol')!="Cocinero" ) %}
                         <li><a href="#"><span class="iconic plus-alt"></span> Servicios</a>
                         <ul>
-                            <li><a href="{{ path('ens_solicitud_new')}}">Solicitud de Compra</a></li>
-                              
-                            
-                            <li><a href="{{ path('ens_solicitud')}}">Estatus de Órdenes</a></li>
-                            
                         </ul> 
                         </li>
-                        {%endif%}
                         
                         <li><a href="#"><span class="iconic plus-alt"></span> Reportes</a>
                         <ul>
-                            {% if (app.session.get('usuario_rol')!="Mesero") and (app.session.get('usuario_rol')!="Cocinero")
-                                and (app.session.get('usuario_rol')!="Caja") %}
                             
-                            
-                            {%endif%}
-                            {% if (app.session.get('usuario_rol')!="Cocinero")  %} 
-                            <li><a href="{{ path('comensalesPorPersonal')}}">Comensales Atendidos Por Personal</a></li>
-                            {%endif%}
-                            {% if (app.session.get('usuario_rol')!="Mesero") %}
-                            <li><a href="{{ path('platosSolicitados')}}">Platos Más Solicitados</a></li>
-                            {% if (app.session.get('usuario_rol')!="Cocinero")  and (app.session.get('usuario_rol')!="Caja")%} 
-                            <li><a href="{{ path('ganancias')}}">Ganancias Dia</a></li>
-                            <li><a href="{{ path('gananciasMes2')}}">Ganancias Mes</a></li>
-                            {%endif%}
-                        {%endif%}    
                             
                             
                         </ul> 
                         </li>
                         
-                     {% if (app.session.get('usuario_rol')!="Mesero") and (app.session.get('usuario_rol')!="Cocinero") %}
+                   
                         <li><a href="#"><span class="iconic plus-alt"></span> Persona</a>
                         <ul>
-                            <li><a href="{{ path('ens_personas')}}">Gestión de Personal</a></li>      
+                                
                             
                             
                             
                         </ul> 
                             
                         </li>
-                        {%endif%}
-                        {% if (app.session.get('usuario_rol')!="Mesero") and (app.session.get('usuario_rol')!="Cocinero") 
-                        and (app.session.get('usuario_rol')!="Caja") %}
+                        
                         <li><a href="#"><span class="iconic plus-alt"></span> Sistema</a>
                         <ul>
-                            <li><a href="{{ path('ens_roles')}}">Roles de Personal</a></li>
-                            <li><a href="{{ path('ens_edoPersona')}}">Estado de Personal</a></li>
-                            <li><a href="{{ path('ens_edoCompra')}}">Estado de Compra</a></li>      
-                            <li><a href="{{ path('ens_edoPlato')}}">Estado Plato</a></li>      
-                            <li><a href="{{ path('ens_edoIngrediente')}}">Estado Ingredientes</a></li>      
-                            <li><a href="{{ path('ens_edoMesa')}}">Estado Mesa</a></li>      
                             
                         </ul>
-                            {%endif%}
+                        
                         </li>
                         
                         <li><a href="#"><span class="iconic plus-alt"></span> Inventario</a>
                         <ul>
-                            {% if (app.session.get('usuario_rol')!="Mesero") %}
-                            <li><a href="{{ path('ens_inventario')}}">Gestión Platos-Ingredientes</a></li> 
-                            {%endif%}    
-                            {% if (app.session.get('usuario_rol')=="Mesero") or 
-                        (app.session.get('usuario_rol')=="Administrador") or (app.session.get('usuario_rol')=="Caja") %}
-                            <li><a href="{{ path('ens_mesas')}}">Gestión de Mesas</a></li>    
-                            {%endif%}
-                            {% if (app.session.get('usuario_rol')!="Mesero") %}
-                            <li><a href="{{ path('ens_platos')}}">Gestión de Platos</a></li>      
-                            <li><a href="{{ path('ens_medidas')}}">Gestión de Medidas</a></li>      
-                            <li><a href="{{ path('ens_ingredientes')}}">Gestión de Ingredientes</a></li>      
-                            {%endif%}
                         </ul> 
                         </li>
                         
-                   {%endif%}     
+                   
 		</ul>
 		<div class="clearfix"></div>
 	</nav>

@@ -1,16 +1,13 @@
-b_buffalo:
-    resource: "@BBuffaloBundle/Resources/config/routing.yml"
+v_valora:
+    resource: "@VValoraBundle/Resources/config/routing.yml"
     prefix:   /
 
-BBuffaloBundle_homepage:
+
+VValoraBundle_homepage:
     pattern:  /
-    defaults: { _controller: BBuffaloBundle:Default:index}
+    defaults: { _controller: VValoraBundle:Default:index}
     requirements:
         _method:  GET
-
--b_buffalo:
-    resource: "@BBuffaloBundle/Resources/config/routing.yml"
-    prefix:   /
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
@@ -23,7 +20,7 @@ _sonata_admin:
 
 login:
     pattern:   /login
-    defaults:  { _controller: BBuffaloBundle:Default:login }
+    defaults:  { _controller: VValoraBundle:Default:login }
 login_check:
     pattern:   /login_check
 

@@ -1,0 +1,30 @@
+Persona:
+    path:     /
+    defaults: { _controller: "VValoraBundle:TbPersona:index" }
+
+Persona_show:
+    path:     /{id}/show
+    defaults: { _controller: "VValoraBundle:TbPersona:show" }
+
+Persona_new:
+    path:     /new
+    defaults: { _controller: "VValoraBundle:TbPersona:new" }
+
+Persona_create:
+    path:     /create
+    defaults: { _controller: "VValoraBundle:TbPersona:create" }
+    requirements: { _method: post }
+
+Persona_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VValoraBundle:TbPersona:edit" }
+
+Persona_update:
+    path:     /{id}/update
+    defaults: { _controller: "VValoraBundle:TbPersona:update" }
+    requirements: { _method: post|put }
+
+Persona_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VValoraBundle:TbPersona:delete" }
+    requirements: { _method: post|delete }

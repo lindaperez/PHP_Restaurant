@@ -1,0 +1,30 @@
+TipoPersona:
+    path:     /
+    defaults: { _controller: "VValoraBundle:TbTipoPersona:index" }
+
+TipoPersona_show:
+    path:     /{id}/show
+    defaults: { _controller: "VValoraBundle:TbTipoPersona:show" }
+
+TipoPersona_new:
+    path:     /new
+    defaults: { _controller: "VValoraBundle:TbTipoPersona:new" }
+
+TipoPersona_create:
+    path:     /create
+    defaults: { _controller: "VValoraBundle:TbTipoPersona:create" }
+    requirements: { _method: post }
+
+TipoPersona_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VValoraBundle:TbTipoPersona:edit" }
+
+TipoPersona_update:
+    path:     /{id}/update
+    defaults: { _controller: "VValoraBundle:TbTipoPersona:update" }
+    requirements: { _method: post|put }
+
+TipoPersona_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VValoraBundle:TbTipoPersona:delete" }
+    requirements: { _method: post|delete }

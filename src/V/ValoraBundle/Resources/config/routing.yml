@@ -1,0 +1,36 @@
+v_valora_homepage:
+    path:     /index
+    defaults: { _controller: VValoraBundle:Default:index }
+
+index:
+    path:    /index 
+    defaults: { _controller: VValoraBundle:Default:index }
+
+
+erroracceso:
+    pattern:  /erroracceso
+    defaults: { _controller: VValoraBundle:Default:erroracceso }
+
+logout:
+     pattern: /logout
+
+forgotpass:
+    pattern:  /forgotpass
+    defaults: { _controller: "VValoraBundle:Default:newforgot" }
+
+createforgot:
+    pattern:  /createforgot
+    defaults: { _controller: "VValoraBundle:Default:createforgot" }
+    requirements: { _method: post }
+
+VValoraBundle_Persona:
+    resource: "@VValoraBundle/Resources/config/routing/tbpersona.yml"
+    prefix:   /Persona
+
+VValoraBundle_TipoPersona:
+    resource: "@VValoraBundle/Resources/config/routing/tbtipopersona.yml"
+    prefix:   /TipoPersona
+
+
+
+

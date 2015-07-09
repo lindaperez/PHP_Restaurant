@@ -16,7 +16,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new B\BuffaloBundle\BBuffaloBundle(),
+#            new B\BuffaloBundle\BBuffaloBundle(),
 
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Sonata\AdminBundle\SonataAdminBundle(),
 
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new V\ValoraBundle\VValoraBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

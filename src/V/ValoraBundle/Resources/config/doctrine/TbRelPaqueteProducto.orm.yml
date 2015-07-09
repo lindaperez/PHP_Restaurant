@@ -1,0 +1,46 @@
+V\ValoraBundle\Entity\TbRelPaqueteProducto:
+    type: entity
+    table: tb_Rel_Paquete_Producto
+    indexes:
+        fk_Paquete:
+            columns:
+                - fk_Paquete
+        fk_Producto:
+            columns:
+                - fk_Producto
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        icantidadProductoPaquete:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: iCantidad_Producto_Paquete
+    manyToOne:
+        fkPaquete:
+            targetEntity: TbPaquete
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_Paquete:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkProducto:
+            targetEntity: TbProducto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_Producto:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

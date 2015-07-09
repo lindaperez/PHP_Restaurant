@@ -1,0 +1,21 @@
+V\ValoraBundle\Entity\TbEdoServicio:
+    type: entity
+    table: tb_Edo_Servicio
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        vestatus:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            comment: ''
+            column: vEstatus
+    lifecycleCallbacks: {  }

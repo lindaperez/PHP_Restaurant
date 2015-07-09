@@ -1,0 +1,62 @@
+V\ValoraBundle\Entity\TbPersona:
+    type: entity
+    table: tb_Persona
+    indexes:
+        fk_TipoPersona:
+            columns:
+                - fk_TipoPersona
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        vruc:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            comment: ''
+            column: vRuc
+        vnombre:
+            type: string
+            nullable: false
+            length: 150
+            fixed: false
+            comment: ''
+            column: vNombre
+        vapellido:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: vApellido
+        icorreo:
+            type: string
+            nullable: false
+            length: 250
+            fixed: false
+            comment: ''
+            column: iCorreo
+        vclave:
+            type: string
+            nullable: false
+            length: 128
+            fixed: false
+            comment: ''
+            column: vClave
+    manyToOne:
+        fkTipopersona:
+            targetEntity: TbTipoPersona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_TipoPersona:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,7 +1,7 @@
 security:
     access_denied_url: /erroracceso  
     encoders:
-        B\BuffaloBundle\Entity\TbPersona: sha512
+        V\ValoraBundle\Entity\TbPersona: sha512
 
     role_hierarchy:
         ROLE_USER:  ROLE_USER
@@ -10,7 +10,7 @@ security:
 
     providers:
         main:
-            entity: { class: B\BuffaloBundle\Entity\TbPersona, property: icedula} 
+            entity: { class: V\ValoraBundle\Entity\TbPersona, property: icedula} 
     firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

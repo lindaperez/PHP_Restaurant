@@ -1,0 +1,7 @@
+parameters:
+#    v_valora.example.class: V\ValoraBundle\Example
+
+services:
+#    v_valora.example:
+#        class: %v_valora.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

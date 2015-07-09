@@ -1,0 +1,34 @@
+V\ValoraBundle\Entity\TbProducto:
+    type: entity
+    table: tb_Producto
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        vmonto:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: vMonto
+        vprecio:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: vPrecio
+        vcantidad:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: vCantidad
+    lifecycleCallbacks: {  }
