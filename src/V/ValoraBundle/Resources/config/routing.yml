@@ -35,4 +35,7 @@ VValoraBundle_Producto:
     resource: "@VValoraBundle/Resources/config/routing/tbproducto.yml"
     prefix:   /Producto
 
+VValoraBundle_Paquete:
+    resource: "@VValoraBundle/Resources/config/routing/tbpaquete.yml"
+    prefix:   /Paquete
 

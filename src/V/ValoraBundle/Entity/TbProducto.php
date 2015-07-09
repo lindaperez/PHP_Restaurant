@@ -43,9 +43,9 @@ class TbProducto
     private $vcantidad;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="vTitulo", type="integer", nullable=false)
+     * @ORM\Column(name="vTitulo", type="string", length=150, nullable=false)
      */
     private $vtitulo;
 
@@ -133,7 +133,7 @@ class TbProducto
     /**
      * Set vtitulo
      *
-     * @param integer $vtitulo
+     * @param string $vtitulo
      * @return TbProducto
      */
     public function setVtitulo($vtitulo)
@@ -146,7 +146,7 @@ class TbProducto
     /**
      * Get vtitulo
      *
-     * @return integer 
+     * @return string 
      */
     public function getVtitulo()
     {

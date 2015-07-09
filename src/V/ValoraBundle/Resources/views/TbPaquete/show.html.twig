@@ -1,7 +1,7 @@
 {% extends '::layout.html.twig' %}
 
 {% block content %}
-    <h1>Producto</h1>
+    <h1>TbPaquete</h1>
 
     <table class="record_properties">
         <tbody>
@@ -10,28 +10,20 @@
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Vmonto</th>
-                <td>{{ entity.vmonto }}</td>
-            </tr>
-            <tr>
-                <th>Vprecio</th>
-                <td>{{ entity.vprecio }}</td>
-            </tr>
-            <tr>
-                <th>Vcantidad</th>
-                <td>{{ entity.vcantidad }}</td>
+                <th>Vdescripcion</th>
+                <td>{{ entity.vdescripcion }}</td>
             </tr>
         </tbody>
     </table>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('Producto') }}">
+        <a href="{{ path('Paquete') }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('Producto_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('Paquete_edit', { 'id': entity.id }) }}">
             Edit
         </a>
     </li>

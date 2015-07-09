@@ -46,28 +46,26 @@
                                 {{ form_label(form.vtitulo, 'Titulo:', {'required': 'true'}) }}</td>
                             <td>{{ form_widget(form.vtitulo) }}</td>
                         </table>
-                    <div class="error">
-                            {{ form_errors(form.vcantidad) }}</div>       
-                        <table>  <td width="100">
-                                {{ form_label(form.vcantidad, 'Cantidad:', {'required': 'true'}) }}</td>
-                            <td>{{ form_widget(form.vcantidad) }}</td>
-                        </table>
-                    </td>
-                    <td width='50'></td>
-                    <td>
                         <div class="error">
                             {{ form_errors(form.vmonto) }}</div>       
                         <table>  <td width="100">
-                                {{ form_label(form.vmonto, 'Monto', {'required': 'true'}) }}</td>
+                                {{ form_label(form.vmonto, 'Monto por Unidad:', {'required': 'true'}) }}</td>
                             <td>{{ form_widget(form.vmonto) }}</td>
                         </table>
                     </td>
                     <td width='50'></td>
                     <td>
+                        <div class="error">
+                            {{ form_errors(form.vcantidad) }}</div>       
+                        <table>  <td width="100">
+                                {{ form_label(form.vcantidad, 'Cantidad (Existencia):', {'required': 'true'}) }}</td>
+                            <td>{{ form_widget(form.vcantidad) }}</td>
+                        </table>
+                    
                     <div class="error">
                             {{ form_errors(form.vprecio) }}</div>       
                         <table>  <td width="100">
-                                {{ form_label(form.vprecio, 'Precio:', {'required': 'true'}) }}</td>
+                                {{ form_label(form.vprecio, 'Precio por Unidad:', {'required': 'true'}) }}</td>
                             <td>{{ form_widget(form.vprecio) }}</td>
                         </table>    
                     </td>
