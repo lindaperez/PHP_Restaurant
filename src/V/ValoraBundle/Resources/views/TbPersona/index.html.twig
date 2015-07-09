@@ -1,49 +1,73 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
-{% block body -%}
-    <h1>TbPersona list</h1>
+{% block content %}
 
+<div class="container" >
+    <h1>Listado de Personas</h1>
+    <section class="register">
+        <h1>Listado de Personas</h1>
+       <br>
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Vruc</th>
-                <th>Vnombre</th>
-                <th>Vapellido</th>
-                <th>Icorreo</th>
-                <th>Vclave</th>
-                <th>Actions</th>
+                <td align='center' width="80"><h1><strong>ID</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>RUC</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Nombre </strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Apellido</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="180"><h1><strong>Correo</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="80"><h1><strong>Rol</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="80"><h1><strong>clave</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="80"><h1><strong>Acciones</strong></h1></td>
+                <td align='center' width="5"></td>
             </tr>
         </thead>
+        
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('Persona_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.vruc }}</td>
-                <td>{{ entity.vnombre }}</td>
-                <td>{{ entity.vapellido }}</td>
-                <td>{{ entity.icorreo }}</td>
-                <td>{{ entity.vclave }}</td>
+                <td align='center' width="80"><a href="{{ path('Persona_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ entity.vruc }}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ entity.vnombre }}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ entity.vapellido }}</td>
+                <td width="5"></td>
+                <td align='center' width="180">{{ entity.icorreo }}</td>
+                <td width="5"></td>
+                <td align='center' width="80">{{ entity.fkTipopersona}}</td>
+                <td width="5"></td>
+                <td align='center' width="80">{{ entity.vclave }}</td>
+                <td width="5"></td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('Persona_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
+                        <a href="{{ path('Persona_show', { 'id': entity.id }) }}">show/</a>
                         <a href="{{ path('Persona_edit', { 'id': entity.id }) }}">edit</a>
+                        
                     </li>
                 </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
+        
     </table>
 
-        <ul>
+        <ul><br><br><br>
         <li>
             <a href="{{ path('Persona_new') }}">
-                Create a new entry
+                Registrar nueva Persona
             </a>
         </li>
     </ul>
+    </section>
+</div>
     {% endblock %}

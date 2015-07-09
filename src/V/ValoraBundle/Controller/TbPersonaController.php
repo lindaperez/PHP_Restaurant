@@ -79,6 +79,7 @@ class TbPersonaController extends Controller
     public function newAction()
     {
         $entity = new TbPersona();
+        $entity->setVclave(0000);           
         $form   = $this->createCreateForm($entity);
 
         return $this->render('VValoraBundle:TbPersona:new.html.twig', array(

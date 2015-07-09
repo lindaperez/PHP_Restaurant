@@ -39,7 +39,7 @@
                     <td>
                         <div style="display: none;">
                             {{ form_row(form.submit, { 'label': 'Crear' }) }}
-                            {{ form_row(form.vclave, { 'label': 'Clave' }) }} 
+                            {{ form_row(form.vclave, { 'label': 'Clave','required': false }) }} 
                         </div>
                         <div class="error">
                             {{ form_errors(form.vruc) }}</div>       
@@ -51,7 +51,7 @@
                         <div class="error">
                             {{ form_errors(form.fkTipopersona) }}</div>       
                         <table>  <td width="100">
-                                {{ form_label(form.fkTipopersona, 'Rol:', {'required': 'true'}) }}</td>
+                                {{ form_label(form.fkTipopersona, 'Rol:', {'required': true}) }}</td>
                             <td>{{ form_widget(form.fkTipopersona) }}</td>
                         </table>
 
