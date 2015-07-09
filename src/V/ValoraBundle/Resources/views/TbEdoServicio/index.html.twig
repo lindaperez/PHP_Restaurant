@@ -1,0 +1,50 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <div class="container" >
+    <h1>Listado de Estatus de Servicio</h1>
+    <section class="register">
+        <h1>Listado de Estatus de Servicio</h1>
+       <br>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <td align='center' width="80"><h1><strong>ID</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Estatus</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Acciones</strong></h1></td>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td align='center' width="80"><a href="{{ path('EdoServicio_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ entity.vestatus }}</td>
+                <td width="5"></td>
+                <td align='center' width="120">
+                <ul>
+                    <li>
+                        <a href="{{ path('EdoServicio_show', { 'id': entity.id }) }}">show/</a>
+                        <a href="{{ path('EdoServicio_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul><br><br><br>
+        <li>
+            <a href="{{ path('EdoServicio_new') }}">
+                Crear nuevo Estatus
+            </a>
+        </li>
+    </ul>
+                </section>
+                </div>
+    {% endblock %}

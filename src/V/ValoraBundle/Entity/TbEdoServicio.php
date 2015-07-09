@@ -62,4 +62,8 @@ class TbEdoServicio
     {
         return $this->vestatus;
     }
+    
+    public function __toString() {
+        return $this->getVestatus();
+    }
 }

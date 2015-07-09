@@ -1,0 +1,30 @@
+Servicio:
+    path:     /
+    defaults: { _controller: "VValoraBundle:TbServicio:index" }
+
+Servicio_show:
+    path:     /{id}/show
+    defaults: { _controller: "VValoraBundle:TbServicio:show" }
+
+Servicio_new:
+    path:     /new
+    defaults: { _controller: "VValoraBundle:TbServicio:new" }
+
+Servicio_create:
+    path:     /create
+    defaults: { _controller: "VValoraBundle:TbServicio:create" }
+    requirements: { _method: post }
+
+Servicio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VValoraBundle:TbServicio:edit" }
+
+Servicio_update:
+    path:     /{id}/update
+    defaults: { _controller: "VValoraBundle:TbServicio:update" }
+    requirements: { _method: post|put }
+
+Servicio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VValoraBundle:TbServicio:delete" }
+    requirements: { _method: post|delete }

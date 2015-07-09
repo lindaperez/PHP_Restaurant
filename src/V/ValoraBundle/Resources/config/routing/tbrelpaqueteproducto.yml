@@ -1,0 +1,30 @@
+RelPaqueteProducto:
+    path:     /
+    defaults: { _controller: "VValoraBundle:TbRelPaqueteProducto:index" }
+
+RelPaqueteProducto_show:
+    path:     /{id}/show
+    defaults: { _controller: "VValoraBundle:TbRelPaqueteProducto:show" }
+
+RelPaqueteProducto_new:
+    path:     /new
+    defaults: { _controller: "VValoraBundle:TbRelPaqueteProducto:new" }
+
+RelPaqueteProducto_create:
+    path:     /create
+    defaults: { _controller: "VValoraBundle:TbRelPaqueteProducto:create" }
+    requirements: { _method: post }
+
+RelPaqueteProducto_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VValoraBundle:TbRelPaqueteProducto:edit" }
+
+RelPaqueteProducto_update:
+    path:     /{id}/update
+    defaults: { _controller: "VValoraBundle:TbRelPaqueteProducto:update" }
+    requirements: { _method: post|put }
+
+RelPaqueteProducto_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VValoraBundle:TbRelPaqueteProducto:delete" }
+    requirements: { _method: post|delete }

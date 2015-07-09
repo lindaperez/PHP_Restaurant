@@ -26,12 +26,12 @@
         <br><br>
     {% endfor %}
 
-    <h1>Creación de Paquetes</h1>
+    <h1>Generacion de Solicitud de Servicio</h1>
 
     <div class="container" >
 
         <section class="register">    
-            <form action="{{ path('Paquete_create') }}" method="post" id="login">
+            <form action="{{ path('Servicio_create') }}" method="post" id="login">
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
                 <table>
@@ -41,22 +41,20 @@
                             {{ form_row(form.submit, { 'label': 'Crear' }) }}
                         </div>
                         <div class="error">
-                            {{ form_errors(form.vtitulo) }}</div>       
+                            {{ form_errors(form.tbCliente) }}</div>       
                         <table>  <td width="100">
-                                {{ form_label(form.vtitulo, 'Titulo:', {'required': 'true'}) }}</td>
-                            <td>{{ form_widget(form.vtitulo) }}</td>
-                        </table>
-                        <div class="error">
-                            {{ form_errors(form.vdescripcion) }}</div>       
-                        <table>  <td width="100">
-                                {{ form_label(form.vdescripcion, 'Descripcion:', {'required': 'true'}) }}</td>
-                            <td>{{ form_widget(form.vdescripcion) }}</td>
+                                {{ form_label(form.tbCliente, 'Cliente solicitante:', {'required': 'true'}) }}</td>
+                            <td>{{ form_widget(form.tbCliente) }}</td>
                         </table>
 
-                       
+                        <div class="error">
+                            {{ form_errors(form.fkPaquete) }}</div>       
+                        <table>  <td width="100">
+                                {{ form_label(form.fkPaquete, 'Paquete:', {'required': true}) }}</td>
+                            <td>{{ form_widget(form.fkPaquete) }}</td>
+                        </table>
 
                     </td>
-
                 </table>
                 <p class="submit">   
                     <input type="submit" name="commit" value="Crear">
@@ -67,12 +65,12 @@
 
         </section>
     </div>
-    {% if (app.session.get('usuario_rol')=="Administrador") or (app.session.get('usuario_rol')=="Caja") %}
+    {% if (app.session.get('usuario_rol')=="Administrador") %}
         <ul class="record_actions">
             <li>
-                <a href="{{ path('Paquete') }}">
+                <a href="{{ path('Servicio') }}">
                     <br><br>
-                    Lista de Paquetes
+                    Lista de Servicios
                 </a>
             </li>
         </ul>

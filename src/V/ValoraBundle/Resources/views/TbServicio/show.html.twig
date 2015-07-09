@@ -1,0 +1,36 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <h1>TbServicio</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Dfechasolicitud</th>
+                <td>{{ entity.dfechaSolicitud|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dfechacierre</th>
+                <td>{{ entity.dfechaCierre|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('Servicio') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('Servicio_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

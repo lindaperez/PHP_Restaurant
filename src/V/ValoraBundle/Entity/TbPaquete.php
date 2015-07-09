@@ -28,6 +28,13 @@ class TbPaquete
      */
     private $vdescripcion;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vTitulo", type="string", length=150, nullable=false)
+     */
+    private $vtitulo;
+
 
 
     /**
@@ -61,5 +68,28 @@ class TbPaquete
     public function getVdescripcion()
     {
         return $this->vdescripcion;
+    }
+
+    /**
+     * Set vtitulo
+     *
+     * @param string $vtitulo
+     * @return TbPaquete
+     */
+    public function setVtitulo($vtitulo)
+    {
+        $this->vtitulo = $vtitulo;
+
+        return $this;
+    }
+
+    /**
+     * Get vtitulo
+     *
+     * @return string 
+     */
+    public function getVtitulo()
+    {
+        return $this->vtitulo;
     }
 }

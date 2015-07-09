@@ -1,0 +1,30 @@
+EdoServicio:
+    path:     /
+    defaults: { _controller: "VValoraBundle:TbEdoServicio:index" }
+
+EdoServicio_show:
+    path:     /{id}/show
+    defaults: { _controller: "VValoraBundle:TbEdoServicio:show" }
+
+EdoServicio_new:
+    path:     /new
+    defaults: { _controller: "VValoraBundle:TbEdoServicio:new" }
+
+EdoServicio_create:
+    path:     /create
+    defaults: { _controller: "VValoraBundle:TbEdoServicio:create" }
+    requirements: { _method: post }
+
+EdoServicio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VValoraBundle:TbEdoServicio:edit" }
+
+EdoServicio_update:
+    path:     /{id}/update
+    defaults: { _controller: "VValoraBundle:TbEdoServicio:update" }
+    requirements: { _method: post|put }
+
+EdoServicio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VValoraBundle:TbEdoServicio:delete" }
+    requirements: { _method: post|delete }

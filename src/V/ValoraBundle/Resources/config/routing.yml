@@ -31,6 +31,11 @@ VValoraBundle_TipoPersona:
     resource: "@VValoraBundle/Resources/config/routing/tbtipopersona.yml"
     prefix:   /TipoPersona
 
+VValoraBundle_EdoServicio:
+    resource: "@VValoraBundle/Resources/config/routing/tbedoservicio.yml"
+    prefix:   /EdoServicio
+
+
 VValoraBundle_Producto:
     resource: "@VValoraBundle/Resources/config/routing/tbproducto.yml"
     prefix:   /Producto
@@ -38,4 +43,13 @@ VValoraBundle_Producto:
 VValoraBundle_Paquete:
     resource: "@VValoraBundle/Resources/config/routing/tbpaquete.yml"
     prefix:   /Paquete
+
+VValoraBundle_RelPaqueteProducto:
+    resource: "@VValoraBundle/Resources/config/routing/tbrelpaqueteproducto.yml"
+    prefix:   /RelPaqueteProducto
+
+VValoraBundle_Servicio:
+    resource: "@VValoraBundle/Resources/config/routing/tbservicio.yml"
+    prefix:   /Servicio
+
 
