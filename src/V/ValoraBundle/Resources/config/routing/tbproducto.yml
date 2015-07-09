@@ -1,0 +1,30 @@
+Producto:
+    path:     /
+    defaults: { _controller: "VValoraBundle:TbProducto:index" }
+
+Producto_show:
+    path:     /{id}/show
+    defaults: { _controller: "VValoraBundle:TbProducto:show" }
+
+Producto_new:
+    path:     /new
+    defaults: { _controller: "VValoraBundle:TbProducto:new" }
+
+Producto_create:
+    path:     /create
+    defaults: { _controller: "VValoraBundle:TbProducto:create" }
+    requirements: { _method: post }
+
+Producto_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VValoraBundle:TbProducto:edit" }
+
+Producto_update:
+    path:     /{id}/update
+    defaults: { _controller: "VValoraBundle:TbProducto:update" }
+    requirements: { _method: post|put }
+
+Producto_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VValoraBundle:TbProducto:delete" }
+    requirements: { _method: post|delete }

@@ -31,6 +31,8 @@ VValoraBundle_TipoPersona:
     resource: "@VValoraBundle/Resources/config/routing/tbtipopersona.yml"
     prefix:   /TipoPersona
 
-
+VValoraBundle_Producto:
+    resource: "@VValoraBundle/Resources/config/routing/tbproducto.yml"
+    prefix:   /Producto
 
 
