@@ -31,6 +31,8 @@
     <div class="container" >
 
         <section class="register">    
+            <h1>Seleccione el cliente seguido de el paquete o productos </h1>
+            <br><br>
             <form action="{{ path('Servicio_create') }}" method="post" id="login">
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
@@ -46,11 +48,11 @@
                         <div class="error">
                             {{ form_errors(form.tbCliente) }}</div>       
                         <table>  <td width="100">
-                                {{ form_label(form.tbCliente, 'Cliente solicitante:', {'required': 'true'}) }}</td>
+                                {{ form_label(form.tbCliente, 'Cliente solicitante:*', {'required': 'true'}) }}</td>
                             <td>{{ form_widget(form.tbCliente) }}</td>
                         </table>
                     </td>
-                    <td width='60'>
+                    <td width='200'>
                     </td>
                     <td>
                         <div class="error">
@@ -62,6 +64,47 @@
 
                     </td>
                 </table>
+                        <br><br><br>                        
+{# Listado de Productos#}
+<h1>Productos </h1>
+<br><br>
+        <table class="records_list">
+        <thead>
+            <tr>
+                <td align='center' width="80"><h1><strong>ID</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Titulo</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Monto</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Precio </strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Cantidad Disponible</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="180"><h1><strong>Seleccionar</strong></h1></td>
+                <td width="5"></td>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for  key,prod in Productos%}
+            <tr>
+                <td align='center' width="80"><a href="{{ path('Producto_show', { 'id': prod.id }) }}">{{ prod.id }}</a></td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ prod.vtitulo}}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ prod.vmonto }}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ prod.vprecio }}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ prod.vcantidad }}</td>
+                <td width="5"></td>
+                <td align='center' width="180"><input type="radio" name="p_{{prod.id}}" value='{{prod.id}}' ><br></td>
+                <td width="5"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
                 <p class="submit">   
                     <input type="submit" name="commit" value="Crear">
                 </p>    

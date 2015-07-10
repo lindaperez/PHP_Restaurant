@@ -152,4 +152,8 @@ class TbProducto
     {
         return $this->vtitulo;
     }
-}
+    public function __toString() {
+        return $this->getVtitulo();
+    }
+    
+    }

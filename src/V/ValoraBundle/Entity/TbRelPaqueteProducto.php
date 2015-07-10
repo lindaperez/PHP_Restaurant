@@ -128,4 +128,7 @@ class TbRelPaqueteProducto
     {
         return $this->fkPaquete;
     }
+    public function __toString() {
+        return $this->getFkPaquete()->getVtitulo();
+    }
 }

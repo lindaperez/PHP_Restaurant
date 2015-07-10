@@ -114,7 +114,7 @@
                 
         </section>
     </div>
-    {% if (app.session.get('usuario_rol')=="Administrador") or (app.session.get('usuario_rol')=="Caja") %}
+    {% if (app.session.get('usuario_rol')=="Administrador") %}
         <ul class="record_actions">
             <li>
                 <a href="{{ path('Paquete') }}">

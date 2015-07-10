@@ -39,7 +39,21 @@ class TbServicioController extends Controller
         $entity = new TbServicio();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
+        foreach ($_POST as $clave => $prod) {
+                $a = strpos($clave, 'p_');
+                if ($a !== false) {
+                    //Crear Relacion y asociar al paquete
+                    $relacion = new TbRelPaqueteProducto();
+                    $relacion->setFkPaquete($entity);
+                    $relacion->setIcantidadProductoPaquete(1);
+                    //$producto= $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
+                    print_r($prod);
+                    $producto= $em->getRepository('VValoraBundle:TbProducto')->find($prod);
+                    $relacion->setFkProducto($producto);
+                    $em->persist($relacion);
+                    
+                }
+            }
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -81,6 +95,8 @@ class TbServicioController extends Controller
     {
         $entity = new TbServicio();
         $em = $this->getDoctrine()->getManager();
+        
+        $productos= $em->getRepository('VValoraBundle:TbProducto')->findAll();
         date_default_timezone_set('America/Caracas');
         $date = new DateTime('NOW');
         $entity->setDfechaSolicitud($date);
@@ -93,6 +109,7 @@ class TbServicioController extends Controller
         return $this->render('VValoraBundle:TbServicio:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'Productos' =>$productos,
         ));
     }
 

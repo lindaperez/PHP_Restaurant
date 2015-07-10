@@ -1,27 +1,51 @@
-{% extends '::base.html.twig' %}
+{% extends '::layout.html.twig' %}
 
-{% block body -%}
-    <h1>TbRelPaqueteProducto list</h1>
-
+{% block content %}
+    <div class="container" >
+    <h1>Listado de Productos</h1>
+    <section class="register">
+        <h1>Listado de Productos</h1>
+       <br>
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Icantidadproductopaquete</th>
-                <th>Actions</th>
+                <td align='center' width="80"><h1><strong>ID</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Paquete</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Producto</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Cantidad</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Monto Producto</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Precio Producto</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="180"><h1><strong>Acciones</strong></h1></td>
+                <td width="5"></td>
+                
+           
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('RelPaqueteProducto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.icantidadProductoPaquete }}</td>
-                <td>
+                <td align='center' width="80"><a href="{{ path('RelPaqueteProducto_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td width="5"></td>
+                <td align='center' width="80">{{ entity.fkPaquete }}</td>
+                <td width="5"></td>
+                <td align='center' width="80">{{ entity.fkProducto}}</td>
+                <td width="5"></td>
+                <td align='center' width="80">{{ entity.icantidadProductoPaquete}}</td>
+                <td width="5"></td>
+                <td align='center' width="80">{{ entity.fkProducto.vmonto}}</td>
+                <td width="5"></td>
+                <td align='center' width="80">{{ entity.fkProducto.vprecio}}</td>
+                <td width="5"></td>
+                <td align='center' width="80">
                 <ul>
                     <li>
-                        <a href="{{ path('RelPaqueteProducto_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
+                        <a href="{{ path('RelPaqueteProducto_show', { 'id': entity.id }) }}">show/</a>
                         <a href="{{ path('RelPaqueteProducto_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
@@ -30,12 +54,15 @@
         {% endfor %}
         </tbody>
     </table>
-
+        
+        <br><br><br>
         <ul>
         <li>
-            <a href="{{ path('RelPaqueteProducto_new') }}">
-                Create a new entry
+            <a href="{{ path('Paquete_new') }}">
+                Crear Nuevo Paquete
             </a>
         </li>
     </ul>
+                </section>
+                </div>
     {% endblock %}

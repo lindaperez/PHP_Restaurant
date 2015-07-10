@@ -47,12 +47,13 @@ class TbPaqueteController extends Controller
                     //Crear Relacion y asociar al paquete
                     $relacion = new TbRelPaqueteProducto();
                     $relacion->setFkPaquete($entity);
+                    $relacion->setIcantidadProductoPaquete(1);
                     //$producto= $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
                     print_r($prod);
                     $producto= $em->getRepository('VValoraBundle:TbProducto')->find($prod);
                     $relacion->setFkProducto($producto);
                     $em->persist($relacion);
-                    $em->flush();
+                    
                 }
             }
         if ($form->isValid()) {
