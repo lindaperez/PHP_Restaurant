@@ -29,16 +29,6 @@ class TbRelPaqueteProducto
     private $icantidadProductoPaquete;
 
     /**
-     * @var \V\ValoraBundle\Entity\TbPaquete
-     *
-     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbPaquete")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="fk_Paquete", referencedColumnName="id")
-     * })
-     */
-    private $fkPaquete;
-
-    /**
      * @var \V\ValoraBundle\Entity\TbProducto
      *
      * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbProducto")
@@ -47,6 +37,16 @@ class TbRelPaqueteProducto
      * })
      */
     private $fkProducto;
+
+    /**
+     * @var \V\ValoraBundle\Entity\TbPaquete
+     *
+     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbPaquete")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="fk_Paquete", referencedColumnName="id")
+     * })
+     */
+    private $fkPaquete;
 
 
 
@@ -84,29 +84,6 @@ class TbRelPaqueteProducto
     }
 
     /**
-     * Set fkPaquete
-     *
-     * @param \V\ValoraBundle\Entity\TbPaquete $fkPaquete
-     * @return TbRelPaqueteProducto
-     */
-    public function setFkPaquete(\V\ValoraBundle\Entity\TbPaquete $fkPaquete = null)
-    {
-        $this->fkPaquete = $fkPaquete;
-
-        return $this;
-    }
-
-    /**
-     * Get fkPaquete
-     *
-     * @return \V\ValoraBundle\Entity\TbPaquete 
-     */
-    public function getFkPaquete()
-    {
-        return $this->fkPaquete;
-    }
-
-    /**
      * Set fkProducto
      *
      * @param \V\ValoraBundle\Entity\TbProducto $fkProducto
@@ -127,5 +104,28 @@ class TbRelPaqueteProducto
     public function getFkProducto()
     {
         return $this->fkProducto;
+    }
+
+    /**
+     * Set fkPaquete
+     *
+     * @param \V\ValoraBundle\Entity\TbPaquete $fkPaquete
+     * @return TbRelPaqueteProducto
+     */
+    public function setFkPaquete(\V\ValoraBundle\Entity\TbPaquete $fkPaquete = null)
+    {
+        $this->fkPaquete = $fkPaquete;
+
+        return $this;
+    }
+
+    /**
+     * Get fkPaquete
+     *
+     * @return \V\ValoraBundle\Entity\TbPaquete 
+     */
+    public function getFkPaquete()
+    {
+        return $this->fkPaquete;
     }
 }
