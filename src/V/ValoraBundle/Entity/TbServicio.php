@@ -36,14 +36,14 @@ class TbServicio
     private $dfechaCierre;
 
     /**
-     * @var \V\ValoraBundle\Entity\TbEdoServicio
+     * @var \V\ValoraBundle\Entity\TbPaquete
      *
-     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbEdoServicio")
+     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbPaquete")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="dEstatus_Servicio", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="fk_Paquete", referencedColumnName="id")
      * })
      */
-    private $destatusServicio;
+    private $fkPaquete;
 
     /**
      * @var \V\ValoraBundle\Entity\TbPersona
@@ -56,14 +56,14 @@ class TbServicio
     private $tbCliente;
 
     /**
-     * @var \V\ValoraBundle\Entity\TbRelPaqueteProducto
+     * @var \V\ValoraBundle\Entity\TbEdoServicio
      *
-     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbRelPaqueteProducto")
+     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbEdoServicio")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="fk_Paquete", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="dEstatus_Servicio", referencedColumnName="id")
      * })
      */
-    private $fkPaquete;
+    private $destatusServicio;
 
 
 
@@ -124,26 +124,26 @@ class TbServicio
     }
 
     /**
-     * Set destatusServicio
+     * Set fkPaquete
      *
-     * @param \V\ValoraBundle\Entity\TbEdoServicio $destatusServicio
+     * @param \V\ValoraBundle\Entity\TbPaquete $fkPaquete
      * @return TbServicio
      */
-    public function setDestatusServicio(\V\ValoraBundle\Entity\TbEdoServicio $destatusServicio = null)
+    public function setFkPaquete(\V\ValoraBundle\Entity\TbPaquete $fkPaquete = null)
     {
-        $this->destatusServicio = $destatusServicio;
+        $this->fkPaquete = $fkPaquete;
 
         return $this;
     }
 
     /**
-     * Get destatusServicio
+     * Get fkPaquete
      *
-     * @return \V\ValoraBundle\Entity\TbEdoServicio 
+     * @return \V\ValoraBundle\Entity\TbPaquete 
      */
-    public function getDestatusServicio()
+    public function getFkPaquete()
     {
-        return $this->destatusServicio;
+        return $this->fkPaquete;
     }
 
     /**
@@ -170,25 +170,25 @@ class TbServicio
     }
 
     /**
-     * Set fkPaquete
+     * Set destatusServicio
      *
-     * @param \V\ValoraBundle\Entity\TbRelPaqueteProducto $fkPaquete
+     * @param \V\ValoraBundle\Entity\TbEdoServicio $destatusServicio
      * @return TbServicio
      */
-    public function setFkPaquete(\V\ValoraBundle\Entity\TbRelPaqueteProducto $fkPaquete = null)
+    public function setDestatusServicio(\V\ValoraBundle\Entity\TbEdoServicio $destatusServicio = null)
     {
-        $this->fkPaquete = $fkPaquete;
+        $this->destatusServicio = $destatusServicio;
 
         return $this;
     }
 
     /**
-     * Get fkPaquete
+     * Get destatusServicio
      *
-     * @return \V\ValoraBundle\Entity\TbRelPaqueteProducto 
+     * @return \V\ValoraBundle\Entity\TbEdoServicio 
      */
-    public function getFkPaquete()
+    public function getDestatusServicio()
     {
-        return $this->fkPaquete;
+        return $this->destatusServicio;
     }
 }

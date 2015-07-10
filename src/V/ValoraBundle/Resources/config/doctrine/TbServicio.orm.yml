@@ -33,13 +33,13 @@ V\ValoraBundle\Entity\TbServicio:
             comment: ''
             column: dFecha_Cierre
     manyToOne:
-        destatusServicio:
-            targetEntity: TbEdoServicio
+        fkPaquete:
+            targetEntity: TbPaquete
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                dEstatus_Servicio:
+                fk_Paquete:
                     referencedColumnName: id
             orphanRemoval: false
         tbCliente:
@@ -51,13 +51,13 @@ V\ValoraBundle\Entity\TbServicio:
                 tb_Cliente:
                     referencedColumnName: id
             orphanRemoval: false
-        fkPaquete:
-            targetEntity: TbRelPaqueteProducto
+        destatusServicio:
+            targetEntity: TbEdoServicio
             cascade: {  }
             mappedBy: null
             inversedBy: null
             joinColumns:
-                fk_Paquete:
+                dEstatus_Servicio:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

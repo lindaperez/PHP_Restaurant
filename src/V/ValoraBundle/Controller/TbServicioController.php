@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use V\ValoraBundle\Entity\TbServicio;
 use V\ValoraBundle\Form\TbServicioType;
 use DateTime;
+use V\ValoraBundle\Entity\TbPaquete;
+use V\ValoraBundle\Entity\TbRelPaqueteProducto;
 
 /**
  * TbServicio controller.
@@ -37,22 +39,32 @@ class TbServicioController extends Controller
     public function createAction(Request $request)
     {
         $entity = new TbServicio();
+        $em = $this->getDoctrine()->getManager();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
+        $paquete = new TbPaquete();
+        $paquete->setVtitulo('Usuario '+$entity->getTbCliente()->getVnombre()+' '+
+                            $entity->getTbCliente()->getVapellido());
+        $paquete->setVdescripcion($paquete->getVtitulo());
+        
+        $swith=false;
         foreach ($_POST as $clave => $prod) {
                 $a = strpos($clave, 'p_');
                 if ($a !== false) {
                     //Crear Relacion y asociar al paquete
                     $relacion = new TbRelPaqueteProducto();
-                    $relacion->setFkPaquete($entity);
+                    $relacion->setFkPaquete($paquete);
                     $relacion->setIcantidadProductoPaquete(1);
+                    
                     //$producto= $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
-                    print_r($prod);
                     $producto= $em->getRepository('VValoraBundle:TbProducto')->find($prod);
                     $relacion->setFkProducto($producto);
                     $em->persist($relacion);
-                    
+                    $swith=true;
                 }
+            }
+            if($swith==true){
+                $entity->setFkPaquete($paquete);
             }
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();

@@ -94,6 +94,6 @@ class TbPaquete
     }
     
     public function __toString() {
-        return $this->getVtitulo();
-}
+        return (string)$this->getVtitulo();
+    }
 }
