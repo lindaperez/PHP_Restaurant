@@ -10,9 +10,10 @@
         <thead>
             <tr>
 
-                <td align='center' width="80"><h1><strong>ID</strong></h1></td>
+                
+                <td align='center' width="200"><h1><strong>Cliente</strong></h1></td>
                 <td width="5"></td>
-                <td align='center' width="120"><h1><strong>Cliente</strong></h1></td>
+                <td align='center' width="200"><h1><strong>Paquete</strong></h1></td>
                 <td width="5"></td>
                 <td align='center' width="120"><h1><strong>Fecha Inicio</strong></h1></td>
                 <td width="5"></td>
@@ -20,21 +21,33 @@
                 <td width="5"></td>
                 <td align='center' width="120"><h1><strong>Fecha Cierre</strong></h1></td>
                 <td width="5"></td>
-                <td align='center' width="180"><h1><strong>Acciones</strong></h1></td>
+                <td  align='center' width="120"><h1><strong>Total Facturado</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="100"><h1><strong>Acciones</strong></h1></td>
                 <td width="5"></td>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('Servicio_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.dfechaSolicitud %}{{ entity.dfechaSolicitud|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if entity.dfechaCierre %}{{ entity.dfechaCierre|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
+                
+                <td align='center' width="200"> {{ entity[0].tbCliente}}</td>
+                <td width="5"></td>
+                <td align='center' width="200"> {{ entity[0].fkPaquete}}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{% if entity[0].dfechaSolicitud %}{{ entity[0].dfechaSolicitud|date('Y-m-d') }}{% endif %}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{{entity[0].destatusServicio}}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{% if entity[0].dfechaCierre %}{{ entity[0].dfechaCierre|date('Y-m-d ') }}{% endif %}</td>
+                <td width="5"></td>
+                <td style="background: #EEEEEE" align='center' width="120">{{entity[1]}}</td>
+                <td width="5"></td>
+                <td align='center' width="100">
                 <ul>
                     <li>
-                        <a href="{{ path('Servicio_show', { 'id': entity.id }) }}">show/</a>
-                        <a href="{{ path('Servicio_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('Servicio_show', { 'id': entity[0].id }) }}">show/</a>
+                        <a href="{{ path('Servicio_edit', { 'id': entity[0].id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>

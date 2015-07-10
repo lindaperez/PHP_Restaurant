@@ -25,15 +25,6 @@ V\ValoraBundle\Entity\TbRelPaqueteProducto:
             comment: ''
             column: iCantidad_Producto_Paquete
     manyToOne:
-        fkProducto:
-            targetEntity: TbProducto
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                fk_Producto:
-                    referencedColumnName: id
-            orphanRemoval: false
         fkPaquete:
             targetEntity: TbPaquete
             cascade: {  }
@@ -41,6 +32,15 @@ V\ValoraBundle\Entity\TbRelPaqueteProducto:
             inversedBy: null
             joinColumns:
                 fk_Paquete:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fkProducto:
+            targetEntity: TbProducto
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                fk_Producto:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -4,7 +4,6 @@ namespace V\ValoraBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use V\ValoraBundle\Entity\TbServicio;
 use V\ValoraBundle\Form\TbServicioType;
 use DateTime;
@@ -15,59 +14,76 @@ use V\ValoraBundle\Entity\TbRelPaqueteProducto;
  * TbServicio controller.
  *
  */
-class TbServicioController extends Controller
-{
+class TbServicioController extends Controller {
 
     /**
      * Lists all TbServicio entities.
      *
      */
-    public function indexAction()
-    {
+    public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('VValoraBundle:TbServicio')->findAll();
+        $arrayEntities = Array();
+        $inc = 0;
+        $precio = 0;
+        //calculo de facturacion por paquete 
+        foreach ($entities as $entity) {
+            $paquete=$entity->getFkPaquete();
+            $relProPaq = $em->getRepository('VValoraBundle:TbRelPaqueteProducto')->
+                    findBy(array('fkPaquete' => $paquete));
 
+            foreach ($relProPaq as $rel) {
+                $precio = $precio + $rel->getIcantidadProductoPaquete() * $rel->getFkProducto()->getVprecio();
+            }
+            $arrayEntities[$inc++] = Array($entity, $precio);
+            $precio = 0;
+        }
         return $this->render('VValoraBundle:TbServicio:index.html.twig', array(
-            'entities' => $entities,
+                    'entities' => $arrayEntities,
         ));
     }
+
     /**
      * Creates a new TbServicio entity.
      *
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
         $entity = new TbServicio();
         $em = $this->getDoctrine()->getManager();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $paquete = new TbPaquete();
-        $paquete->setVtitulo('Usuario '.$entity->getTbCliente()->getVnombre().' '.
-                            $entity->getTbCliente()->getVapellido());
+        $paquete->setVtitulo('Usuario ' . $entity->getTbCliente()->getVnombre() . ' ' .
+                $entity->getTbCliente()->getVapellido());
         $paquete->setVdescripcion($paquete->getVtitulo());
         $em->persist($paquete);
-        $swith=false;
+        $swith = false;
         foreach ($_POST as $clave => $prod) {
-                $a = strpos($clave, 'p_');
-                if ($a !== false) {
-                    //Crear Relacion y asociar al paquete
-                    $relacion = new TbRelPaqueteProducto();
-                    $relacion->setFkPaquete($paquete);
-                    $relacion->setIcantidadProductoPaquete(1);
-                    
-                    //$producto= $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
-                    $producto= $em->getRepository('VValoraBundle:TbProducto')->find($prod);
-                    $relacion->setFkProducto($producto);
-                    $em->persist($relacion);
-                    $swith=true;
-                }
+            $a = strpos($clave, 'p_');
+            if ($a !== false && $prod > 0) {
+                //Crear Relacion y asociar al paquete
+                $relacion = new TbRelPaqueteProducto();
+                $relacion->setFkPaquete($paquete);
+                $relacion->setIcantidadProductoPaquete($prod);
+
+                //$producto= $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
+                $producto = $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
+                $producto->setVcantidad($producto->getVcantidad() - $prod);
+
+                $relacion->setFkProducto($producto);
+
+                $em->persist($relacion);
+                $swith = true;
             }
-            if($swith==true){
-                $entity->setFkPaquete($paquete);
-            }
+        }
+        if ($swith == true) {
+            $entity->setFkPaquete($paquete);
+        }
+
+
         if ($form->isValid()) {
-            
+
             $em->persist($entity);
             $em->flush();
 
@@ -75,8 +91,8 @@ class TbServicioController extends Controller
         }
 
         return $this->render('VValoraBundle:TbServicio:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
+                    'entity' => $entity,
+                    'form' => $form->createView(),
         ));
     }
 
@@ -87,8 +103,7 @@ class TbServicioController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(TbServicio $entity)
-    {
+    private function createCreateForm(TbServicio $entity) {
         $form = $this->createForm(new TbServicioType(), $entity, array(
             'action' => $this->generateUrl('Servicio_create'),
             'method' => 'POST',
@@ -103,25 +118,24 @@ class TbServicioController extends Controller
      * Displays a form to create a new TbServicio entity.
      *
      */
-    public function newAction()
-    {
+    public function newAction() {
         $entity = new TbServicio();
         $em = $this->getDoctrine()->getManager();
-        
-        $productos= $em->getRepository('VValoraBundle:TbProducto')->findAll();
+
+        $productos = $em->getRepository('VValoraBundle:TbProducto')->findAll();
         date_default_timezone_set('America/Caracas');
         $date = new DateTime('NOW');
         $entity->setDfechaSolicitud($date);
         $entity->setDfechaCierre(Null);
-        $entityEdoServicio = $em->getRepository('VValoraBundle:TbEdoServicio')->find(2);
+        $entityEdoServicio = $em->getRepository('VValoraBundle:TbEdoServicio')->find(3);
         $entity->setDestatusServicio($entityEdoServicio);
-        
-        $form   = $this->createCreateForm($entity);
+
+        $form = $this->createCreateForm($entity);
 
         return $this->render('VValoraBundle:TbServicio:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-            'Productos' =>$productos,
+                    'entity' => $entity,
+                    'form' => $form->createView(),
+                    'Productos' => $productos,
         ));
     }
 
@@ -129,8 +143,7 @@ class TbServicioController extends Controller
      * Finds and displays a TbServicio entity.
      *
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('VValoraBundle:TbServicio')->find($id);
@@ -142,8 +155,8 @@ class TbServicioController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('VValoraBundle:TbServicio:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -151,8 +164,7 @@ class TbServicioController extends Controller
      * Displays a form to edit an existing TbServicio entity.
      *
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('VValoraBundle:TbServicio')->find($id);
@@ -165,21 +177,20 @@ class TbServicioController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('VValoraBundle:TbServicio:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a TbServicio entity.
-    *
-    * @param TbServicio $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(TbServicio $entity)
-    {
+     * Creates a form to edit a TbServicio entity.
+     *
+     * @param TbServicio $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createEditForm(TbServicio $entity) {
         $form = $this->createForm(new TbServicioType(), $entity, array(
             'action' => $this->generateUrl('Servicio_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -189,12 +200,12 @@ class TbServicioController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing TbServicio entity.
      *
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('VValoraBundle:TbServicio')->find($id);
@@ -214,17 +225,17 @@ class TbServicioController extends Controller
         }
 
         return $this->render('VValoraBundle:TbServicio:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+                    'entity' => $entity,
+                    'edit_form' => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a TbServicio entity.
      *
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -250,13 +261,13 @@ class TbServicioController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('Servicio_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
+                        ->setAction($this->generateUrl('Servicio_delete', array('id' => $id)))
+                        ->setMethod('DELETE')
+                        ->add('submit', 'submit', array('label' => 'Delete'))
+                        ->getForm()
         ;
     }
+
 }

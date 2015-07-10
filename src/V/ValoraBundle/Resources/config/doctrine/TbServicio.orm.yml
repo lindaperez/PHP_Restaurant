@@ -5,10 +5,10 @@ V\ValoraBundle\Entity\TbServicio:
         tb_Cliente:
             columns:
                 - tb_Cliente
-    uniqueConstraints:
         tb_Estado_Servicio:
             columns:
                 - dEstatus_Servicio
+    uniqueConstraints:
         fk_Paquete:
             columns:
                 - fk_Paquete
@@ -33,15 +33,6 @@ V\ValoraBundle\Entity\TbServicio:
             comment: ''
             column: dFecha_Cierre
     manyToOne:
-        destatusServicio:
-            targetEntity: TbEdoServicio
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                dEstatus_Servicio:
-                    referencedColumnName: id
-            orphanRemoval: false
         fkPaquete:
             targetEntity: TbPaquete
             cascade: {  }
@@ -58,6 +49,15 @@ V\ValoraBundle\Entity\TbServicio:
             inversedBy: null
             joinColumns:
                 tb_Cliente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        destatusServicio:
+            targetEntity: TbEdoServicio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                dEstatus_Servicio:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

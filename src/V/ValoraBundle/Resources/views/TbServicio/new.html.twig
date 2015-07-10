@@ -99,7 +99,7 @@
                 <td width="5"></td>
                 <td align='center' width="120">{{ prod.vcantidad }}</td>
                 <td width="5"></td>
-                <td align='center' width="180"><input type="radio" name="p_{{prod.id}}" value='{{prod.id}}' ><br></td>
+                <td align='center' width="120"><input style="width:25px;" type="number" name="p_{{prod.id}}" value='0' min=0 max='{{prod.vcantidad}}'>
                 <td width="5"></td>
             </tr>
         {% endfor %}
