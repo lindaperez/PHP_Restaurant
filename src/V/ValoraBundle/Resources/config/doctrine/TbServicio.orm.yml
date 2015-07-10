@@ -23,25 +23,16 @@ V\ValoraBundle\Entity\TbServicio:
                 strategy: IDENTITY
     fields:
         dfechaSolicitud:
-            type: date
+            type: datetime
             nullable: false
             comment: ''
             column: dFecha_Solicitud
         dfechaCierre:
-            type: date
+            type: datetime
             nullable: false
             comment: ''
             column: dFecha_Cierre
     manyToOne:
-        destatusServicio:
-            targetEntity: TbEdoServicio
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                dEstatus_Servicio:
-                    referencedColumnName: id
-            orphanRemoval: false
         fkPaquete:
             targetEntity: TbRelPaqueteProducto
             cascade: {  }
@@ -58,6 +49,15 @@ V\ValoraBundle\Entity\TbServicio:
             inversedBy: null
             joinColumns:
                 tb_Cliente:
+                    referencedColumnName: id
+            orphanRemoval: false
+        destatusServicio:
+            targetEntity: TbEdoServicio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                dEstatus_Servicio:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

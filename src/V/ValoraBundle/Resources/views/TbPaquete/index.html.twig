@@ -1,27 +1,38 @@
 {% extends '::layout.html.twig' %}
 
 {% block content %}
-    <h1>TbPaquete list</h1>
-
+    <div class="container" >
+    <h1>Listado de Paquetes</h1>
+    <section class="register">
+        <h1>Listado de Paquetes</h1>
+       <br>
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Vdescripcion</th>
-                <th>Actions</th>
+               <td align='center' width="120"><h1><strong>ID</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="220"><h1><strong>Titulo</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="220"><h1><strong>Descripcion</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Acciones </strong></h1></td>
+                <td width="5"></td>
+                
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('Paquete_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.vdescripcion }}</td>
-                <td>
+                <td align='center' width="120"><a href="{{ path('Paquete_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td width="5"></td>
+                <td align='center' width="220">{{ entity.vtitulo}}</td>
+                <td width="5"></td>
+                <td align='center' width="220">{{ entity.vdescripcion }}</td>
+                <td width="5"></td>
+                <td align='center' width="120">
                 <ul>
                     <li>
-                        <a href="{{ path('Paquete_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
+                        <a href="{{ path('Paquete_show', { 'id': entity.id }) }}">show/</a>
                         <a href="{{ path('Paquete_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
@@ -31,10 +42,10 @@
         </tbody>
     </table>
 
-        <ul>
+        <ul><br><br><br><br>
         <li>
             <a href="{{ path('Paquete_new') }}">
-                Create a new entry
+                Crear nuevo Paquete
             </a>
         </li>
     </ul>

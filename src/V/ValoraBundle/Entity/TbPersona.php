@@ -218,5 +218,5 @@ class TbPersona
     
     public function __toString() {
         return $this->vnombre.' '.$this->vapellido;
-    }
+}
 }

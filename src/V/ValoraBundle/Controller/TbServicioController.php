@@ -80,8 +80,14 @@ class TbServicioController extends Controller
     public function newAction()
     {
         $entity = new TbServicio();
-        $fechaHoy = new \DateTime();
-        $entity->setDfechaSolicitud($fechaHoy->format('d/m/Y'));
+        $em = $this->getDoctrine()->getManager();
+        date_default_timezone_set('America/Caracas');
+        $date = new DateTime('NOW');
+        $entity->setDfechaSolicitud($date);
+        $entity->setDfechaCierre(Null);
+        $entityEdoServicio = $em->getRepository('VValoraBundle:TbEdoServicio')->find(2);
+        $entity->setDestatusServicio($entityEdoServicio);
+        
         $form   = $this->createCreateForm($entity);
 
         return $this->render('VValoraBundle:TbServicio:new.html.twig', array(

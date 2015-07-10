@@ -39,6 +39,9 @@
                     <td>
                         <div style="display: none;">
                             {{ form_row(form.submit, { 'label': 'Crear' }) }}
+                            {{ form_row(form.dfechaSolicitud) }}
+                            {{ form_row(form.dfechaCierre) }}
+                            {{ form_row(form.destatusServicio) }}
                         </div>
                         <div class="error">
                             {{ form_errors(form.tbCliente) }}</div>       
@@ -46,11 +49,14 @@
                                 {{ form_label(form.tbCliente, 'Cliente solicitante:', {'required': 'true'}) }}</td>
                             <td>{{ form_widget(form.tbCliente) }}</td>
                         </table>
-
+                    </td>
+                    <td width='60'>
+                    </td>
+                    <td>
                         <div class="error">
                             {{ form_errors(form.fkPaquete) }}</div>       
                         <table>  <td width="100">
-                                {{ form_label(form.fkPaquete, 'Paquete:', {'required': true}) }}</td>
+                                {{ form_label(form.fkPaquete, 'Paquete a Solicitar', {'required': true}) }}</td>
                             <td>{{ form_widget(form.fkPaquete) }}</td>
                         </table>
 

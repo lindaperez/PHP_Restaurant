@@ -24,26 +24,16 @@ class TbServicio
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dFecha_Solicitud", type="date", nullable=false)
+     * @ORM\Column(name="dFecha_Solicitud", type="datetime", nullable=false)
      */
     private $dfechaSolicitud;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dFecha_Cierre", type="date", nullable=false)
+     * @ORM\Column(name="dFecha_Cierre", type="datetime", nullable=false)
      */
     private $dfechaCierre;
-
-    /**
-     * @var \V\ValoraBundle\Entity\TbEdoServicio
-     *
-     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbEdoServicio")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="dEstatus_Servicio", referencedColumnName="id")
-     * })
-     */
-    private $destatusServicio;
 
     /**
      * @var \V\ValoraBundle\Entity\TbRelPaqueteProducto
@@ -64,6 +54,16 @@ class TbServicio
      * })
      */
     private $tbCliente;
+
+    /**
+     * @var \V\ValoraBundle\Entity\TbEdoServicio
+     *
+     * @ORM\ManyToOne(targetEntity="V\ValoraBundle\Entity\TbEdoServicio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="dEstatus_Servicio", referencedColumnName="id")
+     * })
+     */
+    private $destatusServicio;
 
 
 
@@ -124,29 +124,6 @@ class TbServicio
     }
 
     /**
-     * Set destatusServicio
-     *
-     * @param \V\ValoraBundle\Entity\TbEdoServicio $destatusServicio
-     * @return TbServicio
-     */
-    public function setDestatusServicio(\V\ValoraBundle\Entity\TbEdoServicio $destatusServicio = null)
-    {
-        $this->destatusServicio = $destatusServicio;
-
-        return $this;
-    }
-
-    /**
-     * Get destatusServicio
-     *
-     * @return \V\ValoraBundle\Entity\TbEdoServicio 
-     */
-    public function getDestatusServicio()
-    {
-        return $this->destatusServicio;
-    }
-
-    /**
      * Set fkPaquete
      *
      * @param \V\ValoraBundle\Entity\TbRelPaqueteProducto $fkPaquete
@@ -190,5 +167,28 @@ class TbServicio
     public function getTbCliente()
     {
         return $this->tbCliente;
+    }
+
+    /**
+     * Set destatusServicio
+     *
+     * @param \V\ValoraBundle\Entity\TbEdoServicio $destatusServicio
+     * @return TbServicio
+     */
+    public function setDestatusServicio(\V\ValoraBundle\Entity\TbEdoServicio $destatusServicio = null)
+    {
+        $this->destatusServicio = $destatusServicio;
+
+        return $this;
+    }
+
+    /**
+     * Get destatusServicio
+     *
+     * @return \V\ValoraBundle\Entity\TbEdoServicio 
+     */
+    public function getDestatusServicio()
+    {
+        return $this->destatusServicio;
     }
 }
