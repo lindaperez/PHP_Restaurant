@@ -43,6 +43,13 @@ class TbProducto
     private $vcantidad;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="vCantidad_Uso", type="integer", nullable=false)
+     */
+    private $vcantidadUso;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="vTitulo", type="string", length=150, nullable=false)
@@ -131,6 +138,29 @@ class TbProducto
     }
 
     /**
+     * Set vcantidadUso
+     *
+     * @param integer $vcantidadUso
+     * @return TbProducto
+     */
+    public function setVcantidadUso($vcantidadUso)
+    {
+        $this->vcantidadUso = $vcantidadUso;
+
+        return $this;
+    }
+
+    /**
+     * Get vcantidadUso
+     *
+     * @return integer 
+     */
+    public function getVcantidadUso()
+    {
+        return $this->vcantidadUso;
+    }
+
+    /**
      * Set vtitulo
      *
      * @param string $vtitulo
@@ -154,6 +184,6 @@ class TbProducto
     }
     public function __toString() {
         return $this->getVtitulo();
-    }
+}
     
     }

@@ -31,6 +31,12 @@ V\ValoraBundle\Entity\TbProducto:
             unsigned: false
             comment: ''
             column: vCantidad
+        vcantidadUso:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: vCantidad_Uso
         vtitulo:
             type: string
             nullable: false

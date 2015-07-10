@@ -69,7 +69,7 @@ class TbServicioController extends Controller {
 
                 //$producto= $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
                 $producto = $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
-                $producto->setVcantidad($producto->getVcantidad() - $prod);
+                $producto->setVcantidadUso($producto->getVcantidadUso()+$prod);
 
                 $relacion->setFkProducto($producto);
 

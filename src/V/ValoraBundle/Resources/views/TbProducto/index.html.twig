@@ -13,11 +13,15 @@
                 <td width="5"></td>
                 <td align='center' width="120"><h1><strong>Titulo</strong></h1></td>
                 <td width="5"></td>
-                <td align='center' width="120"><h1><strong>Monto</strong></h1></td>
+                <td align='center' width="120"><h1><strong>Monto c/u</strong></h1></td>
                 <td width="5"></td>
-                <td align='center' width="120"><h1><strong>Precio </strong></h1></td>
+                <td align='center' width="120"><h1><strong>Precio c/u</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Descuento c/u</strong></h1></td>
                 <td width="5"></td>
                 <td align='center' width="120"><h1><strong>Cantidad Disponible</strong></h1></td>
+                <td width="5"></td>
+                <td align='center' width="120"><h1><strong>Cantidad Usada</strong></h1></td>
                 <td width="5"></td>
                 <td align='center' width="180"><h1><strong>Acciones</strong></h1></td>
                 <td width="5"></td>
@@ -35,7 +39,11 @@
                 <td width="5"></td>
                 <td align='center' width="120">{{ entity.vprecio }}</td>
                 <td width="5"></td>
-                <td align='center' width="120">{{ entity.vcantidad }}</td>
+                <td align='center' width="120">{{ entity.vdescuento}}</td>
+                <td width="5"></td>
+                <td align='center' width="120">{{ entity.vcantidad - entity.vcantidadUso }}</td>
+                <td width="5"></td>
+                <td style='background: #EEEEEE'align='center' width="120">{{ (entity.vcantidadUso*100)/entity.vcantidad}}%</td>
                 <td width="5"></td>
                 <td align='center' width="180">
                 <ul>
