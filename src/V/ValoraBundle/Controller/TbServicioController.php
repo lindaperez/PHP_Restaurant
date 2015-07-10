@@ -43,10 +43,10 @@ class TbServicioController extends Controller
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
         $paquete = new TbPaquete();
-        $paquete->setVtitulo('Usuario '+$entity->getTbCliente()->getVnombre()+' '+
+        $paquete->setVtitulo('Usuario '.$entity->getTbCliente()->getVnombre().' '.
                             $entity->getTbCliente()->getVapellido());
         $paquete->setVdescripcion($paquete->getVtitulo());
-        
+        $em->persist($paquete);
         $swith=false;
         foreach ($_POST as $clave => $prod) {
                 $a = strpos($clave, 'p_');
@@ -67,7 +67,7 @@ class TbServicioController extends Controller
                 $entity->setFkPaquete($paquete);
             }
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            
             $em->persist($entity);
             $em->flush();
 

@@ -130,5 +130,5 @@ class TbRelPaqueteProducto
     }
     public function __toString() {
         return $this->getFkPaquete()->getVtitulo();
-    }
+}
 }
