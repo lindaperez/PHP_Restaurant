@@ -4,9 +4,9 @@ namespace V\ValoraBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use V\ValoraBundle\Entity\TbPaquete;
 use V\ValoraBundle\Form\TbPaqueteType;
+use V\ValoraBundle\Entity\TbRelPaqueteProducto;
 
 /**
  * TbPaquete controller.
@@ -36,9 +36,25 @@ class TbPaqueteController extends Controller
     public function createAction(Request $request)
     {
         $entity = new TbPaquete();
+        $em = $this->getDoctrine()->getManager();
+        
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
-
+        
+        foreach ($_POST as $clave => $prod) {
+                $a = strpos($clave, 'p_');
+                if ($a !== false) {
+                    //Crear Relacion y asociar al paquete
+                    $relacion = new TbRelPaqueteProducto();
+                    $relacion->setFkPaquete($entity);
+                    //$producto= $em->getRepository('VValoraBundle:TbProducto')->find(substr($clave, 2));
+                    print_r($prod);
+                    $producto= $em->getRepository('VValoraBundle:TbProducto')->find($prod);
+                    $relacion->setFkProducto($producto);
+                    $em->persist($relacion);
+                    $em->flush();
+                }
+            }
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -79,11 +95,15 @@ class TbPaqueteController extends Controller
     public function newAction()
     {
         $entity = new TbPaquete();
+        $em = $this->getDoctrine()->getManager();
+
+        $productos= $em->getRepository('VValoraBundle:TbProducto')->findAll();
         $form   = $this->createCreateForm($entity);
 
         return $this->render('VValoraBundle:TbPaquete:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'Productos' => $productos,
         ));
     }
 
