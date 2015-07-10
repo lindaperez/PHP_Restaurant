@@ -56,6 +56,13 @@ class TbProducto
      */
     private $vtitulo;
 
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="vDescuento", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $vdescuento;
+
 
 
     /**
@@ -182,8 +189,31 @@ class TbProducto
     {
         return $this->vtitulo;
     }
+
+    /**
+     * Set vdescuento
+     *
+     * @param float $vdescuento
+     * @return TbProducto
+     */
+    public function setVdescuento($vdescuento)
+    {
+        $this->vdescuento = $vdescuento;
+
+        return $this;
+    }
+
+    /**
+     * Get vdescuento
+     *
+     * @return float 
+     */
+    public function getVdescuento()
+    {
+        return $this->vdescuento;
+    }
     public function __toString() {
         return $this->getVtitulo();
-}
-    
     }
+    
+}

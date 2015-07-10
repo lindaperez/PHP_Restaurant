@@ -44,4 +44,11 @@ V\ValoraBundle\Entity\TbProducto:
             fixed: false
             comment: ''
             column: vTitulo
+        vdescuento:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+            comment: ''
+            column: vDescuento
     lifecycleCallbacks: {  }
