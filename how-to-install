@@ -1,0 +1,230 @@
+NOTAS INSTALACION PARA APLICATIVO DE VALERIO BUFFALO
+
+#####################################
+#INSTALAR NETBEANS
+
+######################################
+su
+apt-get update
+
+sudo gedit /etc/apt/sources.list
+
+
+deb http://packages.dotdeb.org wheezy all
+deb-src http://packages.dotdeb.org wheezy all
+
+deb http://packages.dotdeb.org wheezy-php55 all
+deb-src http://packages.dotdeb.org wheezy-php55 all
+
+wget http://www.dotdeb.org/dotdeb.gpg
+apt-key add dotdeb.gpg
+sudo apt-get update 
+##################################################################################################################
+#INSTALACION DE PHP version 5.4.9 usada
+##################################################################################################################
+apt-get install php5
+
+
+NOTA
+http://stackoverflow.com/questions/18592542/how-do-i-install-php5-4-16-on-debian-wheezy
+You're targeting too specific a version. Repositories won't routinely keep multiple builds of the same package around, so a specific build like 5.4.16-1~dotdeb.1 will be superseded by newer builds.
+
+At the moment, listing the files on the repository shows a build of 5.4.19-1~dotdeb.1, but really all you want is to select the latest version of PHP 5.4, and let APT update it in the normal way.
+
+If the dotdeb packages are for newer versions of PHP than any other repositories you have installed, it will be the default anyway, so you can just run:
+
+apt-get install php5-fpm
+
+FIN NOTA
+
+Version instalada 5.5.11
+Version Usada 5.5.11
+
+
+##################################################################################################################
+#INSTALACION DE APACHE2
+##################################################################################################################
+apt-get install apache2
+
+http://httpd.apache.org/docs/2.0/es/install.html
+
+Version instalada 2.2.22
+Version Usada 2.4.9
+
+##################################################################################################################
+#INSTALACION DE MYSQL
+##################################################################################################################
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get install mysql-server mysql-client
+
+You need to set a root password, for starters. MySQL has it's own user accounts, which are not related to the user accounts on your Linux machine. By default, the root account of the MySQL Server is empty. You need to set it. Please replace 'mypassword' with your actual password and myhostname with your actual hostname.
+
+sudo mysqladmin -u root -h localhost password 'mypassword'
+sudo mysqladmin -u root -h myhostname password 'mypassword'
+
+
+
+Version instalada 5.6.17
+Version Usada 5.5.35
+
+
+
+
+##################################################################################################################
+#INSTALACION DE PHPMYADMIN
+https://www.digitalocean.com/community/articles/how-to-install-and-secure-phpmyadmin-on-debian-7
+
+apt-get install phpmyadmin
+
+Version instalada 5.6.17
+Version Usada 5.5.35
+
+"root" a las tres contrasenas (cambiar)
+
+
+sudo nano /etc/apache2/apache2.conf
+
+Add the phpmyadmin config to the file.
+Include /etc/phpmyadmin/apache.conf
+
+Restart apache:
+sudo service apache2 restart
+##################################################################################################################
+#INSTALACION DE Git para clonar el proyecto
+##################################################################################################################
+http://moidev.com/2011/09/desplegando-proyectos-symfony2-con-capistrano-capifony-y-git-screencast/
+apt-get install git
+
+##################################################################################################################
+#INSTALACION DE SYMFONY 2 (2.4)
+##################################################################################################################
+INSTALL CURL
+apt-get install curl
+
+ curl -s https://getcomposer.org/installer | php
+
+
+
+version en el servidor techtrol 7.26.0	
+##################################################################################################################
+Una vez descargado o clonado el proyecto 
+Ajustar en php lo siguiente::
+/etc/php/cli/php.ini
+
+cambiar la zona horaria
+
+
+Agregar en /etc/hosts
+localhos symfony.tech
+
+Agregar en httpd.conf o apache2.conf 
+
+<VirtualHost  *:8048>
+    ServerName techtrol.local
+    DocumentRoot /home/mariana/Documents/Symfony/techproject/web
+    DirectoryIndex app.php
+    ErrorLog /var/log/apache2/techtrol-error.log
+    CustomLog /var/log/apache2/techtrol-access.log combined
+    <Directory "/home/mariana/Documents/Symfony/techproject/web">
+        AllowOverride All
+        Allow from All
+    </Directory>
+</VirtualHost>
+
+
+En mysql cargar la BD
+
+mysql -h localhost -u root -p
+"root"
+
+create database mydb;
+use mydb;
+source bd.sql
+
+show tables;
+
+complete parameters.yml
+
+http://suggest.name
+
+
+Para configurar Bien el APACHE
+
+1. Agregar lo siguiente en /etc/hosts
+
+
+127.0.0.1       techproject
+127.0.0.1       www.techproject.co.ve
+
+
+2. se agrega la configuracion a /etc/apache2/sites-availables 
+agregar archiv techproject.conf
+
+Adaptar a lo que se quiere 
+
+<VirtualHost *:80>
+    ServerName techproject
+    DocumentRoot /var/www/techproject/web
+    DirectoryIndex app.php
+    ServerAlias www.techproject.co.ve
+
+    <Directory "/var/www/techproject/web">
+        AllowOverride All
+	Require all granted
+        Allow from All
+        <IfModule mod_rewrite.c>
+            Options -MultiViews
+            RewriteEngine On
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteRule ^(.*)$ app.php [QSA,L]
+        </IfModule>
+    </Directory>
+
+    ErrorLog /var/log/apache2/techtrol-error.log
+    CustomLog /var/log/apache2/techtrol-access.log combined
+</VirtualHost>
+
+
+sudo a2ensite techtrol.conf
+sudo apache2 reload
+
+3. Agregar en modulo en caso de que no este
+
+Listar los modulos
+# /usr/sbin/apache2ctl -t -D DUMP_MODULES
+
+habilitar un modulo 
+a2enmod rewrite
+
+restart apache2 
+
+sudo service apache2 restart
+
+
+4.cambiar permisos para que sea reescrible la cache y los logs
+
+$ sudo setfacl -R -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+$ sudo setfacl -dR -m u:www-data:rwx -m u:`whoami`:rwx app/cache app/logs
+
+5.cambiar en app.php por produccion
+$kernel = new AppKernel('prod', true);
+
+
+
+6. agregar en routing.yml
+
+TechTBundle_homepage:
+   pattern:  /
+    defaults: { _controller: TechTBundle:Default:index}
+    requirements:
+        _method:  GET
+
+7. Finalmente Borrar la cache
+
+
+php5 app/console cache:clear --env=prod
+	php5 app/console cache:clear --env=dev
+ 
+
+
